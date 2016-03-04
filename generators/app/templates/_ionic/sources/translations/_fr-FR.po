@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fr-FR\n"
+
+#: app.ts.js:157
+#: modules/shell/shell.html:30
+msgid "About"
+msgstr "A propos"
+
+#: app.ts.js:113
+#: modules/screens/about/about.html:7
+#: modules/shell/shell.html:17
+msgid "APP_NAME"
+msgstr "<%= props.appName || 'Awesome App' %>"
+
+#: modules/screens/home/home.html:7
+msgid "Hello world !"
+msgstr "Bonjour le monde !"
+
+#: app.ts.js:147
+#: modules/shell/shell.html:24
+msgid "Home"
+msgstr "Accueil"
+
+#: modules/screens/about/about.html:10
+msgid "Version"
+msgstr "Version"

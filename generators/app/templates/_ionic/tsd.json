@@ -1,0 +1,42 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "angularjs/angular.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "angular-gettext/angular-gettext.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "jasmine-jquery/jasmine-jquery.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "angularjs/angular-animate.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "angularjs/angular-sanitize.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    },
+    "ionic/ionic.d.ts": {
+      "commit": "aefd8146158b9f17c9eb79bbf158e6d8d3c2a87b"
+    }
+  }
+}

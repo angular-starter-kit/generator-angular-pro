@@ -9,6 +9,9 @@ module app {
     'gettext',
     'ngAnimate',
     'ngSanitize',
+<% if (props.target.key !== 'web') { -%>
+    'ngCordova',
+<% } -%>
     'ui.router',
     'ui.bootstrap'
   ]);

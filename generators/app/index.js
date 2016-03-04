@@ -156,15 +156,18 @@ var Generator = generators.Base.extend({
   },
 
   install: function() {
+    var self = this;
+
     // Launch npm, bower and tsd installs if not skipped
     this.installDependencies({
       skipInstall: this.options['skip-install'],
-      skipMessage: this.options['skip-message']
+      skipMessage: this.options['skip-message'],
+      callback: function() {
+        if (!self.options['skip-install']) {
+          self.spawnCommandSync('gulp', ['tsd:restore']);
+        }
+      }
     });
-
-    if (!this.options['skip-install']) {
-      this.spawnCommandSync('gulp', ['tsd:restore']);
-    }
   },
 
   end: function() {
@@ -178,6 +181,10 @@ var Generator = generators.Base.extend({
     this.log('- `$ ' + chalk.green('gulp protractor:dist') + '` to launch your e2e tests on your optimized application');
     this.log('\nSee more in docs and coding guides:');
     this.log(chalk.underline('https://github.com/sinedied/starter-kit\n'));
+
+    if (this.props.target.key !== 'web') {
+      this.log('To restore Cordova projects, run `$ ' + chalk.green('gulp build && cordova prepare') + '`\n');
+    }
   }
 
 });

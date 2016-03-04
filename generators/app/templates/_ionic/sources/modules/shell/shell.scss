@@ -1,0 +1,12 @@
+// Encapsulate component style into its own "namespace "to avoid naming and css collision
+.shell {
+
+  .icon-large {
+    font-size: 150%;
+  }
+
+  .medium-dark {
+    color: darken($light, 20%);
+  }
+
+}

@@ -23,10 +23,23 @@ module app {
       ],
 
       // REST backend configuration, used for all web services using restService
+<% if (props.target.key === 'web') { -%>
       server: {
         restServerUrl: '',
         restUri: 'api'
       }
+<% } else { -%>
+      server: {
+        development: {
+          restServerUrl: '',
+          restUri: 'api'
+        },
+        production: {
+          restServerUrl: 'http://api.icndb.com',
+          restUri: ''
+        }
+      }
+<% } -%>
 
     });
 

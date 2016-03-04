@@ -1,0 +1,8 @@
+// Encapsulate component style into its own "namespace "to avoid naming and css collision
+.home-screen {
+
+  .logo {
+    max-height: 100px;
+  }
+
+}

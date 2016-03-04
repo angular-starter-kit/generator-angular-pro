@@ -1,0 +1,37 @@
+  <ion-side-menus id="shell" class="shell" enable-menu-with-back-views="true">
+
+    <!-- View content -->
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-stable">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-hide="$exposeAside.active"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left" expose-aside-when="(min-width:769px)">
+      <ion-header-bar class="bar-dark">
+        <h1 class="title" translate>APP_NAME</h1>
+      </ion-header-bar>
+      <ion-content class="dark-bg">
+        <ion-list>
+          <ion-item class="item-dark item-icon-left" menu-close href="#/" ng-class="{ active: shell.stateContains('app.home') }">
+            <span class="medium-dark">
+              <i class="icon ion-home icon-large"> </i>
+              <span translate>Home</span>
+            </span>
+          </ion-item>
+          <ion-item class="item-dark item-icon-left text-darker" menu-close href="#/about" ng-class="{ active: shell.stateContains('app.about') }">
+            <span class="medium-dark">
+              <i class="icon ion-information-circled icon-large"> </i>
+              <span translate>About</span>
+            </span>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
