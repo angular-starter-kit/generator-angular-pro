@@ -1,0 +1,51 @@
+[
+  {
+    "type": "string",
+    "name": "appName",
+    "message": "What's the name of your application?"
+  },
+  {
+    "type": "list",
+    "name": "target",
+    "message": "What kind of app do you want to create?",
+    "choices": [
+      {
+        "value": {
+          "key": "web"
+        },
+        "name": "Web app"
+      },
+      {
+        "value": {
+          "key": "mobile"
+        },
+        "name": "Mobile app"
+      },
+      {
+        "value": {
+          "key": "both"
+        },
+        "name": "Web + mobile app"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "name": "ui",
+    "message": "Which UI framework do you want?",
+    "choices": [
+      {
+        "value": {
+          "key": "bootstrap"
+        },
+        "name": "Bootstrap (web is your main target)"
+      },
+      {
+        "value": {
+          "key": "ionic"
+        },
+        "name": "Ionic (mobile is your main target)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "skip-install",
+    "type": "Boolean",
+    "required": false,
+    "desc": "Skip npm, bower and tsd install after project generation",
+    "defaults": false
+  },
+  {
+    "name": "skip-message",
+    "type": "Boolean",
+    "required": false,
+    "desc": "Skip install messages",
+    "defaults": false
+  }
+]

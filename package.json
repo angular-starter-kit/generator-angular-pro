@@ -1,0 +1,36 @@
+{
+  "name": "generator-angular-pro",
+  "version": "2.0.0",
+  "description": "Web/mobile Angular project generator including tooling, best practices and project seed",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/sinedied/generator-angular-pro.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "angular",
+    "gulp",
+    "cordova",
+    "bootstrap",
+    "ionic",
+    "ios",
+    "android",
+    "pro"
+  ],
+  "author": "Yohan Lasorsa",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "lodash": "^4.5.0",
+    "node-dir": "^0.1.11",
+    "yeoman-generator": "^0.22.5",
+    "yosay": "^1.1.0"
+  },
+  "files": [
+    "generators/app"
+  ]
+}

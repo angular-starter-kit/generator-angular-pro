@@ -1,0 +1,55 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "~1.5.0",
+    "angular-sanitize": "~1.5.0",
+    "angular-ui-router": "~0.2.15",
+    "angular": "~1.5.0",
+    "lodash": "~4.5.0",
+    "angular-gettext": "~2.2.1",
+<% if (props.target.key !== 'web') { -%>
+    "ngCordova": "~0.1.24-alpha",
+<% } if (props.ui.key === 'bootstrap') { -%>
+    "font-awesome": "~4.5.0",
+    "angular-bootstrap": "~1.1.2",
+    "bootstrap-sass": "~3.3.6"
+<% } if (props.ui.key === 'ionic') { -%>
+    "ionic": "~1.2.4"
+<% } -%>
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.0",
+    "jquery": "~2.2.0",
+    "jasmine-jquery": "~2.1.0"
+  },
+  "overrides": {
+<% if (props.ui.key === 'bootstrap') { -%>
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
+      ]
+    },
+    "bootstrap-sass": {
+      "main": [],
+      "dependencies": []
+    }
+  }
+<% } if (props.ui.key === 'ionic') { -%>
+    "ionic": {
+      "main": [
+        "release/fonts/*",
+        "release/js/ionic.js",
+        "release/js/ionic-angular.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular-ui-router": "~0.2.15",
+    "angular-sanitize": "~1.5.0",
+    "angular": "~1.5.0",
+    "angular-animate": "~1.5.0"
+  }
+<% } -%>
+}
