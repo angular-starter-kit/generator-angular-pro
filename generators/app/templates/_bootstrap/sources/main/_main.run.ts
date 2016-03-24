@@ -6,11 +6,11 @@ module app {
    * Entry point of the application.
    * Initializes application and root controller.
    */
-  function main($locale: ng.ILocaleService,
+  function main($window: ng.IWindowService,
+                $locale: ng.ILocaleService,
                 $rootScope: any,
                 $state: angular.ui.IStateService,
 <% if (props.target.key !== 'web') { -%>
-                $window: any,
                 $timeout: ng.ITimeoutService,
                 $cordovaKeyboard: any,
 <% } -%>
@@ -26,18 +26,31 @@ module app {
      * Root view model
      */
 
-    var vm = $rootScope;
+    let vm = $rootScope;
 
     vm.pageTitle = '';
 
     /**
      * Utility method to set the language in the tools requiring it.
+     * The current language is saved to the local storage.
+     * If no parameter is specified, the language is loaded from local storage (if possible).
      * @param {string=} language The IETF language tag.
      */
     vm.setLanguage = function(language?: string) {
-      var isSupportedLanguage = _.includes(config.supportedLanguages, language);
+      language = language || $window.localStorage.getItem('language');
+      let isSupportedLanguage = _.includes(config.supportedLanguages, language);
 
-      // Fallback if language is not supported
+<% if (props.target.key !== 'web') { -%>
+      // If no exact match is found, search without the region
+      if (!isSupportedLanguage && language) {
+        let languagePart = language.split('-')[0];
+        language = _.find(config.supportedLanguages,
+          (supportedLanguage: string) => _.startsWith(supportedLanguage, languagePart));
+        isSupportedLanguage = !!language;
+      }
+<% } -%>
+
+        // Fallback if language is not supported
       if (!isSupportedLanguage) {
         language = 'en-US';
       }
@@ -45,19 +58,20 @@ module app {
       // Configure translation with gettext
       gettextCatalog.setCurrentLanguage(language);
       $locale.id = language;
+      $window.localStorage.setItem('language', language);
     };
 
     /**
      * Updates page title on view change.
      */
-    vm.$on('$stateChangeSuccess', function(event: any, toState: angular.ui.IState) {
+    vm.$on('$stateChangeSuccess', (event: any, toState: angular.ui.IState) => {
       updatePageTitle(toState.data ? toState.data.title : null);
     });
 
     /**
      * Updates page title on language change.
      */
-    vm.$on('gettextLanguageChanged', function() {
+    vm.$on('gettextLanguageChanged', () => {
       updatePageTitle($state.current.data ? $state.current.data.title : null);
     });
 
@@ -72,7 +86,7 @@ module app {
      */
     function init() {
 <% if (props.target.key !== 'web') { -%>
-      var _logger: ILogger = logger.getLogger('main');
+      let _logger: ILogger = logger.getLogger('main');
 <% } -%>
       // Enable debug mode for translations
       gettextCatalog.debug = config.debug;
@@ -109,8 +123,6 @@ module app {
         }
 
         if ($window.cordova && $window.cordova.plugins.Keyboard) {
-          // Hide the accessory bar (remove this to show the accessory bar above the keyboard for form inputs)
-          $cordovaKeyboard.hideAccessoryBar(true);
           $cordovaKeyboard.disableScroll(true);
         }
 

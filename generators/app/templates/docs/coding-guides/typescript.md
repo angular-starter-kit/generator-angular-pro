@@ -1,8 +1,12 @@
 # TypeScript coding guide
 
-[TypeScript](http://www.typescriptlang.org) is a superset of JavaScript, therefore most
+[TypeScript](http://www.typescriptlang.org) is a superset of JavaScript, therefore all
 [JavaScript conventions and good practices](javascript.md) also applies here. Exceptions or changes to these rules
 are noted in this file.
+
+For TypeScript-specific rules, you can take cues from the
+[TypeScript Deep Dive Style Guide](https://basarat.gitbooks.io/typescript/content/docs/styleguide/styleguide.html),
+this is a great source for community-approved conventions.
 
 ## Naming conventions
 
@@ -35,3 +39,8 @@ tool.
 ## Enforcement
 
 As with JavaScript, coding rules are enforced in this project, via [TSLint](https://github.com/palantir/tslint).
+
+## Learn more
+
+The read of [TypeScript Deep Dive](https://basarat.gitbooks.io/typescript) is recommended, this is the definitive
+reference book for TypeScript (and also open-source).

@@ -8,9 +8,9 @@ This starter kit architecture and base template tries to comply with most of the
 ## Naming convention
 
 - Use `camelCase` everywhere (properties and methods), except for:
-  * Class names and constructors which should starts in uppercase.
+  * Class names and constructors which should use `PascalCase`
   * Constants should be all in UPPERCASE, like `var MY_CONSTANT = 0;`
-- File names should always be in `snake-case`
+- File names should always be in `kebab-case`
 
 ## Coding rules
 
@@ -24,10 +24,3 @@ This starter kit architecture and base template tries to comply with most of the
 - Always use strict equality checks: `===` and `!==` instead of `==` or `!=` to avoid comparison pitfalls (see 
   [JavaScipt equality table](https://dorey.github.io/JavaScript-Equality-Table/))
 - Use `[]` instead of `Array`
-
-## Enforcement
-
-Good practices and coding rules are already enforced in this project via [JSHint](http://jshint.com), 
-[JSCS](http://jscs.info). 
-If there is a warning/error, fix it. If you think the related rule is not justified or a must-have rule is missing,
-submit a pull request with a justification for the change, and we will consider it :-)

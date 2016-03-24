@@ -31,17 +31,16 @@ module app {
       }
 
       // Search for context properties to inject
-      var properties = restApi.match(/(:\w+)/g);
-      var self = this;
+      let properties = restApi.match(/(:\w+)/g);
 
-      angular.forEach(properties, function(property: string) {
-        var contextVar = property.substring(1);
-        var contextValue = context[contextVar];
+      angular.forEach(properties, (property: string) => {
+        let contextVar = property.substring(1);
+        let contextValue = context[contextVar];
 
         if (contextValue !== undefined) {
           contextValue = encodeURIComponent(contextValue);
           restApi = restApi.replace(property, contextValue);
-          self.logger.log('Injected ' + contextValue + ' for ' + property);
+          this.logger.log('Injected ' + contextValue + ' for ' + property);
         } else {
           throw 'inject: context.' + contextVar + ' expected but undefined';
         }

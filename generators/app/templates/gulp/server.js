@@ -8,8 +8,6 @@ var browserSyncSpa = require('browser-sync-spa');
 var proxyMiddleware = require('http-proxy-middleware');
 
 function browserSyncInit(baseDir, browser, done) {
-  browser = browser === undefined ? 'default' : browser;
-
   var server = {
     baseDir: baseDir,
     routes: null,
@@ -41,11 +39,11 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function(done) {
-  browserSyncInit([conf.paths.tmp, conf.paths.src], undefined, done);
+  browserSyncInit([conf.paths.tmp, conf.paths.src], 'default', done);
 });
 
 gulp.task('serve:dist', ['build'], function(done) {
-  browserSyncInit(conf.paths.dist, undefined, done);
+  browserSyncInit(conf.paths.dist, 'default', done);
 });
 
 gulp.task('serve:e2e', ['inject'], function(done) {

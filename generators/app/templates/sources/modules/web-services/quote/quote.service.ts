@@ -11,17 +11,9 @@ module app {
       randomJoke: '/jokes/random?escape=javascript&limitTo=[:category]'
     };
 
-    private $q: ng.IQService;
-    private restService: RestService;
-    private contextService: ContextService;
-
-    constructor($q: ng.IQService,
-                restService: RestService,
-                contextService: ContextService) {
-
-      this.$q = $q;
-      this.restService = restService;
-      this.contextService = contextService;
+    constructor(private $q: ng.IQService,
+                private restService: RestService,
+                private contextService: ContextService) {
     }
 
     /**
@@ -32,14 +24,13 @@ module app {
      * @return {Object} The promise.
      */
     getRandomJoke(context: any): ng.IPromise<string> {
-      var self = this;
       return this.restService
         .get(this.contextService.inject(this.ROUTES.randomJoke, context), null, true)
-        .then(function(response: any) {
+        .then((response: any) => {
           if (response.data && response.data.value) {
             return response.data.value.joke;
           }
-          return self.$q.reject();
+          return this.$q.reject();
         })
         .catch(function() {
           return 'Error, could not load joke :-(';

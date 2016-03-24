@@ -10,8 +10,8 @@ module app {
                       config: any) {
 
     // Extend the $exceptionHandler service to output logs.
-    $provide.decorator('$exceptionHandler', function($delegate: any, $injector: any) {
-      return function(exception: any, cause: any) {
+    $provide.decorator('$exceptionHandler', ($delegate: any, $injector: any) => {
+      return (exception: any, cause: any) => {
         $delegate(exception, cause);
 
         var logger = $injector.get('logger').getLogger('exceptionHandler');
@@ -20,7 +20,7 @@ module app {
     });
 
     // Disable debug logs in production version
-    $provide.decorator('$log', function($delegate: any) {
+    $provide.decorator('$log', ($delegate: any) => {
       if (!config.debug) {
         $delegate.log = angular.noop;
         $delegate.debug = angular.noop;

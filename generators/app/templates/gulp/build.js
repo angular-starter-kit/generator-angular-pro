@@ -33,17 +33,15 @@ gulp.task('build:sources', ['inject'], function() {
     .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
-    .pipe($.minifyCss({processImport: false}))
+    .pipe($.cleanCss({processImport: false}))
     .pipe(cssFilter.restore)
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true,
-      conditionals: true
+    .pipe($.htmlmin({
+      removeComments: true,
+      collapseWhitespace: true
     }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
@@ -79,5 +77,5 @@ gulp.task('other', ['fonts'], function() {
 gulp.task('build', ['build:sources', 'other', 'images']);
 
 gulp.task('clean', ['images:clean-cache'], function() {
-  return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
+  return $.del([conf.paths.dist, conf.paths.tmp]);
 });

@@ -6,7 +6,7 @@ node_modules/
 /.tmp/
 /dist/
 .sass-cache
-.npm-debug.log
+npm-debug.log
 
 ## Karma
 /reports/

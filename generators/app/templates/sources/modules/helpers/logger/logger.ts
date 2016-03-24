@@ -34,7 +34,7 @@ module app {
 
   'use strict';
 
-  var observers: Array<Function> = [];
+  let observers: Array<Function> = [];
 
   /**
    * Logs a message from the specified source.
@@ -46,7 +46,7 @@ module app {
    */
   function log(message: string, source: string, logFunc: Function, level: string, options: any): void {
     logFunc(source ? '[' + source + ']' : '', message, '');
-    angular.forEach(observers, function(observerFunc: any) {
+    angular.forEach(observers, (observerFunc: any) => {
       observerFunc(message, source, level, options);
     });
   }
@@ -90,15 +90,9 @@ module app {
 
   class Logger implements ILogger {
 
-    private $log: ng.ILogService;
-    private moduleName: string;
-    private logFunc: any;
-
-    constructor($log: ng.ILogService, moduleName: string, logFunc: any) {
-      this.moduleName = moduleName;
-      this.logFunc = logFunc;
-      this.$log = $log;
-    }
+    constructor(private $log: ng.ILogService,
+                private moduleName: string,
+                private logFunc: any) {}
 
     log(message: string, options: any) {
       this.logFunc(message, this.moduleName, this.$log.log, 'log', options);
@@ -120,11 +114,7 @@ module app {
 
   export class LoggerService {
 
-    private $log: ng.ILogService;
-
-    constructor($log: ng.ILogService) {
-      this.$log = $log;
-    }
+    constructor(private $log: ng.ILogService) {}
 
     /**
      * Gets a customized logger based on the given module name.

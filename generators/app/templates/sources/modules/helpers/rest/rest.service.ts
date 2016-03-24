@@ -43,19 +43,13 @@ module app {
      * @type {Function}
      */
     private cacheHandler: ICacheHandlerFunction = angular.identity;
-    private $q: ng.IQService;
     private logger: ILogger;
-    private $http: ng.IHttpService;
-    private cacheService: CacheService;
 
-    constructor($q: ng.IQService,
-                $http: ng.IHttpService,
-                cacheService: CacheService,
+    constructor(private $q: ng.IQService,
+                private $http: ng.IHttpService,
+                private cacheService: CacheService,
                 logger: LoggerService) {
 
-      this.$q = $q;
-      this.$http = $http;
-      this.cacheService = cacheService;
       this.logger = logger.getLogger('restService');
     }
 
@@ -71,28 +65,25 @@ module app {
      * @return {Object} The promise.
      */
     get(url: string, params?: any, cache?: boolean|string, options?: any): ng.IPromise<any> {
-      var apiUrl = this.baseUri + url;
-      var self = this;
-      var promiseBuilder = function() {
-        return self.$http.get(apiUrl, {params: params});
-      };
+      let apiUrl = this.baseUri + url;
+      let promiseBuilder = () => this.$http.get(apiUrl, {params: params});
 
       if (!cache) {
         // Do not use cache
         return this.createRequest(promiseBuilder, options);
       } else {
-        var cachedData = cache === 'force' ? null : this.cacheService.getCacheData(url, params);
+        let cachedData = cache === 'force' ? null : this.cacheService.getCacheData(url, params);
 
         if (cachedData !== null) {
           cachedData = this.cacheHandler(cachedData);
         }
 
         if (cachedData === null) {
-          this.logger.log('GET request: ' + url, null);
+          this.logger.log('GET request: ' + url);
 
           // Update cache entry
-          return this.createRequest(promiseBuilder, options).then(function(response: any) {
-            self.cacheService.setCacheData(url, params, response, null);
+          return this.createRequest(promiseBuilder, options).then((response: any) => {
+            this.cacheService.setCacheData(url, params, response, null);
             return angular.copy(response);
           });
         } else {
@@ -113,11 +104,8 @@ module app {
      * @return {Object} The promise.
      */
     put(url: string, data: any, options?: any): ng.IPromise<any> {
-      var self = this;
       this.logger.log('PUT request: ' + url, null);
-      var promise = function() {
-        return self.$http.put(self.baseUri + url, data, self.defaultConfig);
-      };
+      let promise = () => this.$http.put(this.baseUri + url, data, this.defaultConfig);
       return this.createRequest(promise, options);
     }
 
@@ -130,11 +118,7 @@ module app {
      */
     post(url: string, data: any, options?: any): ng.IPromise<any> {
       this.logger.log('POST request: ' + url, null);
-      var self = this;
-      var promiseBuilder = function() {
-        return self.$http.post(self.baseUri + url, data, self.defaultConfig);
-      };
-
+      let promiseBuilder = () => this.$http.post(this.baseUri + url, data, this.defaultConfig);
       return this.createRequest(promiseBuilder, options);
     }
 
@@ -146,10 +130,7 @@ module app {
      */
     delete(url: string, options?: any): ng.IPromise<any> {
       this.logger.log('DELETE request: ' + url, null);
-      var self = this;
-      var promise = function() {
-        return self.$http.delete(self.baseUri + url, self.defaultConfig);
-      };
+      let promise = () => this.$http.delete(this.baseUri + url, this.defaultConfig);
       return this.createRequest(promise, options);
     }
 
@@ -269,24 +250,23 @@ module app {
      * @return {Object} The promise.
      */
     private errorHandler(promise: ng.IPromise<any>, options?: any): ng.IPromise<any> {
-      var self = this;
       if (!options || !options.skipErrors) {
-        promise.catch(function(response: any) {
-          var error;
+        promise.catch((response: any) => {
+          let error;
 
           if (response.status === 404) {
             error = 'Server unavailable or URL does not exist';
           } else if (response.data) {
-            var message = response.data.message ? response.data.message : null;
-            var code = response.data.error ? response.data.error : null;
+            let message = response.data.message ? response.data.message : null;
+            let code = response.data.error ? response.data.error : null;
             error = message || code || angular.toJson(response.data);
           }
 
           if (error) {
-            self.logger.error(error, null);
+            this.logger.error(error, null);
           }
 
-          return self.$q.reject(response);
+          return this.$q.reject(response);
         });
       }
       return promise;

@@ -9,31 +9,34 @@ experience even for beginner teams.
 
 # Getting started
 
-1. Install required tools `gulp`, `bower`, and `cordova`:
-```
-npm install -g gulp bower cordova
-```
+1. Install required tools `gulp` and `bower`:
+ ```
+ npm install -g gulp bower
+ ```
 
-- To build the iOS version, you need to install [XCode](https://itunes.apple.com/app/xcode/id497799835)
-- To build the Android version, you need to install the
-  [Android SDK](http://developer.android.com/sdk/installing/index.html)
+ - To build the iOS version, you need to install [XCode](https://itunes.apple.com/app/xcode/id497799835)
+ - To build the Android version, you need to install the
+   [Android SDK](http://developer.android.com/sdk/installing/index.html)
 
 2. Install project tools, go to project folder:
-```
-npm install
-```
+ ```
+ npm install
+ ```
+  
 3. Launch development server:
-```
-gulp serve
-```
-4. Prepare Cordova
-```
-gulp build && cordova prepare`
-```
-5. Run on Android device
-```
-cordova run android --device`
-```
+ ```
+ gulp serve
+ ```
+ 
+4. Prepare Cordova platforms and plugins
+ ```
+ gulp cordova:prepare
+ ```
+ 
+5. Run on device
+ ```
+ gulp run:<ios|android> --device
+ ```
 
 # Project structure
 ```
@@ -63,7 +66,7 @@ sources/                project source code
 e2e/                    end-to-end tests
 www/                    compiled version
 typings/                TypeScript definitions
-reports/                test and coverage reports + generated documentation
+reports/                test and coverage reports
 hooks/                  Cordova build hooks
 platforms/              Cordova platform-specific projects
 plugins/                Cordova plugins
@@ -83,8 +86,7 @@ clean       | Delete temporary files and dist files.
 test        | Launch unit tests using karma and jasmine.
 test:auto   | Launch karma server and launch unit tests after each change in project files.
 protractor  | Launch e2e tests using protractor.
-tsd         | Download all TypeScript definitions for Bower dependencies.
-docs        | Generate jsdoc documentation from sources.
+tsd         | Download and update all TypeScript definitions for Bower dependencies.
 
 # Coding guides
 
@@ -108,7 +110,6 @@ docs        | Generate jsdoc documentation from sources.
 #### Languages
 - [TypeScript](http://www.typescriptlang.org), JavaScript
 - [Sass](http://sass-lang.com/), CSS
-- [Jade](http://jade-lang.com), HTML
 - [Gettext](https://angular-gettext.rocketeer.be) (for translations)
 
 #### Quality
@@ -121,13 +122,12 @@ docs        | Generate jsdoc documentation from sources.
 #### Development
 - Automation with [gulp](http://gulpjs.com)
 - Development server with API proxy and live reload ([BrowserSync](http://www.browsersync.io))
-- [JSDoc](http://usejsdoc.org) generation with angular support
 
 #### Build
 - JS+CSS+HTML bundling and minification ([useref](https://github.com/jonkemp/gulp-useref), 
   [uglify](https://github.com/terinjokes/gulp-uglify), 
-  [minify-html](https://github.com/murphydanger/gulp-minify-html), 
-  [clean-css](https://github.com/ben-eb/gulp-minify-css)) 
+  [htmlmin](https://github.com/jonschlinkert/gulp-htmlmin), 
+  [clean-css](https://www.npmjs.com/package/gulp-clean-css) 
 - CSS browser support ([autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer))
 - Images optimization ([imagemin](https://github.com/sindresorhus/gulp-imagemin))
 - Automatic angular module annotation ([ngAnnotate](https://github.com/Kagami/gulp-ng-annotate))
@@ -140,6 +140,16 @@ docs        | Generate jsdoc documentation from sources.
 - [AngularUI Router](https://github.com/angular-ui/ui-router)
 - [ngCordova](http://ngcordova.com/)
 - [Lodash](https://lodash.com)
+
+#### Cordova plugins
+- [ionic-plugin-keyboard](https://github.com/driftyco/ionic-plugin-keyboard)
+- [cordova-plugin-statusbar](https://github.com/apache/cordova-plugin-statusbar)
+- [cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
+- [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
+- [cordova-plugin-globalization](https://github.com/apache/cordova-plugin-globalization)
+- [cordova-plugin-whitelist](https://github.com/apache/cordova-plugin-whitelist)
+- [cordova-plugin-crosswalk-webview](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview)
+- [cordova-plugin-wkwebview-engine](https://github.com/apache/cordova-plugin-wkwebview-engine)
 
 # Roadmap
 

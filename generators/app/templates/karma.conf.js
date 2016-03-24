@@ -86,8 +86,7 @@ module.exports = function(config) {
       'sources/**/*.html': ['ng-html2js'],
       // Source files, that you wanna generate coverage for.
       // Do not include tests or libraries.
-      'sources/modules/**/!(*.spec).js': ['coverage'],
-      'sources/main/!(*.spec).js': ['coverage']
+      '.tmp/app.ts.js': ['coverage']
     },
 
     // List of reporters
@@ -103,6 +102,7 @@ module.exports = function(config) {
     junitReporter: {
       outputDir: 'reports/junit/',
       outputFile: 'TESTS-xunit.xml',
+      useBrowserName: false,
       suite: '' // suite will become the package name attribute in xml testsuite element
     },
 

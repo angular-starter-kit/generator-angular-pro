@@ -6,7 +6,7 @@ module app {
    * Entry point of the application.
    * Initializes application and root controller.
    */
-  function main($window: any,
+  function main($window: ng.IWindowService,
                 $timeout: ng.ITimeoutService,
                 $locale: ng.ILocaleService,
                 $state: angular.ui.IStateService,
@@ -23,17 +23,28 @@ module app {
      * Root view model
      */
 
-    var vm = $rootScope;
+    let vm = $rootScope;
 
     vm.pageTitle = '';
     vm.viewTitle = '';
 
     /**
      * Utility method to set the language in the tools requiring it.
+     * The current language is saved to the local storage.
+     * If no parameter is specified, the language is loaded from local storage (if possible).
      * @param {string=} language The IETF language tag.
      */
     vm.setLanguage = function(language?: string) {
-      var isSupportedLanguage = _.includes(config.supportedLanguages, language);
+      language = language || $window.localStorage.getItem('language');
+      let isSupportedLanguage = _.includes(config.supportedLanguages, language);
+
+      // If no exact match is found, search without the region
+      if (!isSupportedLanguage && language) {
+        let languagePart = language.split('-')[0];
+        language = _.find(config.supportedLanguages,
+          (supportedLanguage: string) => _.startsWith(supportedLanguage, languagePart));
+        isSupportedLanguage = !!language;
+      }
 
       // Fallback if language is not supported
       if (!isSupportedLanguage) {
@@ -43,19 +54,20 @@ module app {
       // Configure translation with gettext
       gettextCatalog.setCurrentLanguage(language);
       $locale.id = language;
+      $window.localStorage.setItem('language', language);
     };
 
     /**
      * Updates title on view change.
      */
-    vm.$on('$stateChangeSuccess', function(event: any, toState: angular.ui.IState) {
+    vm.$on('$stateChangeSuccess', (event: any, toState: angular.ui.IState) => {
       updateTitle(toState.data ? toState.data.title : null);
     });
 
     /**
      * Updates title on language change.
      */
-    vm.$on('gettextLanguageChanged', function() {
+    vm.$on('gettextLanguageChanged', () => {
       updateTitle($state.current.data ? $state.current.data.title : null);
     });
 
@@ -69,7 +81,7 @@ module app {
      * Initializes the root controller.
      */
     function init() {
-      var _logger: ILogger = logger.getLogger('main');
+      let _logger: ILogger = logger.getLogger('main');
 
       // Enable debug mode for translations
       gettextCatalog.debug = config.debug;
@@ -80,31 +92,29 @@ module app {
       restService.setServer(config.debug ? config.server.development : config.server.production);
 
       // Cordova platform and plugins init
-      $ionicPlatform.ready(function() {
+      $ionicPlatform.ready(() => {
 
         // Hide splash screen
-        var splashScreen = $window.navigator.splashscreen;
+        let splashScreen = $window.navigator.splashscreen;
         if (splashScreen) {
-          $timeout(function() {
+          $timeout(() => {
             splashScreen.hide();
           }, 1000);
         }
 
         // Detect and set default language
-        var globalization = $window.navigator.globalization;
-        if (globalization !== undefined) {
+        let globalization = $window.navigator.globalization;
+        if (globalization) {
           // Use cordova plugin to retrieve device's locale
-          globalization.getPreferredLanguage(function(language: string) {
-            _logger.log('Setting device locale "' + language + '" as default language');
-            vm.$apply(function() {
-              vm.setLanguage(language);
+          globalization.getPreferredLanguage((language) => {
+            _logger.log('Setting device locale "' + language.value + '" as default language');
+            vm.$apply(() => {
+              vm.setLanguage(language.value);
             });
           }, null);
         }
 
         if ($window.cordova && $window.cordova.plugins.Keyboard) {
-          // Hide the accessory bar (remove this to show the accessory bar above the keyboard for form inputs)
-          $cordovaKeyboard.hideAccessoryBar(true);
           $cordovaKeyboard.disableScroll(true);
         }
 

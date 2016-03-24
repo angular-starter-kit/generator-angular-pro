@@ -10,23 +10,14 @@ module app {
     version: string;
 
     private logger: ILogger;
-    private config: any;
 
     constructor(logger: LoggerService,
                 config: any) {
 
       this.logger = logger.getLogger('about');
-      this.config = config;
+      this.version = config.version;
 
-      this.init();
-    }
-
-    /**
-     * Initializes controller.
-     */
-    private init() {
-      this.version = this.config.version;
-      this.logger.log('init', null);
+      this.logger.log('init');
     }
 
   }

@@ -21,10 +21,10 @@ exports.paths = {
 <% } else { -%>
   dist: 'www',
 <% } -%>
-tmp: '.tmp',
+  tmp: '.tmp',
   e2e: 'e2e',
   main: 'main',
-  bower: bower.directorygulp
+  bower: bower.directory
 };
 
 /**

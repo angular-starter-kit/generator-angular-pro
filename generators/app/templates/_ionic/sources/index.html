@@ -2,6 +2,9 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8">
+<% if (props.target.key !== 'mobile') { -%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<% } -%>
     <title ng-bind="pageTitle"></title>
     <meta name="description" content="">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -18,8 +21,6 @@
     <!-- endbuild -->
   </head>
   <body>
-    <ion-nav-view></ion-nav-view>
-
     <!-- Include Cordova script only when needed -->
     <script>
       (function() {
@@ -30,6 +31,15 @@
         }
       })();
     </script>
+
+<% if (props.target.key !== 'mobile') { -%>
+    <!--[if lt IE 10]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your
+      experience.</p>
+    <![endif]-->
+
+<% } -%>
+    <ion-nav-view></ion-nav-view>
 
     <!-- build:js(sources) scripts/vendor.js -->
     <!-- bower:js -->

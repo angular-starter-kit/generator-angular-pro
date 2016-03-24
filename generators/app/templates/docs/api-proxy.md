@@ -8,6 +8,7 @@ have setup an API proxy to redirect API calls to whatever URL and port you want.
 - To develop frontend features without the need to run an API backend locally
 - To use the development server without [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues
   when making API calls
+- To debug frontend code with data from testing platform directly
 
 ## How to configure
 

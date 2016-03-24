@@ -18,16 +18,13 @@ module app {
    */
   export class CacheService {
 
-    private $window: any;
     private logger: ILogger;
     private cachedData: ICache = {};
     private storage: any = null;
 
-    /* @ngInject */
-    constructor($window: ng.IWindowService,
+    constructor(private $window: ng.IWindowService,
                 logger: LoggerService) {
 
-      this.$window = $window;
       this.logger = logger.getLogger('cacheService');
 
       /**
@@ -45,14 +42,14 @@ module app {
      * @param {Date=} date The cache date, now date is used if not specified.
      */
     setCacheData(url: string, params: any, data: any, date: Date): void {
-      var cacheKey = this.getCacheKey(url, params);
+      let cacheKey = this.getCacheKey(url, params);
 
       this.cachedData[cacheKey] = {
         date: date || new Date(),
         data: data
       };
 
-      this.logger.log('Cache set for key: "' + cacheKey + '"', null);
+      this.logger.log('Cache set for key: "' + cacheKey + '"');
 
       this.saveCacheData();
     }
@@ -65,11 +62,11 @@ module app {
      * @return {?Object} The cached data or null if no cached data exists for this request.
      */
     getCacheData(url: string, params?: any): any {
-      var cacheKey = this.getCacheKey(url, params);
-      var cacheEntry = this.cachedData[cacheKey];
+      let cacheKey = this.getCacheKey(url, params);
+      let cacheEntry = this.cachedData[cacheKey];
 
       if (cacheEntry) {
-        this.logger.log('Cache hit for key: "' + cacheKey + '"', null);
+        this.logger.log('Cache hit for key: "' + cacheKey + '"');
         return cacheEntry.data;
       }
 
@@ -84,8 +81,8 @@ module app {
      * @return {?Object} The cached data date or null if no cached data exists for this request.
      */
     getCacheDate(url: string, params?: any): Date {
-      var cacheKey = this.getCacheKey(url, params);
-      var cacheEntry = this.cachedData[cacheKey];
+      let cacheKey = this.getCacheKey(url, params);
+      let cacheEntry = this.cachedData[cacheKey];
       return cacheEntry ? cacheEntry.date : null;
     }
 
@@ -96,9 +93,9 @@ module app {
      *   JSONified.
      */
     clearCacheData(url: string, params?: any): void {
-      var cacheKey = this.getCacheKey(url, params);
+      let cacheKey = this.getCacheKey(url, params);
       this.cachedData[cacheKey] = undefined;
-      this.logger.log('Cache cleared for key: "' + cacheKey + '"', null);
+      this.logger.log('Cache cleared for key: "' + cacheKey + '"');
       this.saveCacheData();
     }
 
@@ -107,17 +104,16 @@ module app {
      * @param {date=} expirationDate The cache expiration date. If no date is specified, all cache is cleared.
      */
     cleanCache(expirationDate?: Date): void {
-      var self = this;
       if (expirationDate) {
-        angular.forEach(self.cachedData, function(value: any, key: string) {
+        angular.forEach(this.cachedData, (value: any, key: string) => {
           if (expirationDate >= value.date) {
-            self.cachedData[key] = undefined;
+            this.cachedData[key] = undefined;
           }
         });
       } else {
-        self.cachedData = {};
+        this.cachedData = {};
       }
-      self.saveCacheData();
+      this.saveCacheData();
     }
 
     /**
@@ -158,7 +154,7 @@ module app {
      * Loads cached data from persisted storage.
      */
     private loadCacheData(): void {
-      var data = this.storage ? this.storage.cachedData : null;
+      let data = this.storage ? this.storage.cachedData : null;
       this.cachedData = data ? angular.fromJson(data) : {};
     }
 

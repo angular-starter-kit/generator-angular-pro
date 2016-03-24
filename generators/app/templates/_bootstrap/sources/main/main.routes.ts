@@ -37,4 +37,3 @@ module app {
     .config(routeConfig);
 
 }
-

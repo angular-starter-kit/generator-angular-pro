@@ -10,18 +10,16 @@ module app {
 
     currentLocale: ng.ILocaleService;
 
-    private $state: ng.ui.IStateService;
     private logger: ILogger;
 
-    constructor($locale: ng.ILocaleService,
-                $state: ng.ui.IStateService,
+    constructor(private $state: ng.ui.IStateService,
+                $locale: ng.ILocaleService,
                 logger: LoggerService) {
 
-      this.$state = $state;
       this.currentLocale = $locale;
       this.logger = logger.getLogger('shell');
 
-      this.init();
+      this.logger.log('init');
     }
 
     /**
@@ -31,13 +29,6 @@ module app {
      */
     stateContains(name: string): boolean {
       return this.$state.current.name === name;
-    }
-
-    /**
-     * Initializes controller.
-     */
-    private init() {
-      this.logger.log('init', null);
     }
 
   }

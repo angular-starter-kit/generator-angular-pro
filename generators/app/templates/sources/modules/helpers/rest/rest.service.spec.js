@@ -18,14 +18,11 @@ describe('restService', function() {
     inject(function(_$q_,
                     _$httpBackend_,
                     _restService_,
-                    _cacheService_,
-                    config) {
+                    _cacheService_) {
       $q = _$q_;
       $httpBackend = _$httpBackend_;
       restService = _restService_;
       cacheService = _cacheService_;
-
-      config.debug = false;
 
       baseUri = 'api';
     });

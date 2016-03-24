@@ -2,8 +2,8 @@
 
 ## Naming conventions
 
-- In the CSS world, everything should be named in `snake-case` (lowercase words separated with a `-`).
-- File names should always be in `snake-case`
+- In the CSS world, everything should be named in `kebab-case` (lowercase words separated with a `-`).
+- File names should always be in `kebab-case`
 
 ## Coding rules
 
@@ -43,7 +43,7 @@ And keep in mind this general rules:
   // Size variation
   .btn-small { ... }
   ```
-  * Try to name class by function, not style nor semantics for better reusability:
+  * Try to name class by semantic, not style nor function for better reusability:
     Use `.btn-warning`, not `btn-orange` nor `btn-cancel`
   * Avoid undoing style, refactor using common base classes and extensions
 

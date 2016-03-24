@@ -19,24 +19,15 @@ module app {
       this.logger = logger.getLogger('home');
       this.quoteService = quoteService;
 
-      this.init();
-    }
-
-    /**
-     * Initializes controller.
-     */
-    private init() {
-      this.logger.log('init', null);
-
-      var vm = this;
+      this.logger.log('init');
 
       this.quoteService
         .getRandomJoke({category: 'nerdy'})
-        .then(function(quote: string) {
-          vm.quote = quote;
+        .then((quote: string) => {
+          this.quote = quote;
         })
-        .finally(function() {
-          vm.isLoading = false;
+        .finally(() => {
+          this.isLoading = false;
         });
     }
 

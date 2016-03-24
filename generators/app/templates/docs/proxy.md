@@ -39,7 +39,7 @@ variable, in the same way as `HTTP_PROXY`:
 ### Unix
 
 ```sh
-export NO_PROXT="127.0.0.1, localhost, <your_local_server_ip_or_hostname>"
+export NO_PROXY="127.0.0.1, localhost, <your_local_server_ip_or_hostname>"
 ```
 
 ### Bower
