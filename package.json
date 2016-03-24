@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Web/mobile Angular project generator including tooling, best practices and project seed",
   "repository": {
     "type": "git",
