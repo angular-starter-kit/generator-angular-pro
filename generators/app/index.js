@@ -167,7 +167,7 @@ var Generator = generators.Base.extend({
           self.spawnCommandSync('gulp', ['tsd:restore']);
 
           // Prepare Cordova platforms
-          if (this.props.target.key !== 'web') {
+          if (self.props.target.key !== 'web') {
             self.spawnCommandSync('gulp', ['cordova:prepare']);
           }
         }
@@ -185,7 +185,6 @@ var Generator = generators.Base.extend({
     this.log('- `$ ' + chalk.green('gulp protractor') + '` to launch your e2e tests');
     this.log('- `$ ' + chalk.green('gulp protractor:dist') + '` to launch your e2e tests on your optimized application');
     this.log('\nSee more in docs and coding guides:');
-    this.log(chalk.underline('https://github.com/sinedied/starter-kit\n'));
 
     if (this.props.target.key !== 'web') {
       this.log(chalk.underline('https://github.com/sinedied/starter-kit/tree/mobile\n'));
