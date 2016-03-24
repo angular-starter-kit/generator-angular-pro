@@ -165,6 +165,11 @@ var Generator = generators.Base.extend({
       callback: function() {
         if (!self.options['skip-install']) {
           self.spawnCommandSync('gulp', ['tsd:restore']);
+
+          // Prepare Cordova platforms
+          if (this.props.target.key !== 'web') {
+            self.spawnCommandSync('gulp', ['cordova:prepare']);
+          }
         }
       }
     });
@@ -183,7 +188,9 @@ var Generator = generators.Base.extend({
     this.log(chalk.underline('https://github.com/sinedied/starter-kit\n'));
 
     if (this.props.target.key !== 'web') {
-      this.log('To restore Cordova projects, run `$ ' + chalk.green('gulp build && cordova prepare') + '`\n');
+      this.log(chalk.underline('https://github.com/sinedied/starter-kit/tree/mobile\n'));
+    } else {
+      this.log(chalk.underline('https://github.com/sinedied/starter-kit\n'));
     }
   }
 
