@@ -1,7 +1,7 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.2",
-  "description": "Web/mobile Angular project generator including tooling, best practices and project seed",
+  "version": "2.0.3",
+  "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications",
   "repository": {
     "type": "git",
     "url": "git@github.com/sinedied/generator-angular-pro.git"
@@ -15,7 +15,9 @@
     "ionic",
     "ios",
     "android",
-    "pro"
+    "scalable",
+    "hybrid",
+    "enterprise"
   ],
   "author": "Yohan Lasorsa",
   "license": "MIT",
