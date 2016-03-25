@@ -1,11 +1,8 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com/sinedied/generator-angular-pro.git"
-  },
+  "repository": "https://github.com/sinedied/generator-angular-pro",
   "keywords": [
     "yeoman-generator",
     "angular",
@@ -21,6 +18,7 @@
   ],
   "author": "Yohan Lasorsa",
   "license": "MIT",
+  "preferGlobal": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
