@@ -105,19 +105,19 @@ module app {
         // Hide splash screen
         var splashScreen = $window.navigator.splashscreen;
         if (splashScreen) {
-          $timeout(function() {
+          $timeout(() => {
             splashScreen.hide();
           }, 1000);
         }
 
         // Detect and set default language
-        var globalization = $window.navigator.globalization;
-        if (globalization !== undefined) {
+        let globalization = $window.navigator.globalization;
+        if (globalization) {
           // Use cordova plugin to retrieve device's locale
-          globalization.getPreferredLanguage(function(language: string) {
-            _logger.log('Setting device locale "' + language + '" as default language');
+          globalization.getPreferredLanguage((language) => {
+            _logger.log('Setting device locale "' + language.value + '" as default language');
             vm.$apply(function() {
-              vm.setLanguage(language);
+              vm.setLanguage(language.value);
             });
           }, null);
         }
@@ -126,7 +126,7 @@ module app {
           $cordovaKeyboard.disableScroll(true);
         }
 
-      }, false);;
+      }, false);
 <% } -%>
     }
 
