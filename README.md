@@ -1,12 +1,14 @@
 # generator-angular-pro
 
-Web/mobile Angular project generator for scalable, enterprise-grade applications.
+Web/mobile Angular project generator for *scalable*, *enterprise-grade* applications.
 
 Includes modern (and stable) tools and workflow, best practices, base template and an exhaustive documentation.
-It's ready to get started quickly even for beginner teams, in any work environment (proxy included).
+Get started quickly even with beginner teams, in any work environment (proxy included).
 
-Based on experience in large web projects, with architecture choices aiming for a clean, no-brainer development
+Built on experience in large web projects, with architecture choices aiming for a clean, no-brainer development
 experience.
+
+Based on the web/mobile [Starter Kit](https://github.com/sinedied/starter-kit).
 
 # Getting started
 
