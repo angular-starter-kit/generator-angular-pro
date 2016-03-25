@@ -106,7 +106,7 @@ gulpfile.config.js      gulp tasks configuration
 
 # License
 
-This generator is based on tooling from the
+This generator was inspired from the
 [gulp-angular](https://github.com/Swiip/generator-gulp-angular) Yeoman generator.
 Portions of project generator-gulp-angular are Copyright (c) 2014 Matthieu Lux & Mehdy Dara
 
