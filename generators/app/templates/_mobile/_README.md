@@ -42,12 +42,12 @@ sources/                project source code
 |- images/              project images
 |- libraries/           Bower dependencies
 |- main/                main module, for entry points and global style
-|  |- main.config.js    app configuration code
-|  |- main.constants.js app configuration constants
-|  |- main.module.js    app module definition
-|  |- main.routes.js    app routes
-|  |- main.run.js       app entry point
-|  |- main.wrappers.js  AngularJS module wrappers for external libraries
+|  |- main.config.ts    app configuration code
+|  |- main.constants.ts app configuration constants
+|  |- main.module.ts    app module definition
+|  |- main.routes.ts    app routes
+|  |- main.run.ts       app entry point
+|  |- main.wrappers.ts  AngularJS module wrappers for external libraries
 |  +- main.scss         style entry point
 |- modules/             project components and modules
 |  |- helpers/          helper services
