@@ -1,22 +1,13 @@
-# Starter kit
+# <%= props.appName || 'Awesome App' %>
 
-[![Join the chat at https://gitter.im/thales-poles-ra/starter-kit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thales-poles-ra/starter-kit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Hybrid mobile app starter kit including tooling, best practices and project seed.
-
-It is based on experience in large web projects, with architecture choices aiming for a clean, no-brainer development
-experience even for beginner teams.
+An awesome project scaffolded by the [angular-pro](https://github.com/sinedied/generator-angular-pro) Yeoman generator!
 
 # Getting started
 
-1. Install required tools `gulp` and `bower`:
+1. Install required tool `gulp`:
  ```
- npm install -g gulp bower
+ npm install -g gulp
  ```
-
- - To build the iOS version, you need to install [XCode](https://itunes.apple.com/app/xcode/id497799835)
- - To build the Android version, you need to install the
-   [Android SDK](http://developer.android.com/sdk/installing/index.html)
 
 2. Install project tools, go to project folder:
  ```
@@ -26,16 +17,6 @@ experience even for beginner teams.
 3. Launch development server:
  ```
  gulp serve
- ```
- 
-4. Prepare Cordova platforms and plugins
- ```
- gulp cordova:prepare
- ```
- 
-5. Run on device
- ```
- gulp run:<ios|android> --device
  ```
 
 # Project structure
@@ -64,13 +45,9 @@ sources/                project source code
 |- translations/        translations files
 +- index.html           html entry point
 e2e/                    end-to-end tests
-www/                    compiled version
+dist/                   compiled version
 typings/                TypeScript definitions
 reports/                test and coverage reports
-hooks/                  Cordova build hooks
-platforms/              Cordova platform-specific projects
-plugins/                Cordova plugins
-resources/              icon and splash screen resources
 gulpfile.config.js      gulp tasks configuration
 ```
 
@@ -99,7 +76,6 @@ tsd         | Download and update all TypeScript definitions for Bower dependenc
 
 # Additional documentation
 
-- [Cordova](docs/cordova.md)
 - [i18n](docs/i18n.md)
 - [Proxy configuration](docs/proxy.md)
 - [All gulp tasks](docs/tasks.md)
@@ -134,53 +110,10 @@ tsd         | Download and update all TypeScript definitions for Bower dependenc
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
-- [Ionic](http://ionicframework.com/)
+- [UI Bootsrap](https://angular-ui.github.io/bootstrap)
+- [Bootstrap](http://getbootstrap.com)
+- [Font Awesome](http://fortawesome.github.io/Font-Awesome)
 - [AngularJS](https://angularjs.org)
 - [Angular-gettext](https://angular-gettext.rocketeer.be)
 - [AngularUI Router](https://github.com/angular-ui/ui-router)
-- [ngCordova](http://ngcordova.com/)
 - [Lodash](https://lodash.com)
-
-#### Cordova plugins
-- [ionic-plugin-keyboard](https://github.com/driftyco/ionic-plugin-keyboard)
-- [cordova-plugin-statusbar](https://github.com/apache/cordova-plugin-statusbar)
-- [cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
-- [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
-- [cordova-plugin-globalization](https://github.com/apache/cordova-plugin-globalization)
-- [cordova-plugin-whitelist](https://github.com/apache/cordova-plugin-whitelist)
-- [cordova-plugin-crosswalk-webview](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview)
-- [cordova-plugin-wkwebview-engine](https://github.com/apache/cordova-plugin-wkwebview-engine)
-
-# Roadmap
-
-See the [wiki](https://github.com/thales-poles-ra/starter-kit/wiki).
-
-# License
-
-This starter kit is based on tooling from the
-[gulp-angular](https://github.com/Swiip/generator-gulp-angular) Yeoman generator.
-Portions of project generator-gulp-angular are Copyright (c) 2014 Matthieu Lux & Mehdy Dara
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Yohan Lasorsa
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
