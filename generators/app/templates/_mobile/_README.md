@@ -129,11 +129,11 @@ tsd         | Download and update all TypeScript definitions for Bower dependenc
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
-<% } if (props.ui.key === 'bootstrap') { -%>
+<% if (props.ui.key === 'bootstrap') { -%>
 - [UI Bootsrap](https://angular-ui.github.io/bootstrap)
 - [Bootstrap](http://getbootstrap.com)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome)
-<% } if (props.ui.key === 'ionic') { -%>
+<% } else if (props.ui.key === 'ionic') { -%>
 - [Ionic](http://ionicframework.com/)
 <% } -%>
 - [AngularJS](https://angularjs.org)
