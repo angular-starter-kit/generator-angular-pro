@@ -80,9 +80,6 @@ var Generator = generators.Base.extend({
       props.appName = props.appName || this.appName;
       props.projectName = {key: _.kebabCase(props.appName)};
 
-      console.log('name: ' + props.appName);
-      console.log('pname:' + props.projectName.key);
-
       this.props = props;
 
       done();
