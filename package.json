@@ -1,11 +1,12 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications",
   "repository": "https://github.com/sinedied/generator-angular-pro",
   "keywords": [
     "yeoman-generator",
     "angular",
+    "angularjs",
     "gulp",
     "cordova",
     "bootstrap",
@@ -14,7 +15,15 @@
     "android",
     "scalable",
     "hybrid",
-    "enterprise"
+    "enterprise",
+    "component",
+    "framework",
+    "scaffold",
+    "boilerplate",
+    "app",
+    "mobile",
+    "web",
+    "pro"
   ],
   "author": "Yohan Lasorsa",
   "license": "MIT",
