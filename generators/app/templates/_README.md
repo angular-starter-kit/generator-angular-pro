@@ -1,6 +1,6 @@
 # <%= props.appName || 'Awesome App' %>
 
-An awesome project scaffolded by the [angular-pro](https://github.com/sinedied/generator-angular-pro) Yeoman generator!
+An awesome project scaffolded by the [angular-pro](https://github.com/angular-starter-kit/generator-angular-pro) Yeoman generator!
 
 # Getting started
 
