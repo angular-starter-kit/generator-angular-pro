@@ -1,0 +1,34 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fr-FR\n"
+
+#: main.routes.js:34
+#: modules/shell/shell.html:29
+msgid "About"
+msgstr "A propos"
+
+#: main.run.js:84
+#: modules/screens/about/about.html:3
+#: modules/shell/shell.html:15
+msgid "APP_NAME"
+msgstr "<%= props.appName || 'Awesome App' %>"
+
+#: modules/screens/home/home.html:5
+msgid "Hello world !"
+msgstr "Bonjour le monde !"
+
+#: main.routes.js:28
+#: modules/shell/shell.html:23
+msgid "Home"
+msgstr "Accueil"
+
+#: modules/shell/shell.html:9
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+#: modules/screens/about/about.html:5
+msgid "Version"
+msgstr "Version"

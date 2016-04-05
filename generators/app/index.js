@@ -20,12 +20,13 @@ var folderRules = {
   _mobile:    function(props) { return props.target.key !== 'web'; },
   _web:       function(props) { return props.target.key !== 'mobile'; },
   _bootstrap: function(props) { return props.ui.key === 'bootstrap'; },
+  _material:  function(props) { return props.ui.key === 'material'; },
   _ionic:     function(props) { return props.ui.key === 'ionic'; }
 };
 
 var Generator = generators.Base.extend({
 
-  constructor: function() {
+  constructor: function() {   
     generators.Base.apply(this, arguments);
 
     this.argument('appName', {
@@ -66,14 +67,12 @@ var Generator = generators.Base.extend({
 
     // Conditional prompts
     _.find(prompts, {name: 'ui'}).when = function(props) {
-      return props.target.key === 'both';
+        return true;
     };
 
     // Use prompts from json
     this.prompt(prompts, function(props) {
-      if (props.target.key === 'web') {
-        props.ui = {key: 'bootstrap'};
-      } else if (props.target.key === 'mobile') {
+      if (props.target.key === 'mobile') {
         props.ui = {key: 'ionic'};
       }
 

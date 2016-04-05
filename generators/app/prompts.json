@@ -42,6 +42,12 @@
       },
       {
         "value": {
+          "key": "material"
+        },
+        "name": "Material Design (web is your main target)"
+      },
+      {
+        "value": {
           "key": "ionic"
         },
         "name": "Ionic (mobile is your main target)"

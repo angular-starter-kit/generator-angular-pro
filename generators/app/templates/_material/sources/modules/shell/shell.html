@@ -1,0 +1,32 @@
+<section id="shell" class="shell">
+
+    <!-- Header -->
+    <header>
+        <div layout="row" layout-padding layout-align="space-between center">
+            <div>
+                <md-button ng-href="https://github.com/angular-starter-kit/starter-kit/">
+                    <span translate>APP_NAME</span>
+                </md-button>
+                <md-button ng-class="{ 'md-primary': shell.stateContains('app.home') }" ui-sref="app.home">
+                    <span translate>Home</span>
+                </md-button>
+                <md-button ng-class="{ 'md-primary': shell.stateContains('app.about') }" ui-sref="app.about">
+                    <span translate>About</span>
+                </md-button>                                                
+            </div>
+            <div class="nav-buttons">
+                <md-menu>
+                    <md-button md-menu-origin ng-click="$mdOpenMenu()">{{shell.currentLocale.id}}</md-button>
+                    <md-menu-content width="2">
+                        <md-menu-item ng-repeat="language in ::shell.languages">                            
+                            <md-button ng-click="setLanguage(language)">{{language}}</md-button>
+                        </md-menu-item>                        
+                    </md-menu-content>
+                </md-menu>
+            </div>
+    </header>
+
+    <!-- View content -->
+    <div ui-view></div>
+
+</section>
