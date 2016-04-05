@@ -26,7 +26,7 @@ var folderRules = {
 
 var Generator = generators.Base.extend({
 
-  constructor: function() {   
+  constructor: function() {
     generators.Base.apply(this, arguments);
 
     this.argument('appName', {
