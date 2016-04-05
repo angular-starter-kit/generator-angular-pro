@@ -184,9 +184,9 @@ var Generator = generators.Base.extend({
     this.log('\nSee more in docs and coding guides:');
 
     if (this.props.target.key !== 'web') {
-      this.log(chalk.underline('https://github.com/sinedied/starter-kit/tree/mobile\n'));
+      this.log(chalk.underline('https://github.com/angular-starter-kit/starter-kit/tree/mobile\n'));
     } else {
-      this.log(chalk.underline('https://github.com/sinedied/starter-kit\n'));
+      this.log(chalk.underline('https://github.com/angular-starter-kit/starter-kit\n'));
     }
   }
 
