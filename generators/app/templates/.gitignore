@@ -21,10 +21,9 @@ npm-debug.log
 .DS_Store
 
 ## IntelliJ / WebStorm
-.idea/
 *.iml
 *.iws
-*.idea/*
+.idea/*
 !.idea/runConfigurations/
 !.idea/codeStyleSettings.xml
 
