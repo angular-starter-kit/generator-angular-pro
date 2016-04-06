@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications",
   "repository": "https://github.com/angular-starter-kit/generator-angular-pro",
   "keywords": [
