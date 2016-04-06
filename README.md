@@ -13,14 +13,14 @@ Based on the web/mobile [Starter Kit](https://github.com/angular-starter-kit/sta
 # Getting started
 
 1. Install required tools:
- ```
- npm install -g yo gulp bower generator-angular-pro
- ```
+  ```
+  npm install -g yo gulp bower generator-angular-pro
+  ```
 
 2. Create your application:
- ```
- yo angular-pro
- ```
+  ```
+  yo angular-pro
+  ```
 
 # Project structure
 ```
