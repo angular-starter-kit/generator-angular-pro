@@ -55,7 +55,3 @@ Run this command in your project directory:
 ```sh
 npm set strict-ssl false
 ```
-
-# Limitations
-
-As for now, it seems there is an issue with the `gulp-imagemin` module, it will not install properly behind a proxy.
