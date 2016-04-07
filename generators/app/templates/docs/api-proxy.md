@@ -16,14 +16,16 @@ In the root folder you will find a `gulpfile.config.js`, containing the API prox
 
 The interesting part is there:
 ```js
-exports.backendProxy = {
-  context: '/api',
-  options: {
-    pathRewrite: { '^/api' : '' },
-    target: 'http://api.icndb.com',
-    changeOrigin: true
+exports.backendProxy = [
+  {
+    context: '/api',
+    options: {
+      pathRewrite: {'^/api': ''},
+      target: 'http://api.icndb.com',
+      changeOrigin: true
+    }
   }
-};
+];
 ```
 
 This is where you can setup one or more proxy rules.
@@ -38,3 +40,6 @@ in the gulp configuration file. By default, this method configures a corporate p
 `HTTP_PROXY` environment variable, see the [proxy documentation](proxy.md) for more details.
 
 If you need to, you can further customize this function to fit the network of your working environment.
+
+If your corporate proxy use an intermediate HTTPS certificate, your may need to add the `secure: false` option to your
+backend proxy configuration.
