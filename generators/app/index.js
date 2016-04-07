@@ -65,11 +65,6 @@ var Generator = generators.Base.extend({
       return !self.appName;
     };
 
-    // Conditional prompts
-    _.find(prompts, {name: 'ui'}).when = function(props) {
-        return true;
-    };
-
     // Use prompts from json
     this.prompt(prompts, function(props) {
       if (props.target.key === 'mobile') {
