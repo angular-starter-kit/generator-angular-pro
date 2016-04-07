@@ -41,5 +41,5 @@ in the gulp configuration file. By default, this method configures a corporate p
 
 If you need to, you can further customize this function to fit the network of your working environment.
 
-If your corporate proxy use an intermediate HTTPS certificate, your may need to add the `secure: false` option to your
+If your corporate proxy use a custom SSL certificate, your may need to add the `secure: false` option to your
 backend proxy configuration.

@@ -20,12 +20,17 @@ export HTTP_PROXY="http://<username>:<password>@<proxy_server>:<proxy_port>"
 export HTTPS_PROXY="$HTTP_PROXY"
 ```
 
-## Proxy with SSL self-signed certificate
+## Proxy with SSL custom certificate
 
-Some proxy like **zscaler** use a SSL self-signed certificato to inspect request, which may cause npm/bower commands
-to fail.
+Some proxy like **zscaler** use a custom SSL certificate to inspect request, which may cause npm/bower commands to
+fail.
 
 To solve this problem, you can disable the `strict-ssl` option in both npm and bower.
+
+<% if (props.target.key !== 'web') { -%>
+Also, if you have trouble building your Cordova app for Android, see the related section in the
+[Cordova documentation](cordova.md).
+<% } -%>
 
 ## Proxy exceptions
 
@@ -49,7 +54,7 @@ Add this line to the `.bowerrc` file:
 "strict-ssl": false
 ```
 
-## Npm
+### Npm
 
 Run this command in your project directory:
 ```sh
