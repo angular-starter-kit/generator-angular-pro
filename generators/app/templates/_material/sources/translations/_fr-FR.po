@@ -32,3 +32,11 @@ msgstr "Basculer la navigation"
 #: modules/screens/about/about.html:5
 msgid "Version"
 msgstr "Version"
+
+#: modules\screens\home\home.html:7
+msgid "Material Design World !"
+msgstr "le Monde Material Design !"
+
+#: modules\screens\home\home.html:17
+msgid "Read more about Material Design"
+msgstr "En savoir plus sur Material Design"
