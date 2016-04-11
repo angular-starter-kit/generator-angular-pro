@@ -9,7 +9,7 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('inject', ['scripts', 'styles', 'partials', 'translations'], function() {
+gulp.task('inject', ['scripts', 'styles', 'fonts', 'partials', 'translations'], function() {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/**/*.css'),
     path.join('!' + conf.paths.tmp, '/vendor.css')

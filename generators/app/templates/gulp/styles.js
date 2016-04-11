@@ -42,7 +42,7 @@ function buildStyles() {
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/css/')));
 }
 
-gulp.task('styles', ['fonts'], function() {
+gulp.task('styles', function() {
   return buildStyles();
 });
 
