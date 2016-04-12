@@ -15,7 +15,8 @@
     "angular-bootstrap": "~1.2.4",
     "bootstrap-sass": "~3.3.6"
 <% } if (props.ui.key === 'material') { -%>
-    "angular-material": "~1.0.7"    
+    "font-awesome": "~4.5.0",
+    "angular-material": "~1.0.7"
 <% } if (props.ui.key === 'ionic') { -%>
     "ionic": "~1.2.4"
 <% } -%>
@@ -36,6 +37,20 @@
     "bootstrap-sass": {
       "main": [],
       "dependencies": []
+    }
+  }
+<% if (props.ui.key === 'material') { -%>
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
+      ]
+    },
+    "angular-material": {
+      "main": [
+        "./angular-material.js"
+        "./angular-material.scss"
+      ]
     }
   }
 <% } if (props.ui.key === 'material') { -%>
