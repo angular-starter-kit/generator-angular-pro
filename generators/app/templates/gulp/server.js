@@ -10,7 +10,6 @@ var proxyMiddleware = require('http-proxy-middleware');
 function browserSyncInit(baseDir, browser, done) {
   var server = {
     baseDir: baseDir,
-    routes: null,
     middleware: []
   };
 
