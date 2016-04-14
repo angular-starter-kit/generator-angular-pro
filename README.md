@@ -69,6 +69,7 @@ gulpfile.config.js      gulp tasks configuration
 # Additional documentation
 
 - [Cordova](generators/app/templates/_mobile/docs/cordova.md) (for mobile projects)
+- [Build environments](generators/app/templates/docs/build-environments.md)
 - [i18n](generators/app/templates/docs/i18n.md)
 - [Proxy configuration](generators/app/templates/docs/proxy.md)
 - [Updating dependencies](generators/app/templates/docs/updating.md)
@@ -89,6 +90,7 @@ gulpfile.config.js      gulp tasks configuration
   * Images optimization ([imagemin](https://github.com/sindresorhus/gulp-imagemin))
   * Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 - i18n workflow (https://angular-gettext.rocketeer.be)
+- Multiple build environments management
 - Task automation with [gulp](http://gulpjs.com)
 
 # Libraries

@@ -21,7 +21,7 @@ module app {
 
     // Disable debug logs in production version
     $provide.decorator('$log', ($delegate: any) => {
-      if (!config.debug) {
+      if (!config.environment.debug) {
         $delegate.log = angular.noop;
         $delegate.debug = angular.noop;
       }
@@ -29,7 +29,7 @@ module app {
     });
 
     // Disable angular debug info in production version
-    $compileProvider.debugInfoEnabled(config.debug);
+    $compileProvider.debugInfoEnabled(config.environment.debug);
 
   }
 

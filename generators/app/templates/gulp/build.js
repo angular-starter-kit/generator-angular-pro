@@ -1,8 +1,10 @@
 'use strict';
 
 var path = require('path');
+var gutil = require('gulp-util');
 var gulp = require('gulp');
 var conf = require('../gulpfile.config');
+var minimist = require('minimist');
 
 var packageConfig = require('../package.json');
 
@@ -10,10 +12,46 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-function replaceConstant(string, replacement) {
+var options = minimist(process.argv.slice(2), {
+  string: 'environment',
+  alias: { e: 'environment' }
+});
+
+function replaceConstant(contents, string, replacement) {
   // Make sure we replace only the string located inside markers
-  var constantRegExp = new RegExp('(// replace:constant[\\s\\S]*?)' + string + '([\\s\\S]*?endreplace)', 'gm');
-  return $.replace(constantRegExp, '$1' + replacement + '$2')
+  var constantRegExp = new RegExp('(// replace:constant[\\s\\S]*?)' + string + '([\\s\\S]*?// endreplace)', 'gm');
+  return contents.replace(constantRegExp, '$1' + replacement + '$2')
+}
+
+function setEnvironment(file) {
+  var contents = file.contents.toString();
+
+  // Get the object containing all environments values
+  var environmentRegExp = new RegExp('// replace:environment\\s*?([\\s\\S]*?)// endreplace', 'gm');
+  var environment = eval(environmentRegExp.exec(contents)[1] + 'environment;');
+
+  // Get the target environment value
+  var name = options.environment || conf.defaultBuildEnvironment;
+  var value = environment[name];
+
+  if (!value) {
+    throw new gutil.PluginError({
+      plugin: 'setEnvironment',
+      message: 'Cannot find configuration for environment "' + name + '".\n' +
+      'Check your environment values in file `main.constants.ts`\n'
+    });
+  }
+
+  gutil.log('Building for environment: ' + gutil.colors.green(name));
+
+  // Replace constant values
+  contents = replaceConstant(contents, 'environment: environment.local', 'environment: ' + JSON.stringify(value));
+  contents = replaceConstant(contents, 'version: \'dev\'', 'version: \'' + packageConfig.version + '\'');
+
+  // Remove all environment values and update file
+  file.contents = new Buffer(contents.replace(environmentRegExp, ''));
+
+  return file;
 }
 
 gulp.task('build:sources', ['inject'], function() {
@@ -25,8 +63,7 @@ gulp.task('build:sources', ['inject'], function() {
   return gulp.src(path.join(conf.paths.tmp, 'index.html'))
     .pipe($.replace(/<html/g, '<html ng-strict-di'))
     .pipe(assets = $.useref.assets())
-    .pipe($.if('**/app*.js', replaceConstant('debug: true', 'debug: false')))
-    .pipe($.if('**/app*.js', replaceConstant('version: \'dev\'', 'version: \'' + packageConfig.version + '\'')))
+    .pipe($.if('**/app*.js', $.intercept(setEnvironment)))
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())

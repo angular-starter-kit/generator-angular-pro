@@ -13,11 +13,29 @@ An awesome project scaffolded by the [angular-pro](https://github.com/angular-st
  ```
  npm install
  ```
-  
+<% if (props.target.key !== 'web') { -%>
+
+ - To build the iOS version, you need to install [XCode](https://itunes.apple.com/app/xcode/id497799835)
+ - To build the Android version, you need to install the
+   [Android SDK](http://developer.android.com/sdk/installing/index.html)
+<% } -%>
+
 3. Launch development server:
  ```
  gulp serve
  ```
+<% if (props.target.key !== 'web') { -%>
+
+4. Prepare Cordova platforms and plugins
+ ```
+ gulp cordova:prepare
+ ```
+ 
+5. Run on device
+ ```
+ gulp run:<ios|android> --device
+ ```
+<% } -%>
 
 # Project structure
 ```
@@ -45,9 +63,19 @@ sources/                project source code
 |- translations/        translations files
 +- index.html           html entry point
 e2e/                    end-to-end tests
+<% if (props.target.key === 'web') { -%>
 dist/                   compiled version
+<% } else { -%>
+www/                    compiled version
+<% } -%>
 typings/                TypeScript definitions
 reports/                test and coverage reports
+<% if (props.target.key !== 'web') { -%>
+hooks/                  Cordova build hooks
+platforms/              Cordova platform-specific projects
+plugins/                Cordova plugins
+resources/              icon and splash screen resources
+<% } -%>
 gulpfile.config.js      gulp tasks configuration
 ```
 
@@ -65,6 +93,11 @@ test:auto   | Launch karma server and launch unit tests after each change in pro
 protractor  | Launch e2e tests using protractor.
 tsd         | Download and update all TypeScript definitions for Bower dependencies.
 
+When building the application, you can specify the target environment using the flag `--environment <name>`.
+
+The default build environment is `production`. See [this documentation](docs/build-environments.md) for more details
+about multiple build environments management.
+
 # Coding guides
 
 - [JavaScript](docs/coding-guides/javascript.md)
@@ -75,7 +108,10 @@ tsd         | Download and update all TypeScript definitions for Bower dependenc
 - [End-to-end tests](docs/coding-guides/e2e-tests.md)
 
 # Additional documentation
-
+<% if (props.target.key !== 'web') { -%>
+- [Cordova](docs/cordova.md)
+<% } -%>
+- [Build environments](docs/build-environments.md)
 - [i18n](docs/i18n.md)
 - [Proxy configuration](docs/proxy.md)
 - [All gulp tasks](docs/tasks.md)
@@ -110,10 +146,27 @@ tsd         | Download and update all TypeScript definitions for Bower dependenc
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
+<% if (props.ui.key === 'bootstrap') { -%>
 - [UI Bootsrap](https://angular-ui.github.io/bootstrap)
 - [Bootstrap](http://getbootstrap.com)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome)
+<% } else if (props.ui.key === 'ionic') { -%>
+- [Ionic](http://ionicframework.com/)
+<% } -%>
 - [AngularJS](https://angularjs.org)
 - [Angular-gettext](https://angular-gettext.rocketeer.be)
 - [AngularUI Router](https://github.com/angular-ui/ui-router)
 - [Lodash](https://lodash.com)
+<% if (props.target.key !== 'web') { -%>
+- [ngCordova](http://ngcordova.com/)
+
+#### Cordova plugins
+- [ionic-plugin-keyboard](https://github.com/driftyco/ionic-plugin-keyboard)
+- [cordova-plugin-statusbar](https://github.com/apache/cordova-plugin-statusbar)
+- [cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
+- [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
+- [cordova-plugin-globalization](https://github.com/apache/cordova-plugin-globalization)
+- [cordova-plugin-whitelist](https://github.com/apache/cordova-plugin-whitelist)
+- [cordova-plugin-crosswalk-webview](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview)
+- [cordova-plugin-wkwebview-engine](https://github.com/apache/cordova-plugin-wkwebview-engine)
+<% } -%>

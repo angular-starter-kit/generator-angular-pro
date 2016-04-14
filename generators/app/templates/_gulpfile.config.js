@@ -42,6 +42,11 @@ exports.sassIncludePaths = [
 ];
 
 /**
+ * Default build environment, see docs/build-environments.md for more info.
+ */
+exports.defaultBuildEnvironment = 'production';
+
+/**
  * API proxy configuration.
  * With the given example, HTTP request to like $http.get('/api/stuff') will be automatically proxified
  * to the specified server.

@@ -3,8 +3,8 @@ module app {
   'use strict';
 
   export interface IServerConfig {
-    restServerUrl: string;
-    restUri: string;
+    url: string;
+    route: string;
   }
 
   export interface ICacheHandlerFunction {
@@ -28,8 +28,8 @@ module app {
    */
   export class RestService {
 
-    private baseServer: IServerConfig = null;
-    private baseUri: string = '';
+    private server: IServerConfig = null;
+    private baseUrl: string = '';
     private defaultConfig: ng.IRequestShortcutConfig = {
       headers: {
         'content-type': 'application/json',
@@ -65,7 +65,7 @@ module app {
      * @return {Object} The promise.
      */
     get(url: string, params?: any, cache?: boolean|string, options?: any): ng.IPromise<any> {
-      let apiUrl = this.baseUri + url;
+      let apiUrl = this.baseUrl + url;
       let promiseBuilder = () => this.$http.get(apiUrl, {params: params});
 
       if (!cache) {
@@ -105,7 +105,7 @@ module app {
      */
     put(url: string, data: any, options?: any): ng.IPromise<any> {
       this.logger.log('PUT request: ' + url, null);
-      let promise = () => this.$http.put(this.baseUri + url, data, this.defaultConfig);
+      let promise = () => this.$http.put(this.baseUrl + url, data, this.defaultConfig);
       return this.createRequest(promise, options);
     }
 
@@ -118,7 +118,7 @@ module app {
      */
     post(url: string, data: any, options?: any): ng.IPromise<any> {
       this.logger.log('POST request: ' + url, null);
-      let promiseBuilder = () => this.$http.post(this.baseUri + url, data, this.defaultConfig);
+      let promiseBuilder = () => this.$http.post(this.baseUrl + url, data, this.defaultConfig);
       return this.createRequest(promiseBuilder, options);
     }
 
@@ -130,20 +130,20 @@ module app {
      */
     delete(url: string, options?: any): ng.IPromise<any> {
       this.logger.log('DELETE request: ' + url, null);
-      let promise = () => this.$http.delete(this.baseUri + url, this.defaultConfig);
+      let promise = () => this.$http.delete(this.baseUrl + url, this.defaultConfig);
       return this.createRequest(promise, options);
     }
 
     /**
      * Sets the current server configuration.
      * A server parameter must contains at least these two strings:
-     * - restServerUrl: The base URL of the server
-     * - restUri: The REST URI access point
+     * - url: The base URL of the server
+     * - route: The base route of the REST API
      * @param {!Object} server The server configuration.
      */
     setServer(server: IServerConfig): void {
-      this.baseServer = server;
-      this.baseUri = server.restServerUrl + server.restUri;
+      this.server = server;
+      this.baseUrl = server.url + server.route;
     }
 
     /**
@@ -151,15 +151,15 @@ module app {
      * @return {String} The server base URL.
      */
     getServer(): IServerConfig {
-      return this.baseServer;
+      return this.server;
     }
 
     /**
      * Returns the base URI.
      * @return {String} The computed base URI.
      */
-    getBaseUri(): string {
-      return this.baseUri;
+    getBaseUrl(): string {
+      return this.baseUrl;
     }
 
     /**
@@ -288,4 +288,3 @@ module app {
     .service('restService', RestService);
 
 }
-
