@@ -8,6 +8,9 @@
     "angularjs/angular.d.ts": {
       "commit": "41f8573534b0fff88707d0a4cb870456b50cd43b"
     },
+    "angular-material/angular-material.d.ts": {
+      "commit": "f5b469b012f515428f9643ef31395282481031d4"
+    },
     "angular-ui-router/angular-ui-router.d.ts": {
       "commit": "41f8573534b0fff88707d0a4cb870456b50cd43b"
     },

@@ -34,8 +34,8 @@ msgid "Version"
 msgstr "Version"
 
 #: modules\screens\home\home.html:7
-msgid "Material Design World !"
-msgstr "le Monde Material Design !"
+msgid "Material Design world !"
+msgstr "le monde Material Design !"
 
 #: modules\screens\home\home.html:17
 msgid "Read more about Material Design"

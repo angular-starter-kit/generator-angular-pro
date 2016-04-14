@@ -100,9 +100,12 @@ gulpfile.config.js      gulp tasks configuration
 - [AngularUI Router](https://github.com/angular-ui/ui-router)
 - [Lodash](https://lodash.com)
 - [ngCordova](http://ngcordova.com/) (for mobile projects)
-- UI based on either Bootstrap...
+- UI based on Bootstrap...
   * [UI Bootsrap](https://angular-ui.github.io/bootstrap)
   * [Bootstrap](http://getbootstrap.com)
+  * [Font Awesome](http://fortawesome.github.io/Font-Awesome)
+- ... or Angular Material
+  * [Angular Material](https://material.angularjs.org)
   * [Font Awesome](http://fortawesome.github.io/Font-Awesome)
 - ... or Ionic
   * [Ionic](http://ionicframework.com/)

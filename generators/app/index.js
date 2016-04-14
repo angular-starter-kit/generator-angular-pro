@@ -128,7 +128,7 @@ var Generator = generators.Base.extend({
     var self = this;
     this.files.forEach(function(file) {
       var write = !file.hasCondition || _.every(folderRules, function(rule, folder) {
-          return !_.startsWith(path.dirname(file.src), folder) || rule(self.props);
+        return !_.startsWith(path.dirname(file.src), folder) || rule(self.props);
       });
 
       if (write) {
