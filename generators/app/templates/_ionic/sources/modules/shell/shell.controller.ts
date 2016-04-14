@@ -15,8 +15,7 @@ module app {
     constructor(private $state: ng.ui.IStateService,
                 $locale: ng.ILocaleService,
                 private _: _.LoDashStatic,
-                logger: LoggerService)
-    {
+                logger: LoggerService) {
 
       this.currentLocale = $locale;
       this.logger = logger.getLogger('shell');
