@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en-US\n"
+
+#: main.routes.js:34
+#: modules/shell/shell.html:29
+msgid "About"
+msgstr "About"
+
+#: main.run.js:84
+#: modules/screens/about/about.html:3
+#: modules/shell/shell.html:15
+msgid "APP_NAME"
+msgstr "<%= props.appName || 'Awesome App' %>"
+
+#: modules/screens/home/home.html:5
+msgid "Hello world !"
+msgstr "Hello world !"
+
+#: main.routes.js:28
+#: modules/shell/shell.html:23
+msgid "Home"
+msgstr "Home"
+
+#: modules/shell/shell.html:9
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+#: modules/screens/about/about.html:5
+msgid "Version"
+msgstr "Version"
+
+#: modules\screens\home\home.html:7
+msgid "Material Design World !"
+msgstr "Material Design World !"
+
+#: modules\screens\home\home.html:17
+msgid "Read more about Material Design"
+msgstr "Read more about Material Design"

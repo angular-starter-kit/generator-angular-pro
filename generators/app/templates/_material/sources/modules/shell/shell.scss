@@ -1,0 +1,12 @@
+// Encapsulate component style into its own "namespace "to avoid naming and css collision
+.shell {
+
+  .jumbotron {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+}
