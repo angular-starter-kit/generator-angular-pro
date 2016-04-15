@@ -39,7 +39,7 @@
       "dependencies": []
     }
   }
-<% if (props.ui.key === 'material') { -%>
+<% } if (props.ui.key === 'material') { -%>
     "font-awesome": {
       "main": [
         "./scss/font-awesome.scss",
@@ -48,12 +48,10 @@
     },
     "angular-material": {
       "main": [
-        "./angular-material.js"
+        "./angular-material.js",
         "./angular-material.scss"
       ]
     }
-  }
-<% } if (props.ui.key === 'material') { -%>
   }
 <% } if (props.ui.key === 'ionic') { -%>
     "ionic": {
