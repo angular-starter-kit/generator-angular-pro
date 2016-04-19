@@ -68,6 +68,6 @@ And keep in mind this general rules:
 
 - Never use the `!important` keyword. Ever.
 - Never use **inline** style in html, even *just for debugging* (because we KNOW it will end up in your commit)
-- Do not use browser-specific prefixes: there is tools taking care of that part 
+- Do not use browser-specific prefixes: there are tools taking care of that part 
   ([autoprefixer](https://github.com/postcss/autoprefixer))
 
