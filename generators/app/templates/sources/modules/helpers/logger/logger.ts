@@ -32,8 +32,6 @@
  */
 module app {
 
-  'use strict';
-
   let observers: Array<Function> = [];
 
   /**

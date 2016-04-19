@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   export interface ICacheData {
     date: Date;
     data: any;

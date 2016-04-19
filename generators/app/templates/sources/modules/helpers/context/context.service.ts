@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Context service: provides URL context injection based on specified context.
    */

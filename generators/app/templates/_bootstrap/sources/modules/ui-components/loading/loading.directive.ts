@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Loading directive: displays a loading indicator while data is being loaded.
    *

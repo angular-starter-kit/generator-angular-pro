@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Displays the home screen.
    */

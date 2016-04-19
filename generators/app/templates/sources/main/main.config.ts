@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Configures the application (before running).
    */

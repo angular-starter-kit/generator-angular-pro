@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Displays the SPA shell.
    * The shell contains the shared parts of the application: header, footer, navigation...

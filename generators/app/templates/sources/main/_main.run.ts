@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Entry point of the application.
    * Initializes application and root controller.

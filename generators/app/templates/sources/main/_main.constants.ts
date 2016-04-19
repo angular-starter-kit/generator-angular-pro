@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   // Do not remove the comments below, or change the values. It's the markers used by gulp build task to change the
   // value of the config constant when building the application, while removing the code below for all environments.
   // replace:environment

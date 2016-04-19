@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Wraps external global libraries into AngularJS injection system.
    * global window: false
