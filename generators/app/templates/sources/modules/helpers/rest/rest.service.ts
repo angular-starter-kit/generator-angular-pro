@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   export interface IServerConfig {
     url: string;
     route: string;

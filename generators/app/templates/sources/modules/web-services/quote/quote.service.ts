@@ -1,7 +1,5 @@
 module app {
 
-  'use strict';
-
   /**
    * Quote service: allows to get quote of the day.
    */
