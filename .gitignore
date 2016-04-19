@@ -1,5 +1,6 @@
 node_modules/
 sample/
+.vscode/
 .idea/
 .npm-debug.log
 .DS_Store
