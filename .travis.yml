@@ -1,6 +1,7 @@
 sudo: false
 git:
   depth: 1
+
 language: node_js
 node_js:
   - '4'
@@ -10,7 +11,7 @@ node_js:
 matrix:
   fast_finish: true
 
-install
+install:
   - npm install -g yeoman gulp bower
   - npm install
   - npm link
