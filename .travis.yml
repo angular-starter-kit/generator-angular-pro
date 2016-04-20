@@ -12,7 +12,7 @@ matrix:
   fast_finish: true
 
 install:
-  - npm install -g yeoman gulp bower
+  - npm install -g yo gulp bower
   - npm install
   - npm link
 
