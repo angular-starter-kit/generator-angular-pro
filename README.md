@@ -1,5 +1,9 @@
 # generator-angular-pro
 
+[![NPM version](https://img.shields.io/npm/v/generator-angular-pro.svg)](https://www.npmjs.com/package/generator-angular-pro)
+[![Build status](https://img.shields.io/travis/angular-starter-kit/generator-angular-pro/master.svg)](https://travis-ci.org/angular-starter-kit/generator-angular-pro)
+[![Dependency Status](https://img.shields.io/david/angular-starter-kit/generator-angular-pro.svg)](https://david-dm.org/angular-starter-kit/generator-angular-pro)
+
 Web/mobile Angular project generator for *scalable*, *enterprise-grade* applications.
 
 Includes modern (and stable) tools and workflow, best practices, base template and an exhaustive documentation.
