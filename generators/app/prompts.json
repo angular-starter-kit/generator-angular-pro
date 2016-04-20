@@ -10,21 +10,15 @@
     "message": "What kind of app do you want to create?",
     "choices": [
       {
-        "value": {
-          "key": "web"
-        },
+        "value": "web",
         "name": "Web app"
       },
       {
-        "value": {
-          "key": "mobile"
-        },
+        "value": "mobile",
         "name": "Mobile app"
       },
       {
-        "value": {
-          "key": "both"
-        },
+        "value": "both",
         "name": "Web + mobile app"
       }
     ]
@@ -35,21 +29,15 @@
     "message": "Which UI framework do you want?",
     "choices": [
       {
-        "value": {
-          "key": "bootstrap"
-        },
+        "value": "bootstrap",
         "name": "Bootstrap (web is your main target)"
       },
       {
-        "value": {
-          "key": "material"
-        },
+        "value": "material",
         "name": "Material Design"
       },
       {
-        "value": {
-          "key": "ionic"
-        },
+        "value": "ionic",
         "name": "Ionic (mobile is your main target)"
       }
     ]
