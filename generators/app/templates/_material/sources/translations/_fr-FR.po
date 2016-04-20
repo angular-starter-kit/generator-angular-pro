@@ -17,8 +17,8 @@ msgid "APP_NAME"
 msgstr "<%= props.appName || 'Awesome App' %>"
 
 #: modules/screens/home/home.html:5
-msgid "Hello world !"
-msgstr "Bonjour le monde !"
+msgid "Hello,"
+msgstr "Bonjour,"
 
 #: main.routes.js:28
 #: modules/shell/shell.html:23
