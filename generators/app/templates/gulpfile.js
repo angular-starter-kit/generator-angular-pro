@@ -7,16 +7,16 @@
 'use strict';
 
 var gulp = require('gulp');
-var wrench = require('wrench');
+var recursiveReadDirSync = require('recursive-readdir-sync');
 
 /**
  *  This will load all js files in the gulp directory
  *  in order to load all gulp tasks
  */
-wrench.readdirSyncRecursive('./gulp').filter(function(file) {
+recursiveReadDirSync('./gulp').filter(function(file) {
   return (/\.(js)$/i).test(file);
 }).map(function(file) {
-  require('./gulp/' + file);
+  require('./' + file);
 });
 
 /**
