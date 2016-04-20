@@ -14,6 +14,7 @@ var mainFolder = path.join(conf.paths.src, conf.paths.main);
 function buildStyles() {
   var sassOptions = {
     style: 'expanded',
+    precision: 10,
     includePaths: conf.sassIncludePaths
   };
 
