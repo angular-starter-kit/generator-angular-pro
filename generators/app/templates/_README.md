@@ -13,7 +13,7 @@ An awesome project scaffolded by the [angular-pro](https://github.com/angular-st
  ```
  npm install
  ```
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
 
  - To build the iOS version, you need to install [XCode](https://itunes.apple.com/app/xcode/id497799835)
  - To build the Android version, you need to install the
@@ -24,7 +24,7 @@ An awesome project scaffolded by the [angular-pro](https://github.com/angular-st
  ```
  gulp serve
  ```
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
 
 4. Prepare Cordova platforms and plugins
  ```
@@ -63,14 +63,14 @@ sources/                project source code
 |- translations/        translations files
 +- index.html           html entry point
 e2e/                    end-to-end tests
-<% if (props.target.key === 'web') { -%>
+<% if (props.target === 'web') { -%>
 dist/                   compiled version
 <% } else { -%>
 www/                    compiled version
 <% } -%>
 typings/                TypeScript definitions
 reports/                test and coverage reports
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
 hooks/                  Cordova build hooks
 platforms/              Cordova platform-specific projects
 plugins/                Cordova plugins
@@ -108,7 +108,7 @@ about multiple build environments management.
 - [End-to-end tests](docs/coding-guides/e2e-tests.md)
 
 # Additional documentation
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
 - [Cordova](docs/cordova.md)
 <% } -%>
 - [Build environments](docs/build-environments.md)
@@ -146,18 +146,18 @@ about multiple build environments management.
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
-<% if (props.ui.key === 'bootstrap') { -%>
+<% if (props.ui === 'bootstrap') { -%>
 - [UI Bootsrap](https://angular-ui.github.io/bootstrap)
 - [Bootstrap](http://getbootstrap.com)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome)
-<% } else if (props.ui.key === 'ionic') { -%>
+<% } else if (props.ui === 'ionic') { -%>
 - [Ionic](http://ionicframework.com/)
 <% } -%>
 - [AngularJS](https://angularjs.org)
 - [Angular-gettext](https://angular-gettext.rocketeer.be)
 - [AngularUI Router](https://github.com/angular-ui/ui-router)
 - [Lodash](https://lodash.com)
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
 - [ngCordova](http://ngcordova.com/)
 
 #### Cordova plugins

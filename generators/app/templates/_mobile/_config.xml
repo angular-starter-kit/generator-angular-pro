@@ -17,7 +17,7 @@
     <!-- Ionic supports iOS 7+ -->
     <preference name="deployment-target" value="7.0"/>
     <preference name="UIWebViewBounce" value="false"/>
-<% if (props.ui.key === 'bootstrap') { -%>
+<% if (props.ui === 'bootstrap') { -%>
     <preference name="StatusBarOverlaysWebView" value="false" />
 <% } -%>
 

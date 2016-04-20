@@ -34,7 +34,7 @@
     },
     "lodash/lodash.d.ts": {
       "commit": "41f8573534b0fff88707d0a4cb870456b50cd43b"
-    }<% if (props.target.key !== 'web') { %>,
+    }<% if (props.target !== 'web') { %>,
     "cordova/cordova.d.ts": {
       "commit": "41f8573534b0fff88707d0a4cb870456b50cd43b"
     },

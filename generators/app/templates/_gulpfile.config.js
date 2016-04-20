@@ -16,7 +16,7 @@ var HttpsProxyAgent = require('https-proxy-agent');
  */
 exports.paths = {
   src: 'sources',
-<% if (props.target.key === 'web') { -%>
+<% if (props.target === 'web') { -%>
   dist: 'dist',
 <% } else { -%>
   dist: 'www',
@@ -34,9 +34,9 @@ exports.sassIncludePaths = [
   bower.directory,
   exports.paths.src,
   path.join(exports.paths.src, exports.paths.main),
-<% if (props.ui.key === 'bootstrap') { -%>
+<% if (props.ui === 'bootstrap') { -%>
   path.join(bower.directory, 'bootstrap-sass/assets/stylesheets/')
-<% } if (props.ui.key === 'ionic') { -%>
+<% } if (props.ui === 'ionic') { -%>
   path.join(bower.directory, 'ionic/scss')
 <% } -%>
 ];

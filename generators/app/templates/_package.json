@@ -1,5 +1,5 @@
 {
-  "name": "<%= props.projectName.key %>",
+  "name": "<%= props.projectName %>",
   "version": "1.0.0",
   "description": "",
   "keywords": "",
@@ -8,7 +8,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
     "cordova": "^6.0.0",
     "gulp-insert": "^0.5.0",
 <% } -%>

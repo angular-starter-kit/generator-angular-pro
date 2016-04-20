@@ -18,7 +18,7 @@ module app {
     production: {
       debug: false,
       server: {
-<% if (props.target.key === 'web') { -%>
+<% if (props.target === 'web') { -%>
         url: '',
         route: 'api'
 <% } else { -%>

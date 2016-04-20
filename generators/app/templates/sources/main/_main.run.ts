@@ -10,14 +10,14 @@ module app {
                 $locale: ng.ILocaleService,
                 $rootScope: any,
                 $state: angular.ui.IStateService,
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
                 $timeout: ng.ITimeoutService,
                 $cordovaKeyboard: any,
 <% } -%>
                 gettextCatalog: angular.gettext.gettextCatalog,
                 _: _.LoDashStatic,
                 config: any,
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
                 logger: LoggerService,
 <% } -%>
                 restService: RestService) {
@@ -29,7 +29,7 @@ module app {
     let vm = $rootScope;
 
     vm.pageTitle = '';
-<% if (props.ui.key === 'ionic') { -%>
+<% if (props.ui === 'ionic') { -%>
     vm.viewTitle = '';
 <% } -%>
 
@@ -43,7 +43,7 @@ module app {
       language = language || $window.localStorage.getItem('language');
       let isSupportedLanguage = _.includes(config.supportedLanguages, language);
 
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
       // If no exact match is found, search without the region
       if (!isSupportedLanguage && language) {
         let languagePart = language.split('-')[0];
@@ -88,7 +88,7 @@ module app {
      * Initializes the root controller.
      */
     function init() {
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
       let _logger: ILogger = logger.getLogger('main');
 <% } -%>
       // Enable debug mode for translations
@@ -99,9 +99,9 @@ module app {
       // Set REST server configuration
       restService.setServer(config.environment.server);
 
-<% if (props.target.key !== 'web') { -%>
+<% if (props.target !== 'web') { -%>
       // Cordova platform and plugins init
-<%   if (props.target.key !== 'ionic') { -%>
+<%   if (props.target !== 'ionic') { -%>
       $window.document.addEventListener('deviceready', () => {
 <%   } else { -%>
       $ionicPlatform.ready(() => {
@@ -131,7 +131,7 @@ module app {
           $cordovaKeyboard.disableScroll(true);
         }
 
-      }<% if (props.target.key !== 'ionic') { %>, false<% } %>);
+      }<% if (props.target !== 'ionic') { %>, false<% } %>);
 <% } -%>
     }
 
@@ -143,7 +143,7 @@ module app {
       vm.pageTitle = gettextCatalog.getString('APP_NAME');
 
       if (stateTitle) {
-<% if (props.ui.key === 'ionic') { -%>
+<% if (props.ui === 'ionic') { -%>
         vm.viewTitle = gettextCatalog.getString(stateTitle);
         vm.pageTitle += ' | ' + vm.viewTitle;
 <% } else { -%>

@@ -2,7 +2,7 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8">
-<% if (props.target.key !== 'mobile') { -%>
+<% if (props.target !== 'mobile') { -%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <% } -%>
     <title ng-bind="pageTitle"></title>
@@ -32,7 +32,7 @@
       })();
     </script>
 
-<% if (props.target.key !== 'mobile') { -%>
+<% if (props.target !== 'mobile') { -%>
     <!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your
       experience.</p>

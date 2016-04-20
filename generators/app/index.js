@@ -17,11 +17,11 @@ var excludeFiles = [
 ];
 
 var folderRules = {
-  _mobile:    function(props) { return props.target.key !== 'web'; },
-  _web:       function(props) { return props.target.key !== 'mobile'; },
-  _bootstrap: function(props) { return props.ui.key === 'bootstrap'; },
-  _material:  function(props) { return props.ui.key === 'material'; },
-  _ionic:     function(props) { return props.ui.key === 'ionic'; }
+  _mobile:    function(props) { return props.target !== 'web'; },
+  _web:       function(props) { return props.target !== 'mobile'; },
+  _bootstrap: function(props) { return props.ui === 'bootstrap'; },
+  _material:  function(props) { return props.ui === 'material'; },
+  _ionic:     function(props) { return props.ui === 'ionic'; }
 };
 
 var Generator = generators.Base.extend({
@@ -57,27 +57,32 @@ var Generator = generators.Base.extend({
 
   ask: function() {
     var self = this;
-    var done = this.async();
 
-    var namePrompt = _.find(prompts, {name: 'appName'});
-    namePrompt.default = path.basename(process.cwd());
-    namePrompt.when = function() {
-      return !self.appName;
-    };
+    function processProps(props) {
+      props.appName = props.appName || self.appName;
+      props.projectName = _.kebabCase(props.appName);
 
-    // Use prompts from json
-    this.prompt(prompts, function(props) {
-      if (props.target.key === 'mobile') {
-        props.ui = {key: 'ionic'};
-      }
+      self.props = props;
+    }
 
-      props.appName = props.appName || this.appName;
-      props.projectName = {key: _.kebabCase(props.appName)};
+    if (this.options.automate) {
+      // Do no prompt, use json file instead
+      var props = require(path.resolve(this.options.automate));
+      processProps(props);
+    } else {
+      var done = this.async();
+      var namePrompt = _.find(prompts, {name: 'appName'});
+      namePrompt.default = path.basename(process.cwd());
+      namePrompt.when = function() {
+        return !self.appName;
+      };
 
-      this.props = props;
-
-      done();
-    }.bind(this));
+      // Use prompts from json
+      this.prompt(prompts, function(props) {
+        processProps(props);
+        done();
+      });
+    }
   },
 
   prepare: function() {
@@ -158,7 +163,7 @@ var Generator = generators.Base.extend({
           self.spawnCommandSync('gulp', ['tsd:restore']);
 
           // Prepare Cordova platforms
-          if (self.props.target.key !== 'web') {
+          if (self.props.target !== 'web') {
             self.spawnCommandSync('gulp', ['cordova:prepare']);
           }
         }
@@ -177,7 +182,7 @@ var Generator = generators.Base.extend({
     this.log('- `$ ' + chalk.green('gulp protractor:dist') + '` to launch your e2e tests on your optimized application');
     this.log('\nSee more in docs and coding guides:');
 
-    if (this.props.target.key !== 'web') {
+    if (this.props.target !== 'web') {
       this.log(chalk.underline('https://github.com/angular-starter-kit/starter-kit/tree/mobile\n'));
     } else {
       this.log(chalk.underline('https://github.com/angular-starter-kit/starter-kit\n'));
