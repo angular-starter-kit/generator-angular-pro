@@ -17,6 +17,9 @@ exports.config = {
 
   framework: 'jasmine2',
 
+  // Only works with Chrome and Firefox
+  directConnect: true,
+
   baseUrl: 'http://localhost:3000',
 
   // Spec patterns are relative to the current working directly when
