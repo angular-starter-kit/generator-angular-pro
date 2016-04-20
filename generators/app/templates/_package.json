@@ -2,7 +2,7 @@
   "name": "<%= props.projectName %>",
   "version": "1.0.0",
   "description": "",
-  "keywords": "",
+  "keywords": [],
   "license": "",
   "scripts": {
     "test": "gulp test"
