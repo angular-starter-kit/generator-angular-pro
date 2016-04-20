@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "version": "0.0.0",
+  "name": "<%= props.projectName %>",
+  "version": "1.0.0",
   "dependencies": {
     "angular-animate": "~1.5.0",
     "angular-sanitize": "~1.5.0",
