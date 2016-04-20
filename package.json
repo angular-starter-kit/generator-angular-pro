@@ -30,7 +30,7 @@
   "preferGlobal": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "scripts/test-generator.sh"
   },
   "dependencies": {
     "chalk": "^1.1.1",
