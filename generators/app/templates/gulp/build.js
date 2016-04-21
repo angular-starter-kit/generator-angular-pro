@@ -58,22 +58,20 @@ gulp.task('build:sources', ['inject'], function() {
   var htmlFilter = $.filter('*.html', {restore: true});
   var jsFilter = $.filter('**/*.js', {restore: true});
   var cssFilter = $.filter('**/*.css', {restore: true});
-  var assets;
 
   return gulp.src(path.join(conf.paths.tmp, 'index.html'))
     .pipe($.replace(/<html/g, '<html ng-strict-di'))
-    .pipe(assets = $.useref.assets())
+    .pipe($.useref())
     .pipe($.if('**/app*.js', $.intercept(setEnvironment)))
-    .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
+    .pipe($.rev())
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe($.cleanCss({processImport: false}))
+    .pipe($.rev())
     .pipe(cssFilter.restore)
-    .pipe(assets.restore())
-    .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
     .pipe($.htmlmin({
