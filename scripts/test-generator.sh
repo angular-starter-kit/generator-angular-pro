@@ -31,6 +31,9 @@ do
     mkdir -p $TEST_FOLDER
     cd $TEST_FOLDER
 
+    # Increase github rate limit for TSD
+    echo \{ \"token\": \"$GITHUB_TOKEN\" \} > .tsdrc
+
     yo angular-pro --automate "$CWD/$file" $TEST_APP_NAME
 
     gulp test

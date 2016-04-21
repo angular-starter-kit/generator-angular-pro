@@ -11,6 +11,10 @@ node_js:
 matrix:
   fast_finish: true
 
+env:
+  global:
+    secure: E+7242hO8UCmSxyV9Z6pii1AYuC7kosRofxxoowMG4VLmSVLhPQjSwT/9WgBv2sqtdj8wn2AedmV1JeWlpNkBhZ2iTkNF07EZB/Jb03u0psbL/vFc0dUKq8RE8rRLn6lZFv1fk+16JO6PJ1+st/krxQtgzSJG1AWr11IlxQJ8IkSTgk7Yh/sFAchY1nccugtmMTw6KNtci5RdG2qcy5vYu5vgYFdeRmPbg/chvzQe3uKq78n94fI/1ZV+G7MGygzdWxDp/GFWG0IDtNCB0Keaiqbk1U2DANGDYXpJCWr+z5cz5vVS2P3jBzfvpnQGJkPvRkiF1Q0/9xtyFAQtAZL7P7ZlrGDmcABAggs8kVCp5PMTxV1vmimTypoBaXuUplh7XPSruLEdqWPiqzxJqVoveCqq92pGx3lRnSLl/ZV9BdC0pp5gkceljzS+8bQLAMfR/7Dmk7n+nOm/IZ0ft9HRnxsyX0m76O/sBssLa89Zyo+e9WCE/fj/I/DOssi6jfNYFW1VcB4XmviGGr6d67+fh81tnsX8zU8C2tEXfc/MyVj3rAcYvkx1OQh/sb/a6YMQa0pygfJtE0CS3I7YWBdaH4ShatG2YcgmU5UpTVQcA0rcE4EIMhKaY5QGcsImWPEKDogDC2xQRqLyUHjZwBPHBd8qe3WRt3XtUuKAprurBY=
+
 install:
   - npm install -g yo gulp bower
   - npm install
