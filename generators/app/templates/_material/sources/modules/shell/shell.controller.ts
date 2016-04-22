@@ -17,7 +17,7 @@ module app {
     constructor(private $state: ng.ui.IStateService,
                 $locale: ng.ILocaleService,
                 logger: LoggerService,
-                config: any) {
+                config: IApplicationConfig) {
 
       this.currentLocale = $locale;
       this.logger = logger.getLogger('shell');

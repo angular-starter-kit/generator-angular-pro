@@ -7,7 +7,7 @@ module app {
    */
   function mainConfig($provide: ng.auto.IProvideService,
                       $compileProvider: ng.ICompileProvider,
-                      config: any) {
+                      config: IApplicationConfig) {
 
     // Extend the $exceptionHandler service to output logs.
     $provide.decorator('$exceptionHandler', ($delegate: any, $injector: any) => {

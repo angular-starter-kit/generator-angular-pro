@@ -16,7 +16,7 @@ module app {
 <% } -%>
                 gettextCatalog: angular.gettext.gettextCatalog,
                 _: _.LoDashStatic,
-                config: any,
+                config: IApplicationConfig,
 <% if (props.target !== 'web') { -%>
                 logger: LoggerService,
 <% } -%>

@@ -18,7 +18,7 @@ module app {
                 $locale: ng.ILocaleService,
                 private _: _.LoDashStatic,
                 logger: LoggerService,
-                config: any) {
+                config: IApplicationConfig) {
 
       this.currentLocale = $locale;
       this.logger = logger.getLogger('shell');

@@ -12,7 +12,7 @@ module app {
     private logger: ILogger;
 
     constructor(logger: LoggerService,
-                config: any) {
+                config: IApplicationConfig) {
 
       this.logger = logger.getLogger('about');
       this.version = config.version;
