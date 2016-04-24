@@ -20,10 +20,11 @@ function cleanup() {
 trap cleanup ERR
 
 mkdir -p $TEST_FOLDER
-cd $TEST_FOLDER
 
 for file in $TEST_CASES
 do
+
+    cd $TEST_FOLDER
 
     echo
     echo -------------------------------------------------------------
@@ -40,5 +41,7 @@ do
 
     # Remove everything except node_modules folder
     find . | grep -v "./node_modules" | xargs rm -rf
+
+    cd $CWD
 
 done
