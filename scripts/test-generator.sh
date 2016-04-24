@@ -19,6 +19,9 @@ function cleanup() {
 # Cleanup test folder in case of error
 trap cleanup ERR
 
+mkdir -p $TEST_FOLDER
+cd $TEST_FOLDER
+
 for file in $TEST_CASES
 do
 
@@ -28,9 +31,6 @@ do
     echo -------------------------------------------------------------
     echo
 
-    mkdir -p $TEST_FOLDER
-    cd $TEST_FOLDER
-
     yo angular-pro --automate "$CWD/$file" $TEST_APP_NAME
 
     gulp test
@@ -38,6 +38,7 @@ do
 #    gulp clean && gulp protractor:dist
     gulp clean && gulp build
 
-    cleanup
+    # Remove everything except node_modules folder
+    find . | grep -v "./node_modules" | xargs rm -rf
 
 done
