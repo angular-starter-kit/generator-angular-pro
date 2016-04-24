@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "license": "",
+  "private": true,
   "scripts": {
     "test": "gulp test"
   },
