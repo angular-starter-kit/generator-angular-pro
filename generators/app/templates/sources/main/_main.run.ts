@@ -51,8 +51,8 @@ module app {
           (supportedLanguage: string) => _.startsWith(supportedLanguage, languagePart));
         isSupportedLanguage = !!language;
       }
-<% } -%>
 
+<% } -%>
       // Fallback if language is not supported
       if (!isSupportedLanguage) {
         language = 'en-US';
@@ -98,8 +98,8 @@ module app {
 
       // Set REST server configuration
       restService.setServer(config.environment.server);
-
 <% if (props.target !== 'web') { -%>
+
       // Cordova platform and plugins init
 <%   if (props.target !== 'ionic') { -%>
       $window.document.addEventListener('deviceready', () => {
