@@ -14,7 +14,7 @@ gulp
 Build and optimize the current project, ready for deployment.
 This includes linting as well as image, script, stylesheet and HTML optimization and minification.
 
-## Main task
+## Main tasks
 
 Task       | Description
 -----------|----------------------------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ Task        | Description
 ------------|---------------------------------------------------------------------------------------------------------
 scripts     | Convert all *.ts found in project to js in the temporary folder.
 tsd         | Download and update all TypeScript definitions for Bower dependencies.
-tsd:restore | Download TypeScript definitions according to tsd.json
+tsd:restore | Download TypeScript definitions according to tsd.json.
 tsd:clean   | Delete downloaded TypeScript definitions.
 
 ## Build and assets

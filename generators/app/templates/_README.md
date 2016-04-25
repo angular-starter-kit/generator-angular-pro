@@ -4,9 +4,9 @@ An awesome project scaffolded by the [angular-pro](https://github.com/angular-st
 
 # Getting started
 
-1. Install required tool `gulp`:
+1. Install required tool `gulp` and `bower`:
  ```
- npm install -g gulp
+ npm install -g gulp bower
  ```
 
 2. Install project tools, go to project folder:
@@ -108,6 +108,7 @@ about multiple build environments management.
 - [End-to-end tests](docs/coding-guides/e2e-tests.md)
 
 # Additional documentation
+
 <% if (props.target !== 'web') { -%>
 - [Cordova](docs/cordova.md)
 <% } -%>
@@ -146,6 +147,9 @@ about multiple build environments management.
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
+- [AngularJS](https://angularjs.org)
+- [Angular-gettext](https://angular-gettext.rocketeer.be)
+- [AngularUI Router](https://github.com/angular-ui/ui-router)
 <% if (props.ui === 'bootstrap') { -%>
 - [UI Bootsrap](https://angular-ui.github.io/bootstrap)
 - [Bootstrap](http://getbootstrap.com)
@@ -153,9 +157,6 @@ about multiple build environments management.
 <% } else if (props.ui === 'ionic') { -%>
 - [Ionic](http://ionicframework.com/)
 <% } -%>
-- [AngularJS](https://angularjs.org)
-- [Angular-gettext](https://angular-gettext.rocketeer.be)
-- [AngularUI Router](https://github.com/angular-ui/ui-router)
 - [Lodash](https://lodash.com)
 <% if (props.target !== 'web') { -%>
 - [ngCordova](http://ngcordova.com/)

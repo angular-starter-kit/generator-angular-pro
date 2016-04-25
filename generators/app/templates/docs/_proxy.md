@@ -30,8 +30,8 @@ To solve this problem, you can disable the `strict-ssl` option in both npm and b
 <% if (props.target !== 'web') { -%>
 Also, if you have trouble building your Cordova app for Android, see the related section in the
 [Cordova documentation](cordova.md).
-<% } -%>
 
+<% } -%>
 ## Proxy exceptions
 
 If you need to access repositories on your local network that should bypass proxy, set the `NO_PROXY` environment
