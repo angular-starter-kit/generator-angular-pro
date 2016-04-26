@@ -10,10 +10,12 @@ Web/mobile Angular project generator for *scalable*, *enterprise-grade* applicat
 Includes modern (and stable) tools and workflow, best practices, base template and an exhaustive documentation.
 Get started quickly even with beginner teams, in any work environment (proxy included).
 
-Built on experience in large web projects, with architecture choices aiming for a clean, no-brainer development
+Built on experience with large web projects, with architecture choices aiming for a clean, no-brainer development
 experience.
 
 Based on the web/mobile [Starter Kit](https://github.com/angular-starter-kit/starter-kit).
+
+![logo](https://raw.githubusercontent.com/angular-starter-kit/starter-kit/gh-pages/assets/angular-starter-kit-256.png)
 
 # Getting started
 
