@@ -16,7 +16,7 @@ var fs = require('fs');
 fs.readdirSync('./gulp').filter(function(file) {
   return (/\.(js)$/i).test(file);
 }).map(function(file) {
-  require('./' + file);
+  require('./gulp/' + file);
 });
 
 /**
