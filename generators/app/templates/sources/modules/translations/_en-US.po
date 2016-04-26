@@ -5,38 +5,47 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en-US\n"
 
-#: main.routes.js:34
-#: modules/shell/shell.html:29
+#: app.ts.js:157
+#: modules/shell/shell.html:30
 msgid "About"
 msgstr "About"
 
-#: main.run.js:84
-#: modules/screens/about/about.html:3
-#: modules/shell/shell.html:15
+#: app.ts.js:113
+#: modules/screens/about/about.html:7
+#: modules/shell/shell.html:17
 msgid "APP_NAME"
 msgstr "<%= props.appName || 'Awesome App' %>"
 
-#: modules/screens/home/home.html:6
+#: modules/screens/home/home.html:7
+<% if (props.ui !== 'material') { -%>
+msgid "Hello world !"
+msgstr "Hello world !"
+<% } else { -%>
 msgid "Hello,"
 msgstr "Hello,"
+<% } -%>
 
-#: main.routes.js:28
-#: modules/shell/shell.html:23
+#: app.ts.js:147
+#: modules/shell/shell.html:24
 msgid "Home"
 msgstr "Home"
 
+<% if (props.ui === 'ionic') { -%>
 #: modules/shell/shell.html:9
 msgid "Toggle navigation"
 msgstr "Toggle navigation"
 
-#: modules/screens/about/about.html:5
+<% } -%>
+#: modules/screens/about/about.html:10
 msgid "Version"
 msgstr "Version"
 
-#: modules\screens\home\home.html:7
+<% if (props.ui === 'material') { -%>
+#: modules/screens/home/home.html:7
 msgid "Material Design world !"
 msgstr "Material Design world !"
 
-#: modules\screens\home\home.html:17
+#: modules/screens/home/home.html:17
 msgid "Read more about Material Design"
 msgstr "Read more about Material Design"
+<% } -%>
