@@ -143,9 +143,9 @@ var Generator = generators.Base.extend({
         return !_.startsWith(path.dirname(file.src), folder) || rule(self.props);
       });
 
-      write = write && !file.hasFileCondition || _.every(nameRules, function(rule, prefix) {
+      write = write && (!file.hasFileCondition || _.every(nameRules, function(rule, prefix) {
         return !_.startsWith(path.basename(file.src), '_' + prefix) || rule(self.props);
-      });
+      }));
 
       if (write) {
         try {
