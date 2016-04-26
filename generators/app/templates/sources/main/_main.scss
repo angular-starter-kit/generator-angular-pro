@@ -2,18 +2,27 @@
  * Entry point of application style.
  */
 
+<% if (props.ui === 'bootstrap') { -%>
 // Our own Bootstrap inclusion, should be included before bower dependencies as other libraries may provide
 // additional Bootstrap styling
 @import "theme/theme-variables";
 @import "theme/bootstrap-variables";
 @import "theme/bootstrap";
 
+<% } else if (props.ui === 'ionic') { -%>
+// Our own Ionic inclusion, should be included before bower dependencies as other libraries may provide
+// additional Ionic styling
+@import "theme/theme-variables";
+@import "theme/ionic-variables";
+@import "theme/ionic";
+
+<% } -%>
 // Do not remove this comments bellow. It's the markers used by wiredep to inject
 // style dependencies when defined in the bower.json of your dependencies.
 // bower:scss
 // endbower
 
-// Bootstrap and theme customization
+// Theme customization
 @import "theme/theme";
 
 // Global styling
