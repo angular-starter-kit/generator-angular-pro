@@ -8,6 +8,15 @@
     "angularjs/angular.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
+<% if (props.ui === 'ionic') { %>
+    "ionic/ionic.d.ts": {
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
+    },
+<% } else if (props.ui === 'material') { %>
+    "angular-material/angular-material.d.ts": {
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
+    },
+<% } %>
     "angular-ui-router/angular-ui-router.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
@@ -34,10 +43,7 @@
     },
     "lodash/lodash.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
-    },
-    "ionic/ionic.d.ts": {
-      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
-    },
+    }<% if (props.target !== 'web') { %>,
     "cordova/cordova.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
@@ -106,6 +112,6 @@
     },
     "cordova-ionic/plugins/keyboard.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
-    }
+    }<% } %>
   }
 }

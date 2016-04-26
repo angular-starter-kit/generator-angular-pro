@@ -3,7 +3,9 @@
 
   .logo {
     max-height: 100px;
+<% if (props.ui === 'material') { -%>
     width: auto;
+<% } -%>
   }
 
 }

@@ -16,7 +16,7 @@ var excludeFiles = [
   'Thumbs.db'
 ];
 
-var folderRules = {
+var nameRules = {
   _mobile:    function(props) { return props.target !== 'web'; },
   _web:       function(props) { return props.target !== 'mobile'; },
   _bootstrap: function(props) { return props.ui === 'bootstrap'; },
@@ -103,8 +103,14 @@ var Generator = generators.Base.extend({
       self.files = _.map(files, function(file) {
         var src = path.relative(filesPath, file);
         var isTemplate = _.startsWith(path.basename(src), '_');
-        var hasCondition = _.startsWith(path.dirname(src), '_');
-        var dest = path.relative(hasCondition ? path.dirname(src).split(path.sep)[0] : '.', src);
+        var hasFileCondition = _.startsWith(path.basename(src), '__');
+        var hasFolderCondition = _.startsWith(path.dirname(src), '_');
+        var dest = path.relative(hasFolderCondition ? path.dirname(src).split(path.sep)[0] : '.', src);
+
+        if (hasFileCondition) {
+          var fileName = path.basename(src).replace(/__.*?[.]/, '_');
+          dest = path.join(path.dirname(src), fileName);
+        }
 
         if (isTemplate) {
           dest = path.join(path.dirname(dest), path.basename(dest).slice(1));
@@ -114,7 +120,8 @@ var Generator = generators.Base.extend({
           src: src,
           dest: dest,
           template: isTemplate,
-          hasCondition: hasCondition
+          hasFileCondition: hasFileCondition,
+          hasFolderCondition: hasFolderCondition
         };
       });
 
@@ -132,8 +139,12 @@ var Generator = generators.Base.extend({
   write: function() {
     var self = this;
     this.files.forEach(function(file) {
-      var write = !file.hasCondition || _.every(folderRules, function(rule, folder) {
+      var write = !file.hasFolderCondition || _.every(nameRules, function(rule, folder) {
         return !_.startsWith(path.dirname(file.src), folder) || rule(self.props);
+      });
+
+      write = write && !file.hasFileCondition || _.every(nameRules, function(rule, prefix) {
+        return !_.startsWith(path.basename(file.src), '_' + prefix) || rule(self.props);
       });
 
       if (write) {
