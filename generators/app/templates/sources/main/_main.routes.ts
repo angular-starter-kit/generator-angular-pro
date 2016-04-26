@@ -19,14 +19,32 @@ module app {
       })
       .state('app.home', {
         url: '/',
+<% if (props.target === 'ionic') { -%>
+        views: {
+          'menuContent': {
+            templateUrl: 'modules/screens/home/home.html',
+            controller: 'homeController as vm',
+          }
+        },
+<% } else { -%>
         templateUrl: 'modules/screens/home/home.html',
         controller: 'homeController as vm',
+<% } -%>
         data: {title: gettext('Home')}
       })
       .state('app.about', {
         url: '/about',
+<% if (props.target === 'ionic') { -%>
+        views: {
+          'menuContent': {
+            templateUrl: 'modules/screens/about/about.html',
+            controller: 'aboutController as vm',
+          }
+        },
+<% } else { -%>
         templateUrl: 'modules/screens/about/about.html',
         controller: 'aboutController as vm',
+<% } -%>
         data: {title: gettext('About')}
       });
 
@@ -37,3 +55,4 @@ module app {
     .config(routeConfig);
 
 }
+
