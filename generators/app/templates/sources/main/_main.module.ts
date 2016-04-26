@@ -13,7 +13,13 @@ module app {
     'ngCordova',
 <% } -%>
     'ui.router',
+<% if (props.ui === 'bootstrap') { -%>
+    'ui.bootstrap'
+<% } else if (props.ui === 'ionic') { -%>
+    'ionic'
+<% } else { -%>
     'ngMaterial'
+<% } -%>
   ]);
 
 }
