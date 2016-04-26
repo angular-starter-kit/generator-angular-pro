@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 git:
   depth: 1
 
@@ -21,8 +21,8 @@ install:
   - npm link
 
 before_script:
-  # For protractor tests
-  - export CHROME_BIN=chromium-browser
+  # For protractor tests (chrome is not installed on travis)
+  - export PROTRACTOR_BROWSER='firefox'
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
