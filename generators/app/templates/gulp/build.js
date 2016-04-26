@@ -64,7 +64,6 @@ gulp.task('build:sources', ['inject'], function() {
     .pipe($.useref())
     .pipe($.if('**/app*.js', $.intercept(setEnvironment)))
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
     .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
     .pipe($.rev())
     .pipe(jsFilter.restore)

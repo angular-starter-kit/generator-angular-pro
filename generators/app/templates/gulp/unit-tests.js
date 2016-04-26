@@ -16,10 +16,10 @@ function runTests(singleRun, done) {
   server.start();
 }
 
-gulp.task('test', ['inject'], function(done) {
+gulp.task('test', ['scripts:test'], function(done) {
   runTests(true, done);
 });
 
-gulp.task('test:auto', ['watch'], function(done) {
+gulp.task('test:auto', ['scripts:test-watch'], function(done) {
   runTests(false, done);
 });

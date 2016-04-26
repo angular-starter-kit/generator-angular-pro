@@ -9,9 +9,9 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-var mainFolder = path.join(conf.paths.src, conf.paths.main);
-
 function buildStyles() {
+  var mainFolder = path.join(conf.paths.src, conf.paths.main);
+
   var sassOptions = {
     outputStyle: 'expanded',
     precision: 10,
@@ -19,7 +19,9 @@ function buildStyles() {
   };
 
   var injectFiles = gulp.src([
-    path.join(conf.paths.src, '/modules/**/*.scss'),
+    path.join(mainFolder, '/**/*.scss'),
+    path.join('!' + mainFolder, '/*.scss'),
+    path.join('!' + mainFolder, '/theme/*.scss')
   ], {read: false});
 
   var injectOptions = {
