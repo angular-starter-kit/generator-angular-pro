@@ -101,7 +101,7 @@ module app {
 <% if (props.target !== 'web') { -%>
 
       // Cordova platform and plugins init
-<%   if (props.target !== 'ionic') { -%>
+<%   if (props.ui !== 'ionic') { -%>
       $window.document.addEventListener('deviceready', () => {
 <%   } else { -%>
       $ionicPlatform.ready(() => {
@@ -131,7 +131,7 @@ module app {
           $cordovaKeyboard.disableScroll(true);
         }
 
-      }<% if (props.target !== 'ionic') { %>, false<% } %>);
+      }<% if (props.ui !== 'ionic') { %>, false<% } %>);
 <% } -%>
     }
 

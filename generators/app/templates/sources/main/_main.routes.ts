@@ -19,7 +19,7 @@ module app {
       })
       .state('app.home', {
         url: '/',
-<% if (props.target === 'ionic') { -%>
+<% if (props.ui === 'ionic') { -%>
         views: {
           'menuContent': {
             templateUrl: 'modules/screens/home/home.html',
@@ -34,7 +34,7 @@ module app {
       })
       .state('app.about', {
         url: '/about',
-<% if (props.target === 'ionic') { -%>
+<% if (props.ui === 'ionic') { -%>
         views: {
           'menuContent': {
             templateUrl: 'modules/screens/about/about.html',
