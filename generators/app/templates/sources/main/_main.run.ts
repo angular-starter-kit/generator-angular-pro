@@ -14,6 +14,9 @@ module app {
                 $timeout: ng.ITimeoutService,
                 $cordovaKeyboard: any,
 <% } -%>
+<% if (props.ui === 'ionic') { -%>
+                $ionicPlatform: ionic.platform.IonicPlatformService,
+<% } -%>
                 gettextCatalog: angular.gettext.gettextCatalog,
                 _: _.LoDashStatic,
                 config: IApplicationConfig,
