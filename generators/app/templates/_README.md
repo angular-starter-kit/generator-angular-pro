@@ -45,21 +45,20 @@ sources/                project source code
 |- fonts/               project fonts
 |- images/              project images
 |- libraries/           Bower dependencies
-|- main/                main module, for entry points and global style
+|- main/                app components
 |  |- main.config.ts    app configuration code
 |  |- main.constants.ts app configuration constants
 |  |- main.module.ts    app module definition
 |  |- main.routes.ts    app routes
 |  |- main.run.ts       app entry point
 |  |- main.wrappers.ts  AngularJS module wrappers for external libraries
-|  +- main.scss         style entry point
-|- modules/             project components and modules
+|  |- main.scss         style entry point
 |  |- helpers/          helper services
 |  |- screens/          application screens
 |  |- shell/            application shell
 |  |- ui-components/    shared UI components
 |  |- web-services/     web services
-|  +- ...               additional project modules
+|  +- ...               additional components
 |- translations/        translations files
 +- index.html           html entry point
 e2e/                    end-to-end tests
