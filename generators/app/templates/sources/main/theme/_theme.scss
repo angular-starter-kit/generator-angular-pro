@@ -2,8 +2,10 @@
  * Global application theme.
  * Framework overrides and customization goes here.
  */
+<% if (props.target === 'bootstrao') { -%>
 
-// UI Bootstrap fix (see https://angular-ui.github.io/bootstrap)
+  // UI Bootstrap fix (see https://angular-ui.github.io/bootstrap)
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer;
 }
+<% } -%>
