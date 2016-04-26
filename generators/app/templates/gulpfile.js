@@ -7,13 +7,13 @@
 'use strict';
 
 var gulp = require('gulp');
-var recursiveReadDirSync = require('recursive-readdir-sync');
+var fs = require('fs');
 
 /**
  *  This will load all js files in the gulp directory
  *  in order to load all gulp tasks
  */
-recursiveReadDirSync('./gulp').filter(function(file) {
+fs.readdirSync('./gulp').filter(function(file) {
   return (/\.(js)$/i).test(file);
 }).map(function(file) {
   require('./' + file);
