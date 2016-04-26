@@ -1,6 +1,7 @@
 // Encapsulate component style into its own "namespace "to avoid naming and css collision
 .shell {
 
+<% if (props.ui !== 'ionic') { -%>
   .jumbotron {
     min-height: 500px;
     display: flex;
@@ -8,5 +9,14 @@
     justify-content: center;
     flex-direction: column;
   }
+<% } else { -%>
+  .icon-large {
+    font-size: 150%;
+  }
+
+  .medium-dark {
+    color: darken($light, 20%);
+  }
+<% } -%>
 
 }
