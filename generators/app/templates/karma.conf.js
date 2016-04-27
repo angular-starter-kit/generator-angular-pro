@@ -14,14 +14,11 @@ function listFiles() {
     devDependencies: true
   });
   return wiredep(wiredepOptions).js
-    .concat([
-      path.join(conf.paths.tmp, '**/*.js'),
-      path.join(conf.paths.src, '/main/**/*.js'),
-      path.join(conf.paths.src, '/modules/**/*.js'),
-      path.join(conf.paths.src, '/**/*.mock.js'),
-      path.join(conf.paths.src, '/**/*.html')
-    ]);
+    .concat([path.join(conf.paths.tmp, '**/*.js')]);
 }
+
+var preprocessors = {};
+preprocessors[path.join(conf.paths.tmp, '**/*.js')] = ['coverage', 'sourcemap'];
 
 module.exports = function(config) {
 
@@ -41,24 +38,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     // Testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: [
-      'jasmine', 'angular-filesort'
-    ],
-
-    angularFilesort: {
-      // The whitelist config option allows you to further narrow the subset of files
-      // karma-angular-filesort will sort for you
-      whitelist: [
-        path.join(conf.paths.tmp, '/**/!(*.html|*.spec|*.mock).js'),
-        path.join(conf.paths.src, '/main/**/!(*.html|*.spec|*.mock).js'),
-        path.join(conf.paths.src, '/modules/**/!(*.html|*.spec|*.mock).js')
-      ]
-    },
-
-    ngHtml2JsPreprocessor: {
-      stripPrefix: 'sources/',
-      moduleName: 'templateCache'
-    },
+    frameworks: ['jasmine'],
 
     // Start these browsers, currently available:
     // - Chrome
@@ -77,17 +57,11 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-coverage',
       'karma-junit-reporter',
-      'karma-angular-filesort',
-      'karma-ng-html2js-preprocessor'
+      'karma-sourcemap-loader'
     ],
 
     // A map of preprocessors to use
-    preprocessors: {
-      'sources/**/*.html': ['ng-html2js'],
-      // Source files, that you wanna generate coverage for.
-      // Do not include tests or libraries.
-      '.tmp/app.ts.js': ['coverage']
-    },
+    preprocessors: preprocessors,
 
     // List of reporters
     reporters: ['coverage', 'junit', 'progress'],
