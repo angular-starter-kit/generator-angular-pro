@@ -12,7 +12,7 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': process.env.PROTRACTOR_BROWSER || 'chrome'
   },
 
   framework: 'jasmine2',
