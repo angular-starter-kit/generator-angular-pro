@@ -40,7 +40,7 @@ export class CacheService {
    * @param {Object} data The received data.
    * @param {Date=} date The cache date, now date is used if not specified.
    */
-  setCacheData(url: string, params: any, data: any, date: Date): void {
+  setCacheData(url: string, params: any, data: any, date?: Date): void {
     let cacheKey = this.getCacheKey(url, params);
 
     this.cachedData[cacheKey] = {
@@ -121,7 +121,7 @@ export class CacheService {
    * @param {'local'|'session'=} persistence How the cache should be persisted, it can be either
    *   in the local or session storage, or if no parameters is provided it will be only in-memory (default).
    */
-  setPersistence(persistence: string) {
+  setPersistence(persistence?: string) {
     this.cleanCache();
     this.storage = persistence === 'local' || persistence === 'session' ?
       this.$window[persistence + 'Storage'] : null;
