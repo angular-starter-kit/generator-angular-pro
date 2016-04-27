@@ -1,22 +1,23 @@
-import CacheService from 'helpers/cache/cache.service';
-import RestService from 'rest.service';
+import {CacheService} from 'helpers/cache/cache.service';
+import {RestService} from 'rest.service';
 
-describe('restService', function() {
+describe('restService', () => {
 
-  var $q;
-  var $httpBackend;
-  var restService;
-  var cacheService;
-  var baseUrl;
-  var callbacks;
+  let $q;
+  let $httpBackend;
+  let restService;
+  let cacheService;
+  let baseUrl;
+  let callbacks;
 
-  beforeEach(function() {
+  beforeEach(() => {
     angular.mock.module('app');
 
-    inject(function(_$q_,
-                    _$httpBackend_,
-                    _restService_,
-                    _cacheService_) {
+    inject((_$q_: ng.IQService,
+            _$httpBackend_: ng.IHttpBackendService,
+            _restService_: RestService,
+            _cacheService_: CacheService) => {
+
       $q = _$q_;
       $httpBackend = _$httpBackend_;
       restService = _restService_;
@@ -26,20 +27,19 @@ describe('restService', function() {
     });
 
     callbacks = {
-      'onSuccess': function() {},
-      'onError': function() {}
+      'onSuccess': () => {},
+      'onError': () => {}
     };
 
     spyOn(callbacks, 'onSuccess');
     spyOn(callbacks, 'onError');
   });
 
-  afterEach(function() {
+  afterEach(() => {
     // Clean $httpBackend
     try {
       $httpBackend.flush();
-    } catch (e) {
-    }
+    } catch (e) {}
 
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
@@ -49,61 +49,61 @@ describe('restService', function() {
     cacheService.cleanCache();
   });
 
-  it('should have a get method', function() {
+  it('should have a get method', () => {
     expect(typeof (restService.get)).toBe('function');
   });
 
-  it('should have a delete method', function() {
+  it('should have a delete method', () => {
     expect(typeof (restService.delete)).toBe('function');
   });
 
-  it('should have a post method', function() {
+  it('should have a post method', () => {
     expect(typeof (restService.post)).toBe('function');
   });
 
-  it('should have a put method', function() {
+  it('should have a put method', () => {
     expect(typeof (restService.put)).toBe('function');
   });
 
-  it('should have a setServer method', function() {
+  it('should have a setServer method', () => {
     expect(typeof (restService.setServer)).toBe('function');
   });
 
-  it('should have a getServer method', function() {
+  it('should have a getServer method', () => {
     expect(typeof (restService.getServer)).toBe('function');
   });
 
-  it('should have a getBaseUrl method', function() {
+  it('should have a getBaseUrl method', () => {
     expect(typeof (restService.getBaseUrl)).toBe('function');
   });
 
-  it('should have a setRequestHandler method', function() {
+  it('should have a setRequestHandler method', () => {
     expect(typeof (restService.setRequestHandler)).toBe('function');
   });
 
-  it('should have a getRequestHandler method', function() {
+  it('should have a getRequestHandler method', () => {
     expect(typeof (restService.getRequestHandler)).toBe('function');
   });
 
-  it('should have a setErrorHandler method', function() {
+  it('should have a setErrorHandler method', () => {
     expect(typeof (restService.setErrorHandler)).toBe('function');
   });
 
-  it('should have a getErrorHandler method', function() {
+  it('should have a getErrorHandler method', () => {
     expect(typeof (restService.getErrorHandler)).toBe('function');
   });
 
-  it('should have a setCacheHandler method', function() {
+  it('should have a setCacheHandler method', () => {
     expect(typeof (restService.setCacheHandler)).toBe('function');
   });
 
-  it('should have a getCacheHandler method', function() {
+  it('should have a getCacheHandler method', () => {
     expect(typeof (restService.getCacheHandler)).toBe('function');
   });
 
-  describe('get', function() {
+  describe('get', () => {
 
-    it('should succeed', function() {
+    it('should succeed', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
@@ -115,12 +115,12 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should succeed from cache', function() {
+    it('should succeed from cache', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
       // Act
-      restService.get('/toto', null, true).then(function() {
+      restService.get('/toto', null, true).then(() => {
         // This second call should be resolved from cache
         return restService.get('/toto', null, true).then(callbacks.onSuccess, callbacks.onError);
       });
@@ -130,12 +130,12 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should succeed with cache update forced', function() {
+    it('should succeed with cache update forced', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
       // Act
-      restService.get('/toto', null, true).then(function() {
+      restService.get('/toto', null, true).then(() => {
         $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
         // This second call should not be resolved from cache
@@ -147,12 +147,12 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should succeed with cache ignored', function() {
+    it('should succeed with cache ignored', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
       // Act
-      restService.get('/toto', null, true).then(function() {
+      restService.get('/toto', null, true).then(() => {
         $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
         // This second call should not be resolved from cache
@@ -164,12 +164,12 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should succeed after cache clear', function() {
+    it('should succeed after cache clear', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
 
       // Act
-      restService.get('/toto', null, true).then(function() {
+      restService.get('/toto', null, true).then(() => {
         $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
         cacheService.clearCacheData('/toto');
 
@@ -182,7 +182,7 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should fail', function() {
+    it('should fail', () => {
       // Arrange
       $httpBackend.expectGET(baseUrl + '/toto').respond(400, {data: 'fail'});
 
@@ -196,9 +196,9 @@ describe('restService', function() {
 
   });
 
-  describe('post', function() {
+  describe('post', () => {
 
-    it('should succeed', function() {
+    it('should succeed', () => {
       // Arrange
       $httpBackend.expectPOST(baseUrl + '/toto', 'value').respond(200, '');
 
@@ -210,7 +210,7 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should fail', function() {
+    it('should fail', () => {
       // Arrange
       $httpBackend.expectPOST(baseUrl + '/toto', 'value').respond(404, '');
 
@@ -222,11 +222,11 @@ describe('restService', function() {
       expect(callbacks.onError).toHaveBeenCalled();
     });
 
-    it('should fail and skip default error handler', function() {
+    it('should fail and skip default error handler', () => {
       // Arrange
-      var $log = {};
+      let $log;;
 
-      inject(function(_$log_) {
+      inject((_$log_: ng.ILogService) => {
         $log = _$log_;
       });
 
@@ -242,11 +242,11 @@ describe('restService', function() {
       expect($log.error).not.toHaveBeenCalled();
     });
 
-    it('should fail and log message via default error handler', function() {
+    it('should fail and log message via default error handler', () => {
       // Arrange
-      var $log = {};
+      let $log;;
 
-      inject(function(_$log_) {
+      inject((_$log_: ng.ILogService) => {
         $log = _$log_;
       });
 
@@ -262,11 +262,11 @@ describe('restService', function() {
       expect($log.error).toHaveBeenCalledWith('[restService]', 'toto', '');
     });
 
-    it('should fail and log error code via default error handler', function() {
+    it('should fail and log error code via default error handler', () => {
       // Arrange
-      var $log = {};
+      let $log;;
 
-      inject(function(_$log_) {
+      inject((_$log_: ng.ILogService) => {
         $log = _$log_;
       });
 
@@ -282,11 +282,11 @@ describe('restService', function() {
       expect($log.error).toHaveBeenCalledWith('[restService]', 'ZX42', '');
     });
 
-    it('should fail and log reponse code via default error handler', function() {
+    it('should fail and log reponse code via default error handler', () => {
       // Arrange
-      var $log = {};
+      let $log;;
 
-      inject(function(_$log_) {
+      inject((_$log_: ng.ILogService) => {
         $log = _$log_;
       });
 
@@ -304,9 +304,9 @@ describe('restService', function() {
 
   });
 
-  describe('put', function() {
+  describe('put', () => {
 
-    it('should succeed', function() {
+    it('should succeed', () => {
       // Arrange
       $httpBackend.expectPUT(baseUrl + '/toto', 'value').respond(200, '');
 
@@ -318,7 +318,7 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should fail', function() {
+    it('should fail', () => {
       // Arrange
       $httpBackend.expectPUT(baseUrl + '/toto', 'value').respond(400, '');
 
@@ -332,9 +332,9 @@ describe('restService', function() {
 
   });
 
-  describe('delete', function() {
+  describe('delete', () => {
 
-    it('should succeed', function() {
+    it('should succeed', () => {
       // Arrange
       $httpBackend.expectDELETE(baseUrl + '/toto').respond(200, '');
 
@@ -346,7 +346,7 @@ describe('restService', function() {
       expect(callbacks.onSuccess).toHaveBeenCalled();
     });
 
-    it('should fail', function() {
+    it('should fail', () => {
       // Arrange
       $httpBackend.expectDELETE(baseUrl + '/toto').respond(400, '');
 
@@ -360,11 +360,11 @@ describe('restService', function() {
 
   });
 
-  describe('setServer', function() {
+  describe('setServer', () => {
 
-    it('should set the base url from the server config object', function() {
+    it('should set the base url from the server config object', () => {
       // Prepare
-      var server = {
+      let server = {
         label: 'Europe',
         location: 'europe',
         url: 'https://toto.com:443',
@@ -381,11 +381,11 @@ describe('restService', function() {
 
   });
 
-  describe('getServer', function() {
+  describe('getServer', () => {
 
-    it('should get the base Url from the server config object', function() {
+    it('should get the base Url from the server config object', () => {
       // Prepare
-      var server = {
+      let server = {
         label: 'Europe',
         location: 'europe',
         url: 'https://toto.com:443',
@@ -395,7 +395,7 @@ describe('restService', function() {
       restService.setServer(server);
 
       // Act
-      var result = restService.getServer();
+      let result = restService.getServer();
 
       // Assert
       expect(result.url).toBe('https://toto.com:443');
@@ -403,33 +403,32 @@ describe('restService', function() {
 
   });
 
-  describe('getBaseUrl', function() {
+  describe('getBaseUrl', () => {
 
-    it('should return the computed base url', function() {
+    it('should return the computed base url', () => {
       // Act
-      var result = restService.getBaseUrl();
+      let result = restService.getBaseUrl();
 
       // Assert
       expect(result).toBe(baseUrl);
     });
   });
 
-  describe('setRequestHandler', function() {
+  describe('setRequestHandler', () => {
 
-    it('should set a customized request handler', function() {
+    it('should set a customized request handler', () => {
       // Act
-      var myFunction = function() {
-      };
+      let myFunction = () => {};
       restService.setRequestHandler(myFunction);
 
       // Assert
       expect(restService.getRequestHandler()).toBe(myFunction);
     });
 
-    it('should set a customized request handler, called for every request', function() {
+    it('should set a customized request handler, called for every request', () => {
       // Prepare
-      var counterSpy = jasmine.createSpy('counterSpy');
-      var myHandler = function(requestBuilder) {
+      let counterSpy = jasmine.createSpy('counterSpy');
+      let myHandler = function(requestBuilder) {
         counterSpy();
         return requestBuilder();
       };
@@ -459,23 +458,22 @@ describe('restService', function() {
 
   });
 
-  describe('setErrorHandler', function() {
+  describe('setErrorHandler', () => {
 
-    it('should set a customized error handler', function() {
+    it('should set a customized error handler', () => {
       // Act
-      var myFunction = function() {
-      };
+      let myFunction = () => {};
       restService.setErrorHandler(myFunction);
 
       // Assert
       expect(restService.getErrorHandler()).toBe(myFunction);
     });
 
-    it('should set a customized error handler, called for every request', function() {
+    it('should set a customized error handler, called for every request', () => {
       // Prepare
-      var counterSpy = jasmine.createSpy('counterSpy');
-      var errorSpy = jasmine.createSpy('errorSpy');
-      var myHandler = function(promise) {
+      let counterSpy = jasmine.createSpy('counterSpy');
+      let errorSpy = jasmine.createSpy('errorSpy');
+      let myHandler = function(promise) {
         counterSpy();
         return promise.catch(function(response) {
           errorSpy();
@@ -510,22 +508,21 @@ describe('restService', function() {
 
   });
 
-  describe('setCacheHandler', function() {
+  describe('setCacheHandler', () => {
 
-    it('should set a customized cache handler', function() {
+    it('should set a customized cache handler', () => {
       // Act
-      var myFunction = function() {
-      };
+      let myFunction = () => {};
       restService.setCacheHandler(myFunction);
 
       // Assert
       expect(restService.getCacheHandler()).toBe(myFunction);
     });
 
-    it('should use cache data from the custom handler', function() {
+    it('should use cache data from the custom handler', () => {
       // Prepare
-      var counterSpy = jasmine.createSpy('counterSpy');
-      var cacheHandler = function(cachedData) {
+      let counterSpy = jasmine.createSpy('counterSpy');
+      let cacheHandler = function(cachedData) {
         counterSpy();
         // Alter data
         cachedData.data = {value: 'tata'};
@@ -535,7 +532,7 @@ describe('restService', function() {
 
       // Act
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
-      restService.get('/toto', null, true).then(function() {
+      restService.get('/toto', null, true).then(() => {
         // This second call should be resolved from cache
         restService.get('/toto', null, true).then(callbacks.onSuccess, callbacks.onError);
       });
@@ -548,15 +545,15 @@ describe('restService', function() {
       expect(callbacks.onSuccess.calls.mostRecent().args[0].data).toEqual({value: 'tata'});
     });
 
-    it('should ignore cache data from the custom handler', function() {
+    it('should ignore cache data from the custom handler', () => {
       // Prepare
-      var counterSpy = jasmine.createSpy('counterSpy');
+      let counterSpy = jasmine.createSpy('counterSpy');
 
       $httpBackend.expectGET(baseUrl + '/toto').respond({value: 'toto'});
       restService.get('/toto', null, true);
       $httpBackend.flush();
 
-      var cacheHandler = function() {
+      let cacheHandler = () => {
         counterSpy();
         return null;
       };

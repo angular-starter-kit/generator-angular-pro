@@ -1,5 +1,5 @@
 import app from 'main.module';
-import {IApplicationConfig} from 'main.config';
+import {IApplicationConfig} from 'main.constants';
 import {RestService} from 'helpers/rest/rest.service';
 
 /**

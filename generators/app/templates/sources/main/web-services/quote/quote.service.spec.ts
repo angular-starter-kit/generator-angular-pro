@@ -1,5 +1,5 @@
-import RestService from 'helpers/rest/rest.service';
-import QuoteService from 'quote.service';
+import {RestService} from 'helpers/rest/rest.service';
+import {QuoteService} from 'quote.service';
 
 describe('quoteService', () => {
 

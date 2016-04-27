@@ -1,4 +1,5 @@
 import app from 'main.module';
+import {IApplicationConfig} from 'main.constants';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 
 /**

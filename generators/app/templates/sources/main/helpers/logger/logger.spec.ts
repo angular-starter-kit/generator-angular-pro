@@ -1,4 +1,4 @@
-import LoggerService from 'logger';
+import {LoggerService} from 'logger';
 
 describe('logger', () => {
 
