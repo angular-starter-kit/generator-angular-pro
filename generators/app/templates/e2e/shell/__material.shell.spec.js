@@ -9,8 +9,8 @@ describe('shell', function() {
     page = require('./shell.po');
   });
 
-  it('header should contain 2 links', function() {
-    expect(page.navbarItems.count()).toBe(2);
+  it('header should contain 3 links', function() {
+    expect(page.navbarItems.count()).toBe(3);
   });
 
   it('dropdown should contain 2 supported languages', function() {

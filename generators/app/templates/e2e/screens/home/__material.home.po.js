@@ -6,9 +6,11 @@
 'use strict';
 
 var Home = function() {
-  this.jumbotron = element(by.css('.jumbotron'));
-  this.title = this.jumbotron.element(by.css('h1'));
-  this.image = this.jumbotron.element(by.css('img'));
+  this.cardTitle = element(by.css('md-card-title-text'));
+  this.title = this.cardTitle.element(by.css('.md-headline'));
+
+  this.cardMedia = element(by.css('md-card-title-media'));
+  this.image = this.cardMedia.element(by.css('img'));
 };
 
 module.exports = new Home();

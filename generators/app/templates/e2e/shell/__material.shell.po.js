@@ -6,10 +6,11 @@
 'use strict';
 
 var Shell = function() {
-  this.navbar = element(by.css('.navbar'));
-  this.navbarItems = this.navbar.element(by.css('.navbar-nav')).all(by.css('li'));
-  this.languageDropdown = this.navbar.element(by.css('.dropdown'));
-  this.languageDropdownItems = this.languageDropdown.all(by.css('li'));
+  this.header = element(by.css('header'));
+  this.navbar = this.header.element(by.css('.nav-container'));
+  this.navbarItems = this.navbar.element(by.css('.nav-links')).all(by.css('.md-button'));
+  this.languageDropdown = this.navbar.element(by.css('md-menu-content'));
+  this.languageDropdownItems = this.languageDropdown.all(by.css('md-menu-item'));
 };
 
 module.exports = new Shell();
