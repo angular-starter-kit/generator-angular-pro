@@ -9,11 +9,10 @@ node_js:
   - stable
 
 matrix:
-  - fast_finish: true
+  fast_finish: true
   # Only in the meantime npm packages get updated for node v6
-  - allow_failures:
-      node_js:
-        stable
+  allow_failures:
+    - node_js: stable
 
 env:
   global:
