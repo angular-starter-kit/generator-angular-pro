@@ -1,8 +1,6 @@
-'use strict';
+import CacheService from 'helpers/cache/cache.service';
+import RestService from 'rest.service';
 
-/*
- * Tests for rest service.
- */
 describe('restService', function() {
 
   var $q;
@@ -13,7 +11,7 @@ describe('restService', function() {
   var callbacks;
 
   beforeEach(function() {
-    module('app');
+    angular.mock.module('app');
 
     inject(function(_$q_,
                     _$httpBackend_,
@@ -364,7 +362,7 @@ describe('restService', function() {
 
   describe('setServer', function() {
 
-    it('should set the base uri from the server config object', function() {
+    it('should set the base url from the server config object', function() {
       // Prepare
       var server = {
         label: 'Europe',
@@ -407,7 +405,7 @@ describe('restService', function() {
 
   describe('getBaseUrl', function() {
 
-    it('should return the computed base uri', function() {
+    it('should return the computed base url', function() {
       // Act
       var result = restService.getBaseUrl();
 

@@ -1,20 +1,14 @@
-'use strict';
+describe('loading directive', () => {
 
-/*
- * Tests for loading directive.
- */
-describe('loading directive', function() {
+  let $rootScope;
+  let $compile;
+  let element;
 
-  var $rootScope;
-  var $compile;
-  var element;
+  beforeEach(() => {
+    angular.mock.module('app');
 
-  beforeEach(function() {
-    module('templateCache');
-    module('app');
-
-    inject(function(_$rootScope_,
-                    _$compile_) {
+    inject(function(_$rootScope_: ng.IRootScopeService,
+                    _$compile_: ng.ICompileService) {
 
       $rootScope = _$rootScope_;
       $compile = _$compile_;
@@ -25,9 +19,9 @@ describe('loading directive', function() {
     $rootScope.$digest();
   });
 
-  it('should be visible only when loading is in progress', function() {
+  it('should be visible only when loading is in progress', () => {
 
-    var div = element.children().eq(0);
+    let div = element.children().eq(0);
 
     $rootScope.isLoading = true;
     $rootScope.$digest();
