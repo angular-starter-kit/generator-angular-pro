@@ -1,5 +1,5 @@
 import app from 'main.module';
-import IServerConfig from 'helpers/rest/rest.service';
+import {IServerConfig} from 'helpers/rest/rest.service';
 
 export interface IApplicationConfig {
   version: string;

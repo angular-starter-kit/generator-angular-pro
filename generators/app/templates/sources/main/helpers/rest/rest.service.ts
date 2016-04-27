@@ -1,5 +1,5 @@
 import app from 'main.module';
-import CacheService from 'helpers/cache/cache.service';
+import {CacheService} from 'helpers/cache/cache.service';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 
 export interface IServerConfig {

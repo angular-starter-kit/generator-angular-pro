@@ -1,6 +1,6 @@
 import app from 'main.module';
-import IApplicationConfig from 'main.constants';
-import ILogger from 'helpers/logger/logger';
+import {IApplicationConfig} from 'main.constants';
+import {ILogger} from 'helpers/logger/logger';
 
 /**
  * Configures the application (before running).

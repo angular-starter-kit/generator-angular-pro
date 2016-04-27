@@ -1,6 +1,6 @@
 import app from 'main.module';
-import RestService from 'helpers/rest/rest.service';
-import ContextService from 'helpers/context/context.service';
+import {RestService} from 'helpers/rest/rest.service';
+import {ContextService} from 'helpers/context/context.service';
 
 /**
  * Quote service: allows to get quote of the day.

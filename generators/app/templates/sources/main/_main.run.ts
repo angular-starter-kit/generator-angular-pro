@@ -1,6 +1,6 @@
 import app from 'main.module';
-import IApplicationConfig from 'main.config';
-import RestService from 'helpers/rest/rest.service';
+import {IApplicationConfig} from 'main.config';
+import {RestService} from 'helpers/rest/rest.service';
 
 /**
  * Entry point of the application.
