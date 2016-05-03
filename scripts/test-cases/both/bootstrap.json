@@ -1,4 +1,4 @@
 {
-  "target": "mobile",
+  "target": "both",
   "ui": "bootstrap"
 }
