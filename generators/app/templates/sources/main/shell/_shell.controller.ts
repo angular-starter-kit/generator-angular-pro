@@ -1,5 +1,7 @@
 import app from 'main.module';
+<% if (props.ui !== 'ionic') { -%>
 import {IApplicationConfig} from 'main.constants';
+<% } -%>
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 
 /**

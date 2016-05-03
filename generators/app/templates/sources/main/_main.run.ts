@@ -1,6 +1,9 @@
 import app from 'main.module';
 import {IApplicationConfig} from 'main.constants';
 import {RestService} from 'helpers/rest/rest.service';
+<% if (props.target !== 'web') { -%>
+import {ILogger, LoggerService} from 'helpers/logger/logger';
+<% } -%>
 
 /**
  * Entry point of the application.
