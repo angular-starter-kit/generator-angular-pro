@@ -6,6 +6,14 @@ var conf = require('../gulpfile.config');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 var proxyMiddleware = require('http-proxy-middleware');
+var minimist = require('minimist');
+
+var options = minimist(process.argv.slice(2), {
+  boolean: 'skip-open',
+  alias: { s: 'skip-open' }
+});
+
+var open = options['skip-open'] ? [] : 'default';
 
 function browserSyncInit(baseDir, browser, done) {
   var server = {
@@ -38,11 +46,11 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function(done) {
-  browserSyncInit([conf.paths.tmp, conf.paths.src], 'default', done);
+  browserSyncInit([conf.paths.tmp, conf.paths.src], open, done);
 });
 
 gulp.task('serve:dist', ['build'], function(done) {
-  browserSyncInit(conf.paths.dist, 'default', done);
+  browserSyncInit(conf.paths.dist, open, done);
 });
 
 gulp.task('serve:e2e', ['inject'], function(done) {

@@ -98,6 +98,9 @@ When building the application, you can specify the target environment using the 
 The default build environment is `production`. See [this documentation](docs/build-environments.md) for more details
 about multiple build environments management.
 
+You can disable opening automatically your default browser when using the `serve` commands by using the flag
+`--skip-open`.
+
 # Coding guides
 
 - [JavaScript](docs/coding-guides/javascript.md)
