@@ -106,7 +106,7 @@ module app {
       // Cordova platform and plugins init
 <%   if (props.ui !== 'ionic') { -%>
       $window.document.addEventListener('deviceready', () => {
-<%     if (props.ui === 'bootstrap') -%>
+<%     if (props.ui === 'bootstrap') { -%>
 
          // Remove 300ms delay
          FastClick.attach($window.document.body);
