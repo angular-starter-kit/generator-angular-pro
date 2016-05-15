@@ -1,5 +1,7 @@
 node_modules/
 sample/
+sample-app/
+deploy/
 .idea/
 .npm-debug.log
 .DS_Store
