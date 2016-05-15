@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.1.0-beta",
+  "version": "2.1.0-beta.2",
   "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications (TypeScript, Sass, Bootstrap, Ionic, Material, UI Router, Font Awesome, Gettext, Cordova...)",
   "repository": "https://github.com/angular-starter-kit/generator-angular-pro",
   "keywords": [
