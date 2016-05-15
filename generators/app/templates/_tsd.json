@@ -16,7 +16,7 @@
     "angular-material/angular-material.d.ts": {
       "commit": "398bd742115e2b071ab3edf8b543b6df6fa62dc2"
     },
-<% } else if (props.ui === 'bootstrap' && props.target !== 'web') -%>
+<% } else if (props.ui === 'bootstrap' && props.target !== 'web') { -%>
     "fastclick/fastclick.d.ts": {
       "commit": "398bd742115e2b071ab3edf8b543b6df6fa62dc2"
     },
