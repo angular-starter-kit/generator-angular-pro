@@ -30,7 +30,7 @@ msgstr "Hello,"
 msgid "Home"
 msgstr "Home"
 
-<% if (props.ui === 'ionic') { -%>
+<% if (props.ui === 'bootstrap') { -%>
 #: modules/shell/shell.html:9
 msgid "Toggle navigation"
 msgstr "Toggle navigation"
