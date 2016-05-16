@@ -3,6 +3,7 @@ sample/
 sample-app/
 deploy/
 .idea/
+npm-debug.log
 .npm-debug.log
 .DS_Store
 Thumbs.db
