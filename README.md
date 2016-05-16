@@ -13,7 +13,7 @@ Get started quickly even with beginner teams, in any work environment (proxy inc
 Built on experience with large web projects, with architecture choices aiming for a clean, no-brainer development
 experience.
 
-Based on the web/mobile [Starter Kit](https://github.com/angular-starter-kit/starter-kit).
+See generated project example [here](https://github.com/angular-starter-kit/starter-kit).
 
 ![logo](https://raw.githubusercontent.com/angular-starter-kit/starter-kit/gh-pages/assets/angular-starter-kit-256.png)
 

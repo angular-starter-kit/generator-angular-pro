@@ -30,7 +30,9 @@
   "preferGlobal": true,
   "main": "index.js",
   "scripts": {
-    "test": "scripts/test-generator.sh"
+    "test": "scripts/test-generator.sh",
+    "deploy": "scripts/update-starter-kit.sh",
+    "postpublish": "PACKAGE_VERSION=$(node -p -e 'require('./package.json').version') && git tag -a $PACKAGE_VERSION -m '$PACKAGE_VERSION' && git push --tags"
   },
   "dependencies": {
     "chalk": "^1.1.1",
