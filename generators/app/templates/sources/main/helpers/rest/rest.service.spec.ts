@@ -1,5 +1,5 @@
 import {CacheService} from 'helpers/cache/cache.service';
-import {RestService} from 'rest.service';
+import {RestService, IRequestBuilderFunction} from 'rest.service';
 
 describe('restService', () => {
 
@@ -224,7 +224,7 @@ describe('restService', () => {
 
     it('should fail and skip default error handler', () => {
       // Arrange
-      let $log;;
+      let $log;
 
       inject((_$log_: ng.ILogService) => {
         $log = _$log_;
@@ -244,7 +244,7 @@ describe('restService', () => {
 
     it('should fail and log message via default error handler', () => {
       // Arrange
-      let $log;;
+      let $log;
 
       inject((_$log_: ng.ILogService) => {
         $log = _$log_;
@@ -264,7 +264,7 @@ describe('restService', () => {
 
     it('should fail and log error code via default error handler', () => {
       // Arrange
-      let $log;;
+      let $log;
 
       inject((_$log_: ng.ILogService) => {
         $log = _$log_;
@@ -284,7 +284,7 @@ describe('restService', () => {
 
     it('should fail and log reponse code via default error handler', () => {
       // Arrange
-      let $log;;
+      let $log;
 
       inject((_$log_: ng.ILogService) => {
         $log = _$log_;
@@ -428,7 +428,7 @@ describe('restService', () => {
     it('should set a customized request handler, called for every request', () => {
       // Prepare
       let counterSpy = jasmine.createSpy('counterSpy');
-      let myHandler = function(requestBuilder) {
+      let myHandler = (requestBuilder: IRequestBuilderFunction) => {
         counterSpy();
         return requestBuilder();
       };
@@ -473,9 +473,9 @@ describe('restService', () => {
       // Prepare
       let counterSpy = jasmine.createSpy('counterSpy');
       let errorSpy = jasmine.createSpy('errorSpy');
-      let myHandler = function(promise) {
+      let myHandler = (promise: ng.IPromise<any>) => {
         counterSpy();
-        return promise.catch(function(response) {
+        return promise.catch((response: any) => {
           errorSpy();
           $q.reject(response);
         });
@@ -522,7 +522,7 @@ describe('restService', () => {
     it('should use cache data from the custom handler', () => {
       // Prepare
       let counterSpy = jasmine.createSpy('counterSpy');
-      let cacheHandler = function(cachedData) {
+      let cacheHandler = (cachedData: any) => {
         counterSpy();
         // Alter data
         cachedData.data = {value: 'tata'};
