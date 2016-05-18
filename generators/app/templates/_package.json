@@ -56,7 +56,6 @@
     "jshint": "^2.9.1",
     "karma": "^0.13.22",
     "karma-angular-filesort": "~1.0.1",
-    "karma-chrome-launcher": "~0.2.2",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.0",
