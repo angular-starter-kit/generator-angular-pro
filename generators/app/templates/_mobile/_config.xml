@@ -80,7 +80,6 @@
 
   <!-- Common to all platforms -->
   <preference name="Fullscreen" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="Orientation" value="portrait"/>
   <preference name="StatusBarStyle" value="default" />
@@ -88,6 +87,8 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
   <preference name="ShowSplashScreenSpinner" value="false"/>
+  <preference name="SplashMaintainAspectRatio" value="true" />
+  <preference name="loadUrlTimeoutValue" value="60000" />
 
   <!-- Cordova platforms -->
   <engine name="ios" spec="~4.0.1" />
