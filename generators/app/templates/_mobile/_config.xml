@@ -59,6 +59,7 @@
   <platform name="android">
     <!-- Ionic supports Android 4+ -->
     <preference name="android-minSdkVersion" value="16"/>
+    <preference name="android-manifest/application/activity/@android:theme" value="@android:style/Theme.DeviceDefault" />
 
     <icon src=".tmp/resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src=".tmp/resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
@@ -103,6 +104,7 @@
   <plugin name="cordova-plugin-crosswalk-webview" spec="~1.4.0" />
   <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
   <plugin name="cordova-plugin-wkwebview-engine" spec="~1.0.1" />
+  <plugin name="cordova-custom-config" spec="~2.0.0" />
 
   <!-- Crosswalk settings -->
   <preference name="xwalkVersion" value="15+" />
