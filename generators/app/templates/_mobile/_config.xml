@@ -81,7 +81,7 @@
 
   <!-- Common to all platforms -->
   <preference name="Fullscreen" value="false"/>
-  <preference name="webviewbounce" value="false"/>
+  <preference name="webviewbounce" value="true"/>
   <preference name="Orientation" value="portrait"/>
   <preference name="StatusBarStyle" value="default" />
   <preference name="AutoHideSplashScreen" value="false"/>
