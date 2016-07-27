@@ -53,7 +53,6 @@ module.exports = function(config) {
     // List of plugins to load
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-chrome-launcher',
       'karma-jasmine',
       'karma-coverage',
       'karma-junit-reporter',

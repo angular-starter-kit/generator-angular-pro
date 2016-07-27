@@ -5,12 +5,12 @@
 
 set -e
 
-export CWD=`pwd`
-export SCRIPT_FOLDER=`dirname "${BASH_SOURCE[0]}"`
-export TEST_FOLDER=$CWD/sample-app
-export CACHE_FOLDER=$CWD/cache
-export TEST_APP_NAME="Sample App"
-export TEST_CASES=$SCRIPT_FOLDER/test-cases/**/*.json
+CWD=`pwd`
+SCRIPT_FOLDER=`dirname "${BASH_SOURCE[0]}"`
+TEST_FOLDER=$CWD/sample-app
+CACHE_FOLDER=$CWD/cache
+TEST_APP_NAME="Sample App"
+TEST_CASES=$SCRIPT_FOLDER/test-cases/**/*.json
 
 function cleanup() {
     cd $CWD

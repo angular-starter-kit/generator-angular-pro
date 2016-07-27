@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: fr-FR\n"
@@ -17,14 +17,35 @@ msgid "APP_NAME"
 msgstr "<%= props.appName || 'Awesome App' %>"
 
 #: modules/screens/home/home.html:7
+<% if (props.ui !== 'material') { -%>
 msgid "Hello world !"
 msgstr "Bonjour le monde !"
+<% } else { -%>
+msgid "Hello,"
+msgstr "Bonjour,"
+<% } -%>
 
 #: app.ts.js:147
 #: modules/shell/shell.html:24
 msgid "Home"
 msgstr "Accueil"
 
+<% if (props.ui === 'bootstrap') { -%>
+#: modules/shell/shell.html:9
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+<% } -%>
 #: modules/screens/about/about.html:10
 msgid "Version"
 msgstr "Version"
+
+<% if (props.ui === 'material') { -%>
+#: modules/screens/home/home.html:7
+msgid "Material Design world !"
+msgstr "le monde Material Design !"
+
+#: modules/screens/home/home.html:17
+msgid "Read more about Material Design"
+msgstr "Plus d'infos sur Material Design"
+<% } -%>

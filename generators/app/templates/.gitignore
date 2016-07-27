@@ -36,5 +36,5 @@ xcuserdata/
 .settings/
 
 ## Maven
-target/
-log/
+/target/
+/log/

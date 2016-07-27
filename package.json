@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-pro",
-  "version": "2.0.10",
+  "version": "2.1.0-beta.2",
   "description": "Web/mobile Angular project generator for scalable, enterprise-grade applications (TypeScript, Sass, Bootstrap, Ionic, Material, UI Router, Font Awesome, Gettext, Cordova...)",
   "repository": "https://github.com/angular-starter-kit/generator-angular-pro",
   "keywords": [
@@ -30,14 +30,16 @@
   "preferGlobal": true,
   "main": "index.js",
   "scripts": {
-    "test": "scripts/test-generator.sh"
+    "test": "scripts/test-generator.sh",
+    "deploy": "scripts/update-starter-kit.sh",
+    "postpublish": "PACKAGE_VERSION=$(node -p -e 'require('./package.json').version') && git tag -a $PACKAGE_VERSION -m '$PACKAGE_VERSION' && git push --tags"
   },
   "dependencies": {
     "chalk": "^1.1.1",
-    "lodash": "^4.5.0",
-    "node-dir": "^0.1.11",
-    "yeoman-generator": "^0.22.5",
-    "yosay": "^1.1.0"
+    "lodash": "^4.13.1",
+    "node-dir": "^0.1.14",
+    "yeoman-generator": "^0.24.1",
+    "yosay": "^1.2.0"
   },
   "files": [
     "generators/app"

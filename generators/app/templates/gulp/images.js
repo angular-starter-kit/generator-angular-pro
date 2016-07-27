@@ -8,11 +8,12 @@ var $ = require('gulp-load-plugins')();
 
 gulp.task('images', function() {
   return gulp.src(path.join(conf.paths.src, 'images/**/*.{gif,jpg,png,svg}'))
-    .pipe($.cache($.imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    })))
+    .pipe($.cache($.imagemin([
+      $.imagemin.gifsicle({interlaced: true}),
+      $.imagemin.jpegtran({progressive: true}),
+      $.imagemin.optipng({optimizationLevel: 3}),
+      $.imagemin.svgo()
+    ])))
     .pipe(gulp.dest(path.join(conf.paths.dist, 'images')))
     .pipe($.size({title: 'images'}));
 });

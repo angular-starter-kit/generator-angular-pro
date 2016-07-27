@@ -4,7 +4,7 @@
  */
 <% if (props.ui === 'bootstrap') { -%>
 
-  // UI Bootstrap fix (see https://angular-ui.github.io/bootstrap)
+// UI Bootstrap fix (see https://angular-ui.github.io/bootstrap)
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer;
 }
