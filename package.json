@@ -36,10 +36,10 @@
   },
   "dependencies": {
     "chalk": "^1.1.1",
-    "lodash": "^4.5.0",
-    "node-dir": "^0.1.11",
-    "yeoman-generator": "^0.22.5",
-    "yosay": "^1.1.0"
+    "lodash": "^4.13.1",
+    "node-dir": "^0.1.14",
+    "yeoman-generator": "^0.24.1",
+    "yosay": "^1.2.0"
   },
   "files": [
     "generators/app"

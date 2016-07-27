@@ -70,7 +70,6 @@ var Generator = generators.Base.extend({
       var props = require(path.resolve(this.options.automate));
       processProps(props);
     } else {
-      var done = this.async();
       var namePrompt = _.find(prompts, {name: 'appName'});
       namePrompt.default = path.basename(process.cwd());
       namePrompt.when = function() {
@@ -78,9 +77,8 @@ var Generator = generators.Base.extend({
       };
 
       // Use prompts from json
-      this.prompt(prompts, function(props) {
+      return this.prompt(prompts).then(function(props) {
         processProps(props);
-        done();
       });
     }
   },
