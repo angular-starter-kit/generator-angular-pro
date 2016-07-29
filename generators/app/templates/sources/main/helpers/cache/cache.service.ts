@@ -121,7 +121,7 @@ export class CacheService {
    * @param {'local'|'session'=} persistence How the cache should be persisted, it can be either
    *   in the local or session storage, or if no parameters is provided it will be only in-memory (default).
    */
-  setPersistence(persistence?: string) {
+  setPersistence(persistence?: string): void {
     this.cleanCache();
     this.storage = persistence === 'local' || persistence === 'session' ?
       this.$window[persistence + 'Storage'] : null;

@@ -16,7 +16,7 @@ describe('contextService', () => {
     expect(typeof (contextService.inject)).toBe('function');
   });
 
-  describe('injectContext', function() {
+  describe('injectContext', () => {
 
     it('should not change resulting API if the input API has no parameters', () => {
       // Arrange

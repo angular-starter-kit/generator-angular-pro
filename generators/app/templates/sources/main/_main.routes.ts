@@ -21,7 +21,7 @@ function routeConfig($stateProvider: angular.ui.IStateProvider,
       views: {
         'menuContent': {
           template: <string>require('screens/home/home.html'),
-          controller: 'homeController as vm',
+          controller: 'homeController as vm'
         }
       },
 <% } else { -%>
@@ -36,7 +36,7 @@ function routeConfig($stateProvider: angular.ui.IStateProvider,
       views: {
         'menuContent': {
           template: <string>require('screens/about/about.html'),
-          controller: 'aboutController as vm',
+          controller: 'aboutController as vm'
         }
       },
 <% } else { -%>

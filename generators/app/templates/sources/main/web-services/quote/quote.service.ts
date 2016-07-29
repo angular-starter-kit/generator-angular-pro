@@ -32,7 +32,7 @@ export class QuoteService {
         }
         return this.$q.reject();
       })
-      .catch(function() {
+      .catch(() => {
         return 'Error, could not load joke :-(';
       });
   }

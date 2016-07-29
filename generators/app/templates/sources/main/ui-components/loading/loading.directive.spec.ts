@@ -7,8 +7,8 @@ describe('loading directive', () => {
   beforeEach(() => {
     angular.mock.module('app');
 
-    inject(function(_$rootScope_: ng.IRootScopeService,
-                    _$compile_: ng.ICompileService) {
+    inject((_$rootScope_: ng.IRootScopeService,
+            _$compile_: ng.ICompileService) => {
 
       $rootScope = _$rootScope_;
       $compile = _$compile_;
