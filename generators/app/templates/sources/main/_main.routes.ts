@@ -23,7 +23,7 @@ module app {
         views: {
           'menuContent': {
             templateUrl: 'modules/screens/home/home.html',
-            controller: 'homeController as vm',
+            controller: 'homeController as vm'
           }
         },
 <% } else { -%>
@@ -38,7 +38,7 @@ module app {
         views: {
           'menuContent': {
             templateUrl: 'modules/screens/about/about.html',
-            controller: 'aboutController as vm',
+            controller: 'aboutController as vm'
           }
         },
 <% } else { -%>
@@ -55,4 +55,3 @@ module app {
     .config(routeConfig);
 
 }
-

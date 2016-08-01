@@ -88,7 +88,7 @@ module app {
           });
         } else {
           // Use cached version
-          var deferred = this.$q.defer();
+          let deferred = this.$q.defer();
           deferred.resolve(angular.copy(cachedData));
 
           return this.errorHandler(deferred.promise, options);

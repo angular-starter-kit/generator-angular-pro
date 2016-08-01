@@ -14,7 +14,7 @@ module app {
       return (exception: any, cause: any) => {
         $delegate(exception, cause);
 
-        var logger = $injector.get('logger').getLogger('exceptionHandler');
+        let logger = $injector.get('logger').getLogger('exceptionHandler');
         logger.error(exception + (cause ? ' (' + cause + ')' : ''));
       };
     });

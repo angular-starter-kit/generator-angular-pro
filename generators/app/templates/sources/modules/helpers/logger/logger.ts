@@ -94,19 +94,19 @@ module app {
                 private moduleName: string,
                 private logFunc: any) {}
 
-    log(message: string, options: any) {
+    log(message: string, options: any): void {
       this.logFunc(message, this.moduleName, this.$log.log, 'log', options);
     }
 
-    info(message: string, options: any) {
+    info(message: string, options: any): void {
       this.logFunc(message, this.moduleName, this.$log.info, 'info', options);
     }
 
-    warning(message: string, options: any) {
+    warning(message: string, options: any): void {
       this.logFunc(message, this.moduleName, this.$log.warn, 'warning', options);
     }
 
-    error(message: string, options: any) {
+    error(message: string, options: any): void {
       this.logFunc(message, this.moduleName, this.$log.error, 'error', options);
     }
 
@@ -134,7 +134,7 @@ module app {
      * - options {Object?} options Additional log options.
      * @param {!function} observerFunc The observer function.
      */
-    addObserver(observerFunc: IObserverFunction) {
+    addObserver(observerFunc: IObserverFunction): void {
       observers.push(observerFunc);
     }
 
