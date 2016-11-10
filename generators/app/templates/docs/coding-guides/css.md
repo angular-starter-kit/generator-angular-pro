@@ -33,7 +33,7 @@ And keep in mind this general rules:
 
 - Use object-oriented CSS (OOCSS):
   * Factorize common code in base class, and extend it, for example:
-  ```less
+  ```scss
   // Base button class
   .btn { ... }
   

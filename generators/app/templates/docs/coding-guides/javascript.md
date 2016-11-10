@@ -22,5 +22,5 @@ This starter kit architecture and base template tries to comply with most of the
 - Only expose properties / methods publicly when it's needed, do not put everything in the `$scope`
 - Never put anything in the global scope
 - Always use strict equality checks: `===` and `!==` instead of `==` or `!=` to avoid comparison pitfalls (see 
-  [JavaScipt equality table](https://dorey.github.io/JavaScript-Equality-Table/))
+  [JavaScript equality table](https://dorey.github.io/JavaScript-Equality-Table/))
 - Use `[]` instead of `Array`

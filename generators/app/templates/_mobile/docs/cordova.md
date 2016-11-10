@@ -131,14 +131,8 @@ gulp cordova --command="platform update <ios|android> --save"
 
 ## Icon and splash screen
 
-In order to simplify icon and splash screen creation for each device/OS, you can install the `ionic CLI`, and create
-an empty ionic project file:
-```sh
-npm install -g ionic
-echo {} > ionic.config.json
-```
-
-Then you can use this command:
+In order to simplify icon and splash screen creation for each device/OS, you can use this command (make sure the ionic
+tool is installed beforehand with `npm install -g ionic`):
 ```sh
 ionic resources
 ```
