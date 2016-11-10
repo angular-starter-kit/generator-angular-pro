@@ -110,9 +110,6 @@ gulpfile.config.js      gulp tasks configuration
   * [UI Bootsrap](https://angular-ui.github.io/bootstrap)
   * [Bootstrap](http://getbootstrap.com)
   * [Font Awesome](http://fortawesome.github.io/Font-Awesome)
-- ... or Angular Material
-  * [Angular Material](https://material.angularjs.org)
-  * [Font Awesome](http://fortawesome.github.io/Font-Awesome)
 - ... or Ionic
   * [Ionic](http://ionicframework.com/)
 

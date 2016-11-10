@@ -33,10 +33,6 @@
         "name": "Bootstrap (web is your main target)"
       },
       {
-        "value": "material",
-        "name": "Material Design"
-      },
-      {
         "value": "ionic",
         "name": "Ionic (mobile is your main target)"
       }
