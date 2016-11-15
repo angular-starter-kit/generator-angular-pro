@@ -129,23 +129,23 @@ You can disable opening automatically your default browser when using the `serve
 
 #### Quality
 - [TSLint](https://github.com/palantir/tslint)
-- [JSHint](http://jshint.com)
-- [JSCS](http://jscs.info)
+- [HTMLHint](http://htmlhint.com)
 - Unit tests ([Jasmine](http://jasmine.github.io))
 - End-to-end tests ([Protractor](https://github.com/angular/protractor))
 
 #### Development
 - Automation with [gulp](http://gulpjs.com)
+- [Webpack](https://webpack.github.io) build
 - Development server with API proxy and live reload ([BrowserSync](http://www.browsersync.io))
 
 #### Build
 - JS+CSS+HTML bundling and minification ([useref](https://github.com/jonkemp/gulp-useref), 
   [uglify](https://github.com/terinjokes/gulp-uglify), 
-  [htmlmin](https://github.com/jonschlinkert/gulp-htmlmin), 
+  [html-minify](https://github.com/bestander/html-minify-loader), 
   [clean-css](https://www.npmjs.com/package/gulp-clean-css) 
 - CSS browser support ([autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer))
 - Images optimization ([imagemin](https://github.com/sindresorhus/gulp-imagemin))
-- Automatic angular module annotation ([ngAnnotate](https://github.com/Kagami/gulp-ng-annotate))
+- Automatic angular module annotation ([ngAnnotate](https://www.npmjs.com/package/ng-annotate-loader))
 - Asset revisionning ([rev](https://github.com/sindresorhus/gulp-rev))
 
 #### Libraries
