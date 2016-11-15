@@ -14,11 +14,14 @@ function listFiles() {
     devDependencies: true
   });
   return wiredep(wiredepOptions).js
-    .concat([path.join(conf.paths.tmp, '**/*.js')]);
+    .concat([path.join(conf.paths.tmp, '**/*.js'), {
+      pattern: path.join(conf.paths.src, 'images/**/*.*'),
+      included: false
+    }]);
 }
 
 var preprocessors = {};
-preprocessors[path.join(conf.paths.tmp, '**/*.js')] = ['coverage', 'sourcemap'];
+preprocessors[path.join(conf.paths.tmp, '**/*.js')] = global.karmaWatch ? ['sourcemap'] : ['coverage', 'sourcemap'];
 
 module.exports = function(config) {
 
@@ -67,9 +70,10 @@ module.exports = function(config) {
 
     // Coverage configuration
     coverageReporter: {
-      type: 'lcov',
+      type: 'json',
       dir: 'reports/',
-      subdir: 'coverage'
+      subdir: 'coverage',
+      file: 'unmapped.json'
     },
 
     junitReporter: {

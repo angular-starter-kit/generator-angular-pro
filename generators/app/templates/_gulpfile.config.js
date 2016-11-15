@@ -47,6 +47,16 @@ exports.sassIncludePaths = [
 exports.defaultBuildEnvironment = 'production';
 
 /**
+ * Code coverage exclusions for unit tests.
+ */
+exports.coverageExclusions = [
+  'webpack',        // webpack bootstraper files
+  '.html',
+  '.spec.ts',       // unit tests
+  '.controller.ts'  // controllers, as we prefer to test them using end-to-end tests
+];
+
+/**
  * API proxy configuration.
  * With the given example, HTTP request to like $http.get('/api/stuff') will be automatically proxified
  * to the specified server.
