@@ -133,7 +133,7 @@ export class LoggerService {
    * - options {Object?} options Additional log options.
    * @param {!function} observerFunc The observer function.
    */
-  addObserver(observerFunc: IObserverFunction) {
+  addObserver(observerFunc: IObserverFunction): void {
     observers.push(observerFunc);
   }
 
