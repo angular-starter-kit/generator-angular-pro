@@ -6,13 +6,11 @@ language: node_js
 node_js:
   - '4'
   - '5'
+  - '6'
   - stable
 
 matrix:
   fast_finish: true
-  # Only in the meantime npm packages get updated for node v6
-  allow_failures:
-    - node_js: stable
 
 env:
   global:

@@ -1,55 +1,52 @@
-'use strict';
+import {CacheService} from 'cache.service';
 
-/*
- * Tests for cache service.
- */
-describe('cacheService', function() {
+describe('cacheService', () => {
 
-  var cacheService;
+  let cacheService: CacheService;
 
-  beforeEach(function() {
-    module('app');
+  beforeEach(() => {
+    angular.mock.module('app');
 
     // Start fresh :-)
     window.sessionStorage.removeItem('cachedData');
     window.localStorage.removeItem('cachedData');
 
-    inject(function(_cacheService_) {
+    inject((_cacheService_: CacheService) => {
       cacheService = _cacheService_;
     });
   });
 
-  afterEach(function() {
+  afterEach(() => {
     cacheService.cleanCache();
   });
 
-  it('should have a setCacheData method', function() {
+  it('should have a setCacheData method', () => {
     expect(typeof (cacheService.setCacheData)).toBe('function');
   });
 
-  it('should have a getCacheData method', function() {
+  it('should have a getCacheData method', () => {
     expect(typeof (cacheService.getCacheData)).toBe('function');
   });
 
-  it('should have a getCacheDate method', function() {
+  it('should have a getCacheDate method', () => {
     expect(typeof (cacheService.getCacheDate)).toBe('function');
   });
 
-  it('should have a clearCacheData method', function() {
+  it('should have a clearCacheData method', () => {
     expect(typeof (cacheService.clearCacheData)).toBe('function');
   });
 
-  it('should have a cleanCache method', function() {
+  it('should have a cleanCache method', () => {
     expect(typeof (cacheService.cleanCache)).toBe('function');
   });
 
-  it('should have a setPersistence method', function() {
+  it('should have a setPersistence method', () => {
     expect(typeof (cacheService.setPersistence)).toBe('function');
   });
 
-  describe('setCacheData', function() {
+  describe('setCacheData', () => {
 
-    it('should set cache data', function() {
+    it('should set cache data', () => {
       // Act
       cacheService.setCacheData('/popo', null, 'data');
 
@@ -57,7 +54,7 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/popo')).toBe('data');
     });
 
-    it('should replace existing data', function() {
+    it('should replace existing data', () => {
       // Act
       cacheService.setCacheData('/popo', null, 'data');
       cacheService.setCacheData('/popo', null, 'newdata');
@@ -66,9 +63,9 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/popo')).toBe('newdata');
     });
 
-    it('should set cache date correctly', function() {
+    it('should set cache date correctly', () => {
       // Act
-      var date = new Date(123);
+      let date = new Date(123);
       cacheService.setCacheData('/popo', null, 'data', date);
       cacheService.setCacheData('/hoho', null, 'data');
 
@@ -79,13 +76,13 @@ describe('cacheService', function() {
 
   });
 
-  describe('getCacheData', function() {
+  describe('getCacheData', () => {
 
-    it('should return null if no cache', function() {
+    it('should return null if no cache', () => {
       expect(cacheService.getCacheData('/hoho', null)).toBe(null);
     });
 
-    it('should return cached data if exists', function() {
+    it('should return cached data if exists', () => {
       // Act
       cacheService.setCacheData('/hoho', null, 'data');
 
@@ -93,7 +90,7 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/hoho')).toBe('data');
     });
 
-    it('should return cached data with url parameters if exists', function() {
+    it('should return cached data with url parameters if exists', () => {
       // Act
       cacheService.setCacheData('/hoho', {pif: 'paf'}, 'data');
 
@@ -103,15 +100,15 @@ describe('cacheService', function() {
 
   });
 
-  describe('getCacheDate', function() {
+  describe('getCacheDate', () => {
 
-    it('should return null if no cache', function() {
+    it('should return null if no cache', () => {
       expect(cacheService.getCacheDate('/hoho', null)).toBe(null);
     });
 
-    it('should return cached data date  if exists', function() {
+    it('should return cached data date  if exists', () => {
       // Act
-      var date = new Date(123);
+      let date = new Date(123);
       cacheService.setCacheData('/hoho', null, 'data', date);
 
       // Assert
@@ -120,9 +117,9 @@ describe('cacheService', function() {
 
   });
 
-  describe('clearCacheData', function() {
+  describe('clearCacheData', () => {
 
-    it('should clear existing cache data', function() {
+    it('should clear existing cache data', () => {
       // Set cache
       cacheService.setCacheData('/hoho', null, 'data');
       expect(cacheService.getCacheData('/hoho')).toBe('data');
@@ -132,7 +129,7 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/hoho', null)).toBe(null);
     });
 
-    it('should do nothing if no cache exists', function() {
+    it('should do nothing if no cache exists', () => {
       expect(cacheService.getCacheData('/lolo', null)).toBe(null);
       cacheService.clearCacheData('/hoho', null);
       expect(cacheService.getCacheData('/lolo', null)).toBe(null);
@@ -140,9 +137,9 @@ describe('cacheService', function() {
 
   });
 
-  describe('cleanCache', function() {
+  describe('cleanCache', () => {
 
-    it('should clear all cache if no date is specified', function() {
+    it('should clear all cache if no date is specified', () => {
       // Set cache
       cacheService.setCacheData('/hoho', null, 'data');
       cacheService.setCacheData('/popo', null, 'data');
@@ -155,7 +152,7 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/popo', null)).toBe(null);
     });
 
-    it('should clear existing since specified date', function() {
+    it('should clear existing since specified date', () => {
       // Set cache
       cacheService.setCacheData('/hoho', null, 'data');
       expect(cacheService.getCacheData('/hoho')).toBe('data');
@@ -165,13 +162,13 @@ describe('cacheService', function() {
       expect(cacheService.getCacheData('/hoho', null)).toBe(null);
     });
 
-    it('should not affect cache entries newer than specified date', function() {
+    it('should not affect cache entries newer than specified date', () => {
       // Set cache
       cacheService.setCacheData('/hoho', null, 'data');
       expect(cacheService.getCacheData('/hoho')).toBe('data');
 
       // Clean cache
-      var date = new Date();
+      let date = new Date();
       cacheService.setCacheData('/lolo', null, 'data', new Date(date.getTime() + 10));
       cacheService.cleanCache(date);
 
@@ -182,34 +179,34 @@ describe('cacheService', function() {
 
   });
 
-  describe('setPersistence', function() {
+  describe('setPersistence', () => {
 
-    beforeEach(function() {
+    beforeEach(() => {
       cacheService.setPersistence();
       cacheService.cleanCache = jasmine.createSpy('cleanCache');
     });
 
-    it('should clear previous cache data when persistence value change', function() {
+    it('should clear previous cache data when persistence value change', () => {
       cacheService.setPersistence('local');
       expect(cacheService.cleanCache).toHaveBeenCalledWith();
     });
 
-    it('should persist cache to local storage', function() {
-      expect(window.localStorage.cachedData).not.toBeDefined();
+    it('should persist cache to local storage', () => {
+      expect(window.localStorage.getItem('cachedData')).toBeNull();
 
       cacheService.setPersistence('local');
       cacheService.setCacheData('/hoho', null, 'data');
 
-      expect(window.localStorage.cachedData).toBeDefined();
+      expect(window.localStorage.getItem('cachedData')).not.toBeNull();
     });
 
-    it('should persist cache to local storage', function() {
-      expect(window.sessionStorage.cachedData).not.toBeDefined();
+    it('should persist cache to session storage', () => {
+      expect(window.sessionStorage.getItem('cachedData')).toBeNull();
 
       cacheService.setPersistence('session');
       cacheService.setCacheData('/hoho', null, 'data');
 
-      expect(window.sessionStorage.cachedData).toBeDefined();
+      expect(window.sessionStorage.getItem('cachedData')).not.toBeNull();
     });
 
   });

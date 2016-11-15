@@ -9,21 +9,11 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('inject', ['scripts', 'styles', 'fonts', 'partials', 'translations'], function() {
+function inject() {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/**/*.css'),
     path.join('!' + conf.paths.tmp, '/vendor.css')
   ], {read: false});
-
-  var injectScripts = gulp.src([
-      path.join(conf.paths.src, conf.paths.main, '/**/*.js'),
-      path.join(conf.paths.src, '/modules/**/*.js'),
-      path.join(conf.paths.tmp, '/**/*.js'),
-      path.join('!' + conf.paths.tmp, '/libraries/**/*.js'),
-      path.join('!' + conf.paths.src, '/**/*.spec.js'),
-      path.join('!' + conf.paths.src, '/**/*.mock.js')
-    ])
-    .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
   var injectOptions = {
     ignorePath: [conf.paths.src, conf.paths.tmp],
@@ -32,11 +22,14 @@ gulp.task('inject', ['scripts', 'styles', 'fonts', 'partials', 'translations'], 
 
   return gulp.src(path.join(conf.paths.src, 'index.html'))
     .pipe($.inject(injectStyles, injectOptions))
-    .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(_.extend({}, conf.wiredep)))
     .pipe(gulp.dest(conf.paths.tmp));
-});
+}
 
-gulp.task('inject:reload', ['inject'], function() {
+gulp.task('inject', ['scripts', 'styles', 'fonts'], inject);
+
+gulp.task('inject:watch', ['scripts:watch', 'styles', 'fonts'], inject);
+
+gulp.task('inject:reload', ['inject:watch'], function() {
   browserSync.reload();
 });

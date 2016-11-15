@@ -47,6 +47,16 @@ exports.sassIncludePaths = [
 exports.defaultBuildEnvironment = 'production';
 
 /**
+ * Code coverage exclusions for unit tests.
+ */
+exports.coverageExclusions = [
+  'webpack',        // webpack bootstraper files
+  '.html',
+  '.spec.ts',       // unit tests
+  '.controller.ts'  // controllers, as we prefer to test them using end-to-end tests
+];
+
+/**
  * API proxy configuration.
  * With the given example, HTTP request to like $http.get('/api/stuff') will be automatically proxified
  * to the specified server.
@@ -94,9 +104,13 @@ exports.corporateProxyAgent = function() {
 /**
  * Common implementation for an error handler of a gulp plugin.
  */
-exports.errorHandler = function(title) {
+exports.errorHandler = function(title, skipEnd) {
   return function(err) {
-    gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-    this.emit('end');
+    if (title) {
+      gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+    }
+    if (!skipEnd) {
+      this.emit('end');
+    }
   };
 };

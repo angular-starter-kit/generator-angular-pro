@@ -1,5 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5"
-  }
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "types": []
+  },
+  "exclude": [
+    "node_modules",
+    "typings",
+    "sources/libraries",
+    "plugins",
+    "platforms"
+  ]
 }

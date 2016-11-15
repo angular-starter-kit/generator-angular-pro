@@ -68,21 +68,25 @@ styles       | Generate main CSS file using project main style file.
 fonts        | Copy fonts from bower dependencies in dist folder.
 images       | Compress images (using imagemin) then copy them in dist folder.
 other        | Copy project fonts and other misc files in dist folder.
+clean:dist   | Clean the dist folder.
+
+When building your app, you can use the `--debug` flag with any build task to skip the minification process. This can
+be useful to debug your production builds.
 
 <% if (props.target !== 'web') { -%>
 ## Cordova
 
-Task                                  | Description
---------------------------------------|-------------------------------------------------------------------------------
-cordova:build                         | Build the apps for development.
-cordova:release                       | Build the apps and sign them for app store publication.
-cordova:prepare                       | Restore cordova platforms and plugins if needed and prepare for build.
-cordova:remove                        | Remove cordova `plaforms/` and `plugins/` folders.
-cordova:resources                     | Compress resources (using imagemin) then copy in temp folder.
+Task                          | Description
+------------------------------|---------------------------------------------------------------------------------------
+cordova:build                 | Build the apps for development.
+cordova:release               | Build the apps and sign them for app store publication.
+cordova:prepare               | Restore cordova platforms and plugins if needed and prepare for build.
+cordova:remove                | Remove cordova `plaforms/` and `plugins/` folders.
+cordova:resources             | Compress resources (using imagemin) then copy in temp folder.
 build:&lt;ios&#124;android>           | Build the iOS or Android app for development.
 run:&lt;ios&#124;android> [--device]  | Run the iOS or Android app in emulator (or device with the `--device` option).
 release:&lt;ios&#124;android>         | Build the iOS or Android app and sign it for app store publication.
-cordova --command="&lt;command>"      | Executes any cordova command (see [cordova-cli](https://github.com/apache/cordova-cli)).
+cordova --command="&lt;command>" | Executes any cordova command (see [cordova-cli](https://github.com/apache/cordova-cli)).
 
 Note that all the cordova tasks support a `--fast` option that allows to skip the rebuild of the source folder and
 the resources compression. Use it only when your know that the sources have not changed.

@@ -14,6 +14,7 @@ var $ = require('gulp-load-plugins')({
 
 var options = minimist(process.argv.slice(2), {
   string: 'environment',
+  boolean: 'debug',
   alias: { e: 'environment' }
 });
 
@@ -59,27 +60,29 @@ gulp.task('build:sources', ['inject'], function() {
   var jsFilter = $.filter('**/*.js', {restore: true});
   var cssFilter = $.filter('**/*.css', {restore: true});
 
-  return gulp.src(path.join(conf.paths.tmp, 'index.html'))
+  var task = gulp.src(path.join(conf.paths.tmp, 'index.html'))
     .pipe($.replace(/<html/g, '<html ng-strict-di'))
     .pipe($.useref())
-    .pipe($.if('**/app*.js', $.intercept(setEnvironment)))
-    .pipe(jsFilter)
-    .pipe($.ngAnnotate())
-    .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
-    .pipe($.rev())
-    .pipe(jsFilter.restore)
-    .pipe(cssFilter)
-    .pipe($.cleanCss({processImport: false}))
-    .pipe($.rev())
-    .pipe(cssFilter.restore)
-    .pipe($.revReplace())
-    .pipe(htmlFilter)
-    .pipe($.htmlmin({
-      removeComments: true,
-      collapseWhitespace: true
-    }))
-    .pipe(htmlFilter.restore)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
+    .pipe($.if('**/app*.js', $.intercept(setEnvironment)));
+
+  if (!options.debug) {
+    task = task.pipe(jsFilter)
+      .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
+      .pipe($.rev())
+      .pipe(jsFilter.restore)
+      .pipe(cssFilter)
+      .pipe($.cleanCss({processImport: false}))
+      .pipe($.rev())
+      .pipe(cssFilter.restore)
+      .pipe($.revReplace())
+      .pipe(htmlFilter)
+      .pipe($.htmlmin({
+        removeComments: true,
+        collapseWhitespace: true
+      }))
+      .pipe(htmlFilter.restore);
+  }
+  return task.pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({title: path.join(conf.paths.dist, '/'), showFiles: true}));
 });
 
@@ -110,6 +113,10 @@ gulp.task('other', ['fonts'], function() {
 });
 
 gulp.task('build', ['build:sources', 'other', 'images']);
+
+gulp.task('clean:dist', function() {
+  return $.del(conf.paths.dist);
+});
 
 gulp.task('clean', ['images:clean-cache'], function() {
   return $.del([conf.paths.dist, conf.paths.tmp]);

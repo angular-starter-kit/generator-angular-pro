@@ -1,33 +1,31 @@
-'use strict';
+import {LoggerService} from 'logger';
 
-/*
- * Tests for logger.
- */
-describe('logger', function() {
+describe('logger', () => {
 
-  var logger;
+  let logger;
 
-  beforeEach(function() {
-    module('app');
+  beforeEach(() => {
+    angular.mock.module('app');
 
-    inject(function(_logger_) {
+    inject((_logger_: LoggerService) => {
       logger = _logger_;
     });
   });
 
-  describe('addObserver', function() {
+  describe('addObserver', () => {
 
-    it('should add a new observer to be notified of log entry', function() {
+    it('should add a new observer to be notified of log entry', () => {
       // Arrange
-      var observerSpy = jasmine.createSpy('observerSpy');
+      let observerSpy = jasmine.createSpy('observerSpy');
 
       // Act
       logger.addObserver(observerSpy);
-      logger = logger.getLogger('unit test');
-      logger.log('hoho');
-      logger.info('toto');
-      logger.warning('popo');
-      logger.error('lolo');
+
+      let loggerInstance = logger.getLogger('unit test');
+      loggerInstance.log('hoho');
+      loggerInstance.info('toto');
+      loggerInstance.warning('popo');
+      loggerInstance.error('lolo');
 
       // Assert
       expect(observerSpy).toHaveBeenCalled();
@@ -38,17 +36,17 @@ describe('logger', function() {
       expect(observerSpy).toHaveBeenCalledWith('lolo', 'unit test', 'error', undefined);
     });
 
-    it('should add a new observer to be notified of log entry with no source', function() {
+    it('should add a new observer to be notified of log entry with no source', () => {
       // Arrange
-      var observerSpy = jasmine.createSpy('observerSpy');
+      let observerSpy = jasmine.createSpy('observerSpy');
 
       // Act
       logger.addObserver(observerSpy);
-      logger = logger.getLogger();
-      logger.log('hoho');
-      logger.info('toto');
-      logger.warning('popo');
-      logger.error('lolo');
+      let loggerInstance = logger.getLogger();
+      loggerInstance.log('hoho');
+      loggerInstance.info('toto');
+      loggerInstance.warning('popo');
+      loggerInstance.error('lolo');
 
       // Assert
       expect(observerSpy).toHaveBeenCalled();
