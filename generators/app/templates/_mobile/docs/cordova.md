@@ -84,8 +84,8 @@ Here is an example configuration:
 {
   "ios": {
     "release": {
-      "codeSignIdentity": "iPhone Distribution",
-      "provisioningProfile": "your_profile_guid"
+      "developmentTeam": "your_team_id",
+      "codeSignIdentity": "iPhone Distribution"
     }
   },
   "android": {
@@ -175,6 +175,12 @@ To add or remove Crosswalk:
 gulp cordova --command="plugin <add|remove> cordova-plugin-crosswalk-webview --save"
 ```
 
+By default, build commands will generate separate packages for x86 ad ARM architecture, to reduce download sizes.
+This behavior can be change to build a single package by modifying this line in `config.xml`:
+```xml
+<variable name="XWALK_MULTIPLEAPK" value="true" /> <!-- Change to "false" to build single APK -->
+```
+
 ### Using WKWebView on iOS
 
 The [WKWebView plugin](https://github.com/apache/cordova-plugin-wkwebview-engine) makes use of the new `WKWebView`
@@ -232,8 +238,10 @@ If you use a corporate proxy that intercepts HTTPS requests with a custom certif
 Make sure you have write access to your JRE (you may need `sudo` on Linux and OS X), then use the `keytool` utility to
 import it:
 ```sh
-keytool -importcert -alias <an_alias> -keystore <path_to_jre>/lib/security/cacerts -file <certificate_file>
+keytool -importcert -alias <an_alias> -keystore <java_home>/jre/lib/security/cacerts -file <certificate_file>
 ```
+
+The default password for the `cacerts` file is `changeit`.
 
 On OS X >10.9, you can use this command to find your java home:
 ```sh
