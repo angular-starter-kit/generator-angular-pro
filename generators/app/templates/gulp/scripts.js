@@ -14,7 +14,8 @@ function buildScripts(watch, test, done) {
       modulesDirectories: [
         '.',
         conf.paths.main,
-        'libraries'
+        'libraries',
+        conf.paths.src
       ],
       extensions: ['', '.ts']
     },
@@ -22,11 +23,18 @@ function buildScripts(watch, test, done) {
     watch: watch,
     devtool: watch || test ? 'inline-source-map' : undefined,
     module: {
-      preLoaders: [{
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'tslint'
-      }],
+      preLoaders: [
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loader: 'tslint'
+        },
+        {
+          test: /\.html/,
+          loader: 'htmlhint',
+          exclude: /node_modules/
+        }
+      ],
       loaders: [
         {
           test: /\.ts$/,
@@ -60,7 +68,11 @@ function buildScripts(watch, test, done) {
       }
     },
     tslint: {
-      emitErrors: true
+      emitErrors: !watch,
+      failOnHint: !watch
+    },
+    htmlhint: {
+      configFile: '.htmlhintrc'
     }
   };
 
