@@ -68,6 +68,7 @@ styles       | Generate main CSS file using project main style file.
 fonts        | Copy fonts from bower dependencies in dist folder.
 images       | Compress images (using imagemin) then copy them in dist folder.
 other        | Copy project fonts and other misc files in dist folder.
+extra        | Copy extra non-project files as specified in `gulpfile.config.js`.
 clean:dist   | Clean the dist folder.
 
 When building your app, you can use the `--debug` flag with any build task to skip the minification process. This can
