@@ -38,8 +38,8 @@ function update_repo() {
         git tag -a v$VERSION+$BRANCH -m "v$VERSION+$BRANCH";
     fi
 
-    git push $REPOSITORY $BRANCH
-    git push $REPOSITORY $BRANCH --tags
+    git push $REPOSITORY HEAD:$BRANCH
+    git push $REPOSITORY HEAD:$BRANCH --tags
 
     cleanup
 }
