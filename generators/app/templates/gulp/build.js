@@ -101,7 +101,7 @@ gulp.task('extra', function() {
 
   conf.extraFiles.forEach(function(e) {
     var files = e.files.map(function (file) {
-      return path.join(e.baseDir, file);
+      return path.join(e.basePath, file);
     });
     var task = gulp.src(files, { base: e.basePath })
       .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
