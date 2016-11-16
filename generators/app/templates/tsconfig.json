@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "baseUrl": "sources/main",
     "module": "commonjs",
+    "moduleResolution": "classic",
     "sourceMap": true,
     "types": []
   },
