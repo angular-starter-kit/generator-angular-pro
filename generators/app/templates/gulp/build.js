@@ -95,7 +95,23 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/fonts/')));
 });
 
-gulp.task('other', ['fonts'], function() {
+// Extra arbitrary files as configured
+gulp.task('extra', function() {
+  var stream = require('merge-stream')();
+
+  conf.extraFiles.forEach(function(e) {
+    var files = e.files.map(function (file) {
+      return path.join(e.basePath, file);
+    });
+    var task = gulp.src(files, { base: e.basePath })
+      .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+    stream.add(task);
+  });
+
+  return stream.isEmpty() ? null : stream;
+});
+
+gulp.task('other', ['fonts', 'extra'], function() {
   var fileFilter = $.filter(function(file) {
     return file.stat.isFile();
   });

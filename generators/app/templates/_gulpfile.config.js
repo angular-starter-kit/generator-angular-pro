@@ -47,6 +47,16 @@ exports.sassIncludePaths = [
 exports.defaultBuildEnvironment = 'production';
 
 /**
+ * Extra files that will be copied as-is in the dist folder.
+ * Each entry is an object with the form:
+ * {
+ *   basePath: <files path will be relative to this directory>,
+ *   files: <array of minimatch patterns>
+ * }
+ */
+exports.extraFiles = [];
+
+/**
  * Code coverage exclusions for unit tests.
  */
 exports.coverageExclusions = [
