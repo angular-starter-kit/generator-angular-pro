@@ -6,6 +6,7 @@ import {ILogger, LoggerService} from 'helpers/logger/logger';
  */
 export class AnalyticsService {
 
+  private logger: ILogger;
   private analyticsAreActive = false;
 
   constructor(private $window: ng.IWindowService,
@@ -17,27 +18,14 @@ export class AnalyticsService {
     this.init();
   }
 
-  private createGoogleAnalyticsObject(i, s, o, g, r, a?, m?) {
-    i.GoogleAnalyticsObject = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments);
-    };
-    i[r].l = new Date();
-    a = s.createElement(o);
-    m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-  }
-
   /**
    * Tracks a page change in google analytics.
    * @param {String} url The url of the new page.
    */
   trackPage (url: string) {
     if (this.analyticsAreActive) {
-      var urlWithoutParams = url;
-      var split = url.split('?');
+      let urlWithoutParams = url;
+      let split = url.split('?');
       if (split.length > 1) {
         urlWithoutParams = split[0];
       }
@@ -57,13 +45,26 @@ export class AnalyticsService {
     }
   }
 
-  init(): void {
-    if (config.analyticsAccount !== null) {
-      var analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
+  private init(): void {
+    if (this.config.analyticsAccount !== null) {
+      let analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
       this.createGoogleAnalyticsObject(window, document, 'script', analyticsScriptUrl, 'googleAnalytics');
       this.$window.googleAnalytics('create', config.analyticsAccount, 'auto');
       this.analyticsAreActive = true;
     }
+  }
+
+  private createGoogleAnalyticsObject(i, s, o, g, r, a?, m?) {
+    i.GoogleAnalyticsObject = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments);
+    };
+    i[r].l = new Date();
+    a = s.createElement(o);
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
   }
 }
 

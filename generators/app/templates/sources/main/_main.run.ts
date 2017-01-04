@@ -1,6 +1,7 @@
 import app from 'main.module';
 import {IApplicationConfig} from 'main.constants';
 import {RestService} from 'helpers/rest/rest.service';
+import {AnalyticsService} from 'helpers/analytics/analytics.service';
 <% if (props.target !== 'web') { -%>
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 <% } -%>
