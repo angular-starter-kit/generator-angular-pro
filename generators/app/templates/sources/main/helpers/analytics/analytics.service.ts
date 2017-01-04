@@ -1,5 +1,6 @@
 import app from 'main.module';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
+import {IApplicationConfig} from 'main.constants'
 
 interface IWindowWithAnalytics extends ng.IWindowService {
   googleAnalytics: any;
