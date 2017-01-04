@@ -1,6 +1,10 @@
 import app from 'main.module';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 
+interface IWindowWithAnalytics extends ng.IWindowService {
+  googleAnalytics: any;
+}
+
 /**
  * Analytics service: insert Google Analytics library in the page.
  */
@@ -9,7 +13,7 @@ export class AnalyticsService {
   private logger: ILogger;
   private analyticsAreActive = false;
 
-  constructor(private $window: ng.IWindowService,
+  constructor(private $window: IWindowWithAnalytics,
               private config: IApplicationConfig,
               logger: LoggerService) {
 
@@ -49,12 +53,12 @@ export class AnalyticsService {
     if (this.config.analyticsAccount !== null) {
       let analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
       this.createGoogleAnalyticsObject(window, document, 'script', analyticsScriptUrl, 'googleAnalytics');
-      this.$window.googleAnalytics('create', config.analyticsAccount, 'auto');
+      this.$window.googleAnalytics('create', this.config.analyticsAccount, 'auto');
       this.analyticsAreActive = true;
     }
   }
 
-  private createGoogleAnalyticsObject(i, s, o, g, r, a?, m?) {
+  private createGoogleAnalyticsObject(i: any, s: any, o: any, g: any, r: any, a?: any, m?: any) {
     i.GoogleAnalyticsObject = r;
     i[r] = i[r] || function () {
       (i[r].q = i[r].q || []).push(arguments);
