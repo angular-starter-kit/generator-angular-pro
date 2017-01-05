@@ -5,7 +5,7 @@ export interface IApplicationConfig {
   version: string;
   environment: IApplicationEnvironment;
   supportedLanguages: Array<string>;
-  analyticsAccount: string;
+  googleAnayticsId: string;
 }
 
 export interface IApplicationEnvironment {
@@ -59,9 +59,9 @@ let config: IApplicationConfig = {
     'fr-FR'
   ],
 
-  // Google Analytics account. Leave null to not have any analytics active.
-  // Typical values take the form 'UA-########-1'.
-  analyticsAccount: null
+  // Google Analytics account. Leave null to not have any analytics active. Typical values take the form 'UA-########-1'.
+  // You can use something along the lines of < this.environment.debug ? null : 'UA-########-1' >
+  googleAnayticsId: null
 
 };
 
