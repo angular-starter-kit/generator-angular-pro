@@ -5,11 +5,11 @@ export interface IApplicationConfig {
   version: string;
   environment: IApplicationEnvironment;
   supportedLanguages: Array<string>;
-  googleAnayticsId: string;
 }
 
 export interface IApplicationEnvironment {
   debug: boolean;
+  googleAnayticsId: string;
   server: IServerConfig;
 }
 
@@ -20,6 +20,10 @@ let environment = {
   local: {
     debug: true,
 
+    // Google Analytics account. Leave null to not have any analytics active.
+    // Typical values are of the form 'UA-########-1', where each # is a digit.
+    googleAnayticsId: null,
+
     // REST backend configuration, used for all web services using restService
     server: {
       url: '',
@@ -28,6 +32,7 @@ let environment = {
   },
   production: {
     debug: false,
+    googleAnayticsId: null,
     server: {
 <% if (props.target === 'web') { -%>
       url: '',
@@ -57,12 +62,7 @@ let config: IApplicationConfig = {
   supportedLanguages: [
     'en-US',
     'fr-FR'
-  ],
-
-  // Google Analytics account. Leave null to not have any analytics active.
-  // Typical values take the form 'UA-########-1'.
-  // Advice : this value may be handled by the gulp build task to use different accounts for development and production.
-  googleAnayticsId: null
+  ]
 
 };
 

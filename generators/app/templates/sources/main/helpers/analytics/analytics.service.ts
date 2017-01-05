@@ -1,6 +1,6 @@
 import app from 'main.module';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
-import {IApplicationConfig} from 'main.constants';
+import {IApplicationEnvironment} from 'main.constants';
 
 const analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
 
@@ -17,7 +17,7 @@ export class AnalyticsService {
   private analyticsAreActive = false;
 
   constructor(private $window: IWindowWithAnalytics,
-              private config: IApplicationConfig,
+              private config: IApplicationEnvironment,
               logger: LoggerService) {
 
     this.logger = logger.getLogger('analyticsService');
