@@ -2,8 +2,10 @@ import app from 'main.module';
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 import {IApplicationConfig} from 'main.constants';
 
+const analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
+
 interface IWindowWithAnalytics extends ng.IWindowService {
-  googleAnalytics: any;
+  ga: any;
 }
 
 /**
@@ -34,7 +36,7 @@ export class AnalyticsService {
       if (split.length > 1) {
         urlWithoutParams = split[0];
       }
-      this.$window.googleAnalytics('send', 'pageview', urlWithoutParams);
+      this.$window.ga('send', 'pageview', urlWithoutParams);
     }
   }
 
@@ -46,15 +48,19 @@ export class AnalyticsService {
    */
   trackEvent (category: string, action: string, label?: string) {
     if (this.analyticsAreActive) {
-      this.$window.googleAnalytics('send', 'event', category, action, label);
+      this.$window.ga('send', 'event', category, action, label);
+      let logMessage = 'Event tracked: ' + category + ' | ' + action;
+      if (label) {
+        logMessage += ' | ' + label;
+      }
+      this.logger.log(logMessage);
     }
   }
 
   private init(): void {
-    if (this.config.analyticsAccount !== null) {
-      let analyticsScriptUrl = '//www.google-analytics.com/analytics.js';
-      this.createGoogleAnalyticsObject(window, document, 'script', analyticsScriptUrl, 'googleAnalytics');
-      this.$window.googleAnalytics('create', this.config.analyticsAccount, 'auto');
+    if (this.config.googleAnayticsId !== null) {
+      this.createGoogleAnalyticsObject(this.$window, document, 'script', analyticsScriptUrl, 'ga');
+      this.$window.ga('create', this.config.googleAnayticsId, 'auto');
       this.analyticsAreActive = true;
     }
   }

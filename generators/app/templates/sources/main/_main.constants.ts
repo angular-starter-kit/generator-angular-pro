@@ -5,7 +5,7 @@ export interface IApplicationConfig {
   version: string;
   environment: IApplicationEnvironment;
   supportedLanguages: Array<string>;
-  analyticsAccount: string;
+  googleAnayticsId: string;
 }
 
 export interface IApplicationEnvironment {
@@ -61,7 +61,8 @@ let config: IApplicationConfig = {
 
   // Google Analytics account. Leave null to not have any analytics active.
   // Typical values take the form 'UA-########-1'.
-  analyticsAccount: null
+  // Advice : this value may be handled by the gulp build task to use different accounts for development and production.
+  googleAnayticsId: null
 
 };
 
