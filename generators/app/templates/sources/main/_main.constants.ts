@@ -9,6 +9,7 @@ export interface IApplicationConfig {
 
 export interface IApplicationEnvironment {
   debug: boolean;
+  googleAnayticsId: string;
   server: IServerConfig;
 }
 
@@ -19,6 +20,10 @@ let environment = {
   local: {
     debug: true,
 
+    // Google Analytics account. Leave null to not have any analytics active.
+    // Typical values are of the form 'UA-########-1', where each # is a digit.
+    googleAnayticsId: null,
+
     // REST backend configuration, used for all web services using restService
     server: {
       url: '',
@@ -27,6 +32,7 @@ let environment = {
   },
   production: {
     debug: false,
+    googleAnayticsId: null,
     server: {
 <% if (props.target === 'web') { -%>
       url: '',

@@ -1,6 +1,7 @@
 import app from 'main.module';
 import {IApplicationConfig} from 'main.constants';
 import {RestService} from 'helpers/rest/rest.service';
+import {AnalyticsService} from 'helpers/analytics/analytics.service';
 <% if (props.target !== 'web') { -%>
 import {ILogger, LoggerService} from 'helpers/logger/logger';
 <% } -%>
@@ -11,6 +12,7 @@ import {ILogger, LoggerService} from 'helpers/logger/logger';
  */
 function main($window: ng.IWindowService,
               $locale: ng.ILocaleService,
+              $location: ng.ILocationService,
               $rootScope: any,
               $state: angular.ui.IStateService,
 <% if (props.target !== 'web') { -%>
@@ -26,7 +28,8 @@ function main($window: ng.IWindowService,
 <% if (props.target !== 'web') { -%>
               logger: LoggerService,
 <% } -%>
-              restService: RestService) {
+              restService: RestService,
+              analyticsService: AnalyticsService) {
 
   /*
    * Root view model
@@ -82,6 +85,21 @@ function main($window: ng.IWindowService,
    */
   vm.$on('gettextLanguageChanged', () => {
     updateTitle($state.current.data ? $state.current.data.title : null);
+  });
+
+  /**
+   * Enables tracking by analytics service.
+   */
+  // HACK : ignore the first $viewContentLoaded event because it's actually fired once when uiView is instantiated,
+  // and then it's fired a second time after is has been linked. This is "by design" :-/
+  // (http://stackoverflow.com/questions/31000417/angular-js-viewcontentloaded-loading-twice-on-initial-homepage-load)
+  let loadedOnce = false;
+  vm.$on('$viewContentLoaded', function () {
+    if (!loadedOnce) {
+      loadedOnce = true;
+    } else if (analyticsService) {
+      analyticsService.trackPage($location.url());
+    }
   });
 
   init();
