@@ -1,8 +1,9 @@
-sudo: true
+sudo: required
+dist: trusty
 git:
   depth: 1
 
-language: android
+language: node_js
 node_js:
   - '4'
   - '5'
