@@ -1,6 +1,7 @@
 {
   "name": "<%= props.projectName %>",
   "globalDependencies": {
+    "angular": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "webpack-env": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack-env.d.ts#544a35a10866b32afda9c7f029c0764558563f4f",
     "angular-ui-router": "github:DefinitelyTyped/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "angular-gettext": "github:DefinitelyTyped/DefinitelyTyped/angular-gettext/angular-gettext.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
@@ -10,6 +11,30 @@
     "angular-animate": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-animate.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "angular-sanitize": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-sanitize.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
-    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2"
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2"<% if (props.target !== 'web') { %>,
+    "ionic": "github:DefinitelyTyped/DefinitelyTyped/ionic/ionic.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "cordova": "github:DefinitelyTyped/DefinitelyTyped/cordova/cordova.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "BatteryStatus": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/BatteryStatus.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Contacts": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Contacts.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Camera": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Camera.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Dialogs": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Dialogs.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Device": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Device.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "DeviceOrientation": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/DeviceOrientation.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "DeviceMotion": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/DeviceMotion.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "FileSystem": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/FileSystem.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "FileTransfer": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/FileTransfer.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Globalization": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Globalization.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Media": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Media.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "InAppBrowser": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/InAppBrowser.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "MediaCapture": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/MediaCapture.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Splashscreen": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Splashscreen.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "NetworkInformation": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/NetworkInformation.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "StatusBar": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/StatusBar.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Vibration": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Vibration.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "WebSQL": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/WebSQL.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Push": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Push.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Keyboard.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "cordova-ionic": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/cordova-ionic.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/plugins/keyboard.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2"<% } %>
   }
 }
