@@ -17,11 +17,11 @@ const excludeFiles = [
 ];
 
 const nameRules = {
-  _mobile:    function(props) { return props.target !== 'web'; },
-  _web:       function(props) { return props.target !== 'mobile'; },
-  _bootstrap: function(props) { return props.ui === 'bootstrap'; },
-  _material:  function(props) { return props.ui === 'material'; },
-  _ionic:     function(props) { return props.ui === 'ionic'; }
+  _mobile:    (props) => props.target !== 'web',
+  _web:       (props) => props.target !== 'mobile',
+  _bootstrap: (props) => props.ui === 'bootstrap',
+  _material:  (props) => props.ui === 'material',
+  _ionic:     (props) => props.ui === 'ionic'
 };
 
 module.exports = class extends Generator {
