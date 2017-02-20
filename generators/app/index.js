@@ -57,7 +57,7 @@ module.exports = class extends Generator {
 
   ask() {
     let processProps = (props) => {
-      props.appName = props.appName || this.appName;
+      props.appName = props.appName || this.options.appName;
       props.projectName = _.kebabCase(props.appName);
 
       this.props = props;
@@ -71,7 +71,7 @@ module.exports = class extends Generator {
       let namePrompt = _.find(prompts, {name: 'appName'});
       namePrompt.default = path.basename(process.cwd());
       namePrompt.when = () => {
-        return !this.appName;
+        return !this.options.appName;
       };
 
       // Use prompts from json
