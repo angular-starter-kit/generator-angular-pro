@@ -164,7 +164,7 @@ module.exports = class extends Generator {
       skipMessage: this.options['skip-message'],
       callback: () => {
         if (!this.options['skip-install']) {
-          this.spawnCommandSync('gulp', ['tsd:restore']);
+          this.spawnCommandSync('gulp', ['typings:restore']);
 
           // Prepare Cordova platforms
           if (this.props.target !== 'web') {

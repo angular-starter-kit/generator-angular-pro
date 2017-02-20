@@ -1,5 +1,3 @@
-/// <reference path="../../typings/tsd.d.ts" />
-
 'use strict';
 
 // Translations are injected at build phase
