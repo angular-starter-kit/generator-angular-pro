@@ -2,7 +2,7 @@ sudo: true
 git:
   depth: 1
 
-language: node_js
+language: android
 node_js:
   - '4'
   - '5'
