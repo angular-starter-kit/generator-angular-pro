@@ -18,6 +18,6 @@
     "type": "String",
     "required": false,
     "desc": "Automate prompt answers using the specified JSON file",
-    "defaults": null
+    "defaults": ""
   }
 ]
