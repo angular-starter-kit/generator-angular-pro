@@ -1,67 +1,50 @@
 'use strict';
 
 var gulp = require('gulp');
-var conf = require('../gulpfile.config');
+var process = require('child_process');
 var gutil = require('gulp-util');
+var typings = require('../typings.json');
 
-var path = require('path');
-var tsd = require('tsd');
+var $ = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'del']
+});
 
-var tsdJson = 'tsd.json';
-var tsdApi = new tsd.getAPI(tsdJson);
-
-gulp.task('tsd', function() {
-  var bower = require(path.join(process.cwd(), 'bower.json'));
-
-  var dependencies = [].concat(
-    Object.keys(bower.dependencies),
-    Object.keys(bower.devDependencies)
-  );
-
-  var query = new tsd.Query();
-  dependencies.forEach(function(dependency) {
-    query.addNamePattern(dependency);
+gulp.task('typings', ['typings:restore'], function(done) {
+  // Adapted from https://gist.github.com/ibratoev/0caca1b3b7a122595523f790e2620301
+  process.exec('typings ls', function(error, _, stderr) {
+    if (error) {
+      done(new gutil.PluginError('typings', 'Error: ' + error));
+      return;
+    }
+    if (stderr) {
+      var lines = stderr.match(/[^\r\n]+/g);
+      lines.forEach(function(line) {
+        var re = /registry:(\S*)\/(\S*)(#|$)/;
+        var m = re.exec(line);
+        if (m !== null) {
+          var source = m[1];
+          var name = m[2];
+          var isGlobal = typings.globalDependencies && typings.globalDependencies[name];
+          var isLocal = typings.dependencies && typings.dependencies[name];
+          if (isGlobal === isLocal) {
+            gutil.log('Error searching for typings: ' + name);
+            return;
+          }
+          gutil.log('Updating typings for ' + name);
+          process.execSync('typings i ' + source + '~' + name + ' -S ' + (isGlobal ? '-G' : ''));
+        }
+      });
+      done();
+    }
+    else {
+      gutil.log('Typings are up to date.');
+      done();
+    }
   });
-
-  var options = new tsd.Options();
-  options.resolveDependencies = true;
-  options.overwriteFiles = true;
-  options.saveBundle = true;
-  options.saveToConfig = true;
-
-  return tsdApi.readConfig()
-    .then(function() {
-      return tsdApi.select(query, options);
-    })
-    .then(function(selection) {
-      return tsdApi.install(selection, options);
-    })
-    .then(function(installResult) {
-      var written = Object.keys(installResult.written.dict);
-      var removed = Object.keys(installResult.removed.dict);
-      var skipped = Object.keys(installResult.skipped.dict);
-
-      written.forEach(function(dts) {
-        gutil.log('Definition file written: ' + dts);
-      });
-
-      removed.forEach(function(dts) {
-        gutil.log('Definition file removed: ' + dts);
-      });
-
-      skipped.forEach(function(dts) {
-        gutil.log('Definition file skipped: ' + dts);
-      });
-    });
 });
 
-gulp.task('tsd:restore', function() {
-  return tsdApi.readConfig()
-    .then(function() {
-      return tsdApi.reinstall(new tsd.Options());
-    })
-});
+gulp.task('typings:restore', $.shell.task('typings install'));
 
-gulp.task('tsd:clean', function() {
-  return tsdApi.purge(true, true);
+gulp.task('typings:clean', function() {
+  return $.del(['typings']);
 });

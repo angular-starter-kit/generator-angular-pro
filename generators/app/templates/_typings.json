@@ -1,0 +1,15 @@
+{
+  "name": "<%= props.projectName %>",
+  "globalDependencies": {
+    "webpack-env": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack-env.d.ts#544a35a10866b32afda9c7f029c0764558563f4f",
+    "angular-ui-router": "github:DefinitelyTyped/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "angular-gettext": "github:DefinitelyTyped/DefinitelyTyped/angular-gettext/angular-gettext.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "jasmine-jquery": "github:DefinitelyTyped/DefinitelyTyped/jasmine-jquery/jasmine-jquery.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "angular-mocks": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-mocks.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "angular-animate": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-animate.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "angular-sanitize": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-sanitize.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2"
+  }
+}

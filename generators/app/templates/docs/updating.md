@@ -1,27 +1,3 @@
-# Updating typings
-
-```sh
-$ npm uninstall tsd && rm -rf typings && npm install typings && typings init --upgrade && rm tsd.json && typings install
-```
-
-- Change add ```files``` entry to ```tsconfig.json``` as follows:
-```
-{
-  "compilerOptions": {
-    ...
-  },
-  "files":[
-    "typings/index.d.ts"
-  ],
-  "exclude": [
-    ...
-  ]
-}
-```
-
-- Remove the first line ```/// <reference path="../../typings/tsd.d.ts" />``` from ```sources/main/main.module.ts```
-
-
 # Updating npm dependencies
 
 - Install update tool (if not already done)

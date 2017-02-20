@@ -70,10 +70,10 @@
     "remap-istanbul": "^0.6.4",
     "require-dir": "~0.3.0",
     "ts-loader": "^2.0.0",
-    "tsd": "~0.6.5",
     "tslint": "^4.4.2",
     "tslint-loader": "^3.4.2",
     "typescript": "^2.0.3",
+    "typings": "^2.1.0",
     "uglify-save-license": "~0.4.1",
     "webpack-stream": "^3.1.0",
     "wiredep": "^4.0.0"
