@@ -112,6 +112,16 @@ function buildScripts(watch, test, done) {
   if (!test) {
     sources.push(path.join('!' + conf.paths.src, '/**/*.spec.ts'));
     sources.push(path.join('!' + conf.paths.src, '/**/*.mock.ts'));
+  } else {
+    var exclusions = '';
+    conf.coverageExclusions.forEach(function(exclusion) {
+      exclusions += '|' + exclusion + '$';
+    });
+    options.module.postLoaders = [{
+      test: /\.ts$/,
+      exclude: new RegExp('(node_modules' + exclusions + ')'),
+      loader: 'istanbul-instrumenter-loader'
+    }];
   }
 
   return gulp.src(sources)

@@ -60,10 +60,8 @@ exports.extraFiles = [];
  * Code coverage exclusions for unit tests.
  */
 exports.coverageExclusions = [
-  'webpack',        // webpack bootstraper files
-  '.html',
-  '.spec.ts',       // unit tests
-  '.controller.ts'  // controllers, as we prefer to test them using end-to-end tests
+  '.spec.ts$',        // unit tests
+  '.controller.ts$',  // controllers, as we prefer to test them using end-to-end tests
 ];
 
 /**

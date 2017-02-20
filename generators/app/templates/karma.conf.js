@@ -20,9 +20,6 @@ function listFiles() {
     }]);
 }
 
-var preprocessors = {};
-preprocessors[path.join(conf.paths.tmp, '**/*.js')] = global.karmaWatch ? ['sourcemap'] : ['coverage', 'sourcemap'];
-
 module.exports = function(config) {
 
   var configuration = {
@@ -57,23 +54,22 @@ module.exports = function(config) {
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',
-      'karma-coverage',
+      'karma-coverage-istanbul-reporter',
       'karma-junit-reporter',
       'karma-sourcemap-loader'
     ],
 
     // A map of preprocessors to use
-    preprocessors: preprocessors,
+    preprocessors: ['sourcemap'],
 
     // List of reporters
-    reporters: ['coverage', 'junit', 'progress'],
+    reporters: ['progress', 'junit', 'coverage-istanbul'],
 
     // Coverage configuration
-    coverageReporter: {
-      type: 'json',
-      dir: 'reports/',
-      subdir: 'coverage',
-      file: 'unmapped.json'
+    coverageIstanbulReporter: {
+      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: 'reports/coverage',
+      fixWebpackSourcePaths: true
     },
 
     junitReporter: {
