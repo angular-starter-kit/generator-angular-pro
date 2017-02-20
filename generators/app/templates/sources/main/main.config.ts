@@ -7,6 +7,7 @@ import {ILogger} from 'helpers/logger/logger';
  */
 function mainConfig($provide: ng.auto.IProvideService,
                     $compileProvider: ng.ICompileProvider,
+                    $locationProvider: ng.ILocationProvider,
                     config: IApplicationConfig) {
 
   // Extend the $exceptionHandler service to output logs.
@@ -31,6 +32,8 @@ function mainConfig($provide: ng.auto.IProvideService,
   // Disable angular debug info in production version
   $compileProvider.debugInfoEnabled(config.environment.debug);
 
+  // Use no hash prefix for routing
+  $locationProvider.hashPrefix('');
 }
 
 app.config(mainConfig);
