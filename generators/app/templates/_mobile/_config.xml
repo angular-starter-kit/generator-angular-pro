@@ -101,7 +101,7 @@
   <plugin name="cordova-plugin-device" spec="~1.1.3" />
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.0" />
   <plugin name="cordova-plugin-globalization" spec="~1.0.4" />
-  <plugin name="cordova-plugin-crosswalk-webview" spec="~2.2.0">
+  <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0">
     <variable name="XWALK_VERSION" value="22+" />
     <variable name="XWALK_LITEVERSION" value="xwalk_core_library_canary:17+" />
     <variable name="XWALK_COMMANDLINE" value="--disable-pull-to-refresh-effect" />
@@ -110,6 +110,6 @@
   </plugin>
   <plugin name="cordova-plugin-whitelist" spec="~1.3.0" />
   <plugin name="cordova-plugin-wkwebview-engine" spec="~1.1.0" />
-  <plugin name="cordova-custom-config" spec="~3.0.11" />
+  <plugin name="cordova-custom-config" spec="~3.1.2" />
 
 </widget>

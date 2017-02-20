@@ -1,33 +1,33 @@
 'use strict';
 
-var _ = require('lodash');
-var yosay = require('yosay');
-var chalk = require('chalk');
-var dir = require('node-dir');
-var path = require('path');
-var generators = require('yeoman-generator');
+const _ = require('lodash');
+const yosay = require('yosay');
+const chalk = require('chalk');
+const dir = require('node-dir');
+const path = require('path');
+const Generator = require('yeoman-generator');
 
-var options = require('./options.json');
-var prompts = require('./prompts.json');
-var pkg = require('../../package.json');
+const options = require('./options.json');
+const prompts = require('./prompts.json');
+const pkg = require('../../package.json');
 
-var excludeFiles = [
+const excludeFiles = [
   '.DS_Store',
   'Thumbs.db'
 ];
 
-var nameRules = {
-  _mobile:    function(props) { return props.target !== 'web'; },
-  _web:       function(props) { return props.target !== 'mobile'; },
-  _bootstrap: function(props) { return props.ui === 'bootstrap'; },
-  _material:  function(props) { return props.ui === 'material'; },
-  _ionic:     function(props) { return props.ui === 'ionic'; }
+const nameRules = {
+  _mobile:    (props) => props.target !== 'web',
+  _web:       (props) => props.target !== 'mobile',
+  _bootstrap: (props) => props.ui === 'bootstrap',
+  _material:  (props) => props.ui === 'material',
+  _ionic:     (props) => props.ui === 'ionic'
 };
 
-var Generator = generators.Base.extend({
+module.exports = class extends Generator {
 
-  constructor: function() {
-    generators.Base.apply(this, arguments);
+  constructor(args, opts) {
+    super(args, opts);
 
     this.argument('appName', {
       desc: 'Name of the application to scaffold',
@@ -38,111 +38,108 @@ var Generator = generators.Base.extend({
     this.version = pkg.version;
 
     // Use options from json
-    options.forEach(function(option) {
+    options.forEach((option) => {
       this.option(option.name, {
         type: global[option.type],
         required: option.required,
         desc: option.desc,
         defaults: option.defaults
       });
-    }, this);
-  },
+    });
+  }
 
-  info: function() {
+  info() {
     this.log(yosay(
       chalk.red('Welcome!\n') +
       chalk.yellow('You\'re about to scaffold an awesome application based on Angular!')
     ));
-  },
+  }
 
-  ask: function() {
-    var self = this;
-
-    function processProps(props) {
-      props.appName = props.appName || self.appName;
+  ask() {
+    let processProps = (props) => {
+      props.appName = props.appName || this.options.appName;
       props.projectName = _.kebabCase(props.appName);
 
-      self.props = props;
-    }
+      this.props = props;
+    };
 
     if (this.options.automate) {
       // Do no prompt, use json file instead
-      var props = require(path.resolve(this.options.automate));
+      let props = require(path.resolve(this.options.automate));
       processProps(props);
     } else {
-      var namePrompt = _.find(prompts, {name: 'appName'});
+      let namePrompt = _.find(prompts, {name: 'appName'});
       namePrompt.default = path.basename(process.cwd());
-      namePrompt.when = function() {
-        return !self.appName;
+      namePrompt.when = () => {
+        return !this.options.appName;
       };
 
       // Use prompts from json
-      return this.prompt(prompts).then(function(props) {
+      return this.prompt(prompts).then((props) => {
         processProps(props);
       });
     }
-  },
+  }
 
-  prepare: function() {
-    var done = this.async();
-    var filesPath = path.join(__dirname, 'templates');
-    var self = this;
+  prepare() {
+    return new Promise((resolve) => {
+      let filesPath = path.join(__dirname, 'templates');
 
-    dir.files(filesPath, function(err, files) {
-      if (err) throw err;
+      dir.files(filesPath, (err, files) => {
+        if (err) throw err;
 
-      // Removes excluded files
-      _.remove(files, function(file) {
-        return !_.every(excludeFiles, function(excludeFile) {
-          return !_.includes(file, excludeFile);
+        // Removes excluded files
+        _.remove(files, (file) => {
+          return !_.every(excludeFiles, (excludeFile) => {
+            return !_.includes(file, excludeFile);
+          });
         });
+
+        this.files = _.map(files, (file) => {
+          let src = path.relative(filesPath, file);
+          let isTemplate = _.startsWith(path.basename(src), '_');
+          let hasFileCondition = _.startsWith(path.basename(src), '__');
+          let hasFolderCondition = _.startsWith(path.dirname(src), '_');
+          let dest = path.relative(hasFolderCondition ? path.dirname(src).split(path.sep)[0] : '.', src);
+
+          if (hasFileCondition) {
+            let fileName = path.basename(src).replace(/__.*?[.]/, '_');
+            dest = path.join(path.dirname(src), fileName);
+          }
+
+          if (isTemplate) {
+            dest = path.join(path.dirname(dest), path.basename(dest).slice(1));
+          }
+
+          return {
+            src: src,
+            dest: dest,
+            template: isTemplate,
+            hasFileCondition: hasFileCondition,
+            hasFolderCondition: hasFolderCondition
+          };
+        });
+
+        resolve();
       });
-
-      self.files = _.map(files, function(file) {
-        var src = path.relative(filesPath, file);
-        var isTemplate = _.startsWith(path.basename(src), '_');
-        var hasFileCondition = _.startsWith(path.basename(src), '__');
-        var hasFolderCondition = _.startsWith(path.dirname(src), '_');
-        var dest = path.relative(hasFolderCondition ? path.dirname(src).split(path.sep)[0] : '.', src);
-
-        if (hasFileCondition) {
-          var fileName = path.basename(src).replace(/__.*?[.]/, '_');
-          dest = path.join(path.dirname(src), fileName);
-        }
-
-        if (isTemplate) {
-          dest = path.join(path.dirname(dest), path.basename(dest).slice(1));
-        }
-
-        return {
-          src: src,
-          dest: dest,
-          template: isTemplate,
-          hasFileCondition: hasFileCondition,
-          hasFolderCondition: hasFolderCondition
-        };
-      });
-
-      done();
     });
-  },
+  }
 
-  config: function() {
+  config() {
     // Generate .yo-rc.json
     this.config.set('version', this.version);
     this.config.set('props', this.props);
     this.config.save();
-  },
+  }
 
-  write: function() {
-    var self = this;
-    this.files.forEach(function(file) {
-      var write = !file.hasFolderCondition || _.every(nameRules, function(rule, folder) {
-        return !_.startsWith(path.dirname(file.src), folder) || rule(self.props);
+  write() {
+    this.files.forEach((file) => {
+      let write = !file.hasFolderCondition || _.every(nameRules, (rule, folder) => {
+        return !_.startsWith(path.dirname(file.src), folder) || rule(this.props);
       });
 
-      write = write && (!file.hasFileCondition || _.every(nameRules, function(rule, prefix) {
-        return !_.startsWith(path.basename(file.src), '_' + prefix) || rule(self.props);
+      write = write && (!file.hasFileCondition || _.every(nameRules, (rule, prefix) => {
+        return !_.startsWith(path.basename(file.src), '_' + prefix) || rule(this.props);
       }));
 
       if (write) {
@@ -157,30 +154,28 @@ var Generator = generators.Base.extend({
           throw error;
         }
       }
-    }, this);
-  },
+    });
+  }
 
-  install: function() {
-    var self = this;
-
+  install() {
     // Launch npm, bower and tsd installs if not skipped
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       skipMessage: this.options['skip-message'],
-      callback: function() {
-        if (!self.options['skip-install']) {
-          self.spawnCommandSync('gulp', ['tsd:restore']);
+      callback: () => {
+        if (!this.options['skip-install']) {
+          this.spawnCommandSync('gulp', ['tsd:restore']);
 
           // Prepare Cordova platforms
-          if (self.props.target !== 'web') {
-            self.spawnCommandSync('gulp', ['cordova:prepare']);
+          if (this.props.target !== 'web') {
+            this.spawnCommandSync('gulp', ['cordova:prepare']);
           }
         }
       }
     });
-  },
+  }
 
-  end: function() {
+  end() {
     this.log('\nAll done! Get started with these gulp tasks:');
     this.log('- `$ ' + chalk.green('gulp') + '` to build an optimized version of your application');
     this.log('- `$ ' + chalk.green('gulp serve') + '` to start dev server on your source files with live reload');
@@ -198,6 +193,4 @@ var Generator = generators.Base.extend({
     }
   }
 
-});
-
-module.exports = Generator;
+};
