@@ -37,7 +37,7 @@
     "Vibration": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Vibration.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "WebSQL": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/WebSQL.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "Push": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Push.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
-    "Keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Keyboard.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
+    "Keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/plugins/keyboard.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "cordova-ionic": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/cordova-ionic.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/plugins/keyboard.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2"<% } %>
   }
