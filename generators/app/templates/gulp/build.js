@@ -56,9 +56,9 @@ function setEnvironment(file) {
 }
 
 gulp.task('build:sources', ['inject'], function() {
-  var htmlFilter = $.filter('*.html', {restore: true});
-  var jsFilter = $.filter('**/*.js', {restore: true});
-  var cssFilter = $.filter('**/*.css', {restore: true});
+  var htmlFilter = $.filter('*.html', {restore: true, dot: true});
+  var jsFilter = $.filter('**/*.js', {restore: true, dot: true});
+  var cssFilter = $.filter('**/*.css', {restore: true, dot: true});
 
   var task = gulp.src(path.join(conf.paths.tmp, 'index.html'))
     .pipe($.replace(/<html/g, '<html ng-strict-di'))
