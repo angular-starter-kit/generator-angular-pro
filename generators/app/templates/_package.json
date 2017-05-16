@@ -74,7 +74,7 @@
     "typescript": "^2.0.3",
     "typings": "^2.1.0",
     "uglify-save-license": "~0.4.1",
-    "webpack-stream": "^3.1.0",
+    "webpack-stream-fixed": "^3.2.2",
     "wiredep": "^4.0.0"
   },
   "engines": {
