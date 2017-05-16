@@ -3,7 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('../gulpfile.config');
-var webpack = require('webpack-stream');
+var webpack = require('webpack-stream-fixed');
 var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
