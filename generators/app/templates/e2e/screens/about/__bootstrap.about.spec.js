@@ -5,7 +5,7 @@ describe('about', function() {
   var page;
 
   beforeEach(function() {
-    browser.get('/#/about');
+    browser.get('/#!/about');
     page = require('./about.po');
   });
 
