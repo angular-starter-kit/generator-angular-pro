@@ -27,6 +27,12 @@ module.exports = function(config) {
     // List of files/patterns to load in the browser
     files: listFiles(),
 
+    // Redirect root (/) requests to static assets
+    proxies: {
+      '/libraries': '/base/sources/libraries',
+      '/images': '/base/sources/images'
+    },
+
     // Continuous Integration mode
     // If true, it capture browsers, run tests and exit
     singleRun: true,
@@ -82,20 +88,6 @@ module.exports = function(config) {
     // Enable or disable colors in the output (reporters and logs).
     color: true
   };
-
-  // This block is needed to execute Chrome on Travis
-  // If you ever plan to use Chrome and Travis, you can keep it
-  // If not, you can safely remove it
-  // https://github.com/karma-runner/karma/issues/1144#issuecomment-53633076
-  if (configuration.browsers[0] === 'Chrome' && process.env.TRAVIS) {
-    configuration.customLaunchers = {
-      'chrome-travis-ci': {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    };
-    configuration.browsers = ['chrome-travis-ci'];
-  }
 
   config.set(configuration);
 
