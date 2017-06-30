@@ -9,6 +9,12 @@ node_js:
   - '7'
   - stable
 
+android:
+  components:
+    - android-24
+    - platform-tools
+    - tools
+
 addons:
   apt:
     sources:
@@ -31,6 +37,8 @@ install:
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+  - export ANDROID_HOME=$PWD/android-sdk-linux
+  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 script:
   - npm test
