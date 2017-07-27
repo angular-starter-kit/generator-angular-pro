@@ -10,7 +10,7 @@
   },
   "devDependencies": {
 <% if (props.target !== 'web') { -%>
-    "cordova": "^6.4.0",
+    "cordova": "^7.0.0",
     "gulp-insert": "^0.5.0",
     "tostr": "^0.1.0",
 <% } -%>
