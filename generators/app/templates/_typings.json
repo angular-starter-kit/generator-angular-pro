@@ -29,7 +29,6 @@
     "FileTransfer": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/FileTransfer.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "Globalization": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Globalization.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "Media": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Media.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
-    "InAppBrowser": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/InAppBrowser.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "MediaCapture": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/MediaCapture.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "Splashscreen": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Splashscreen.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",
     "NetworkInformation": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/NetworkInformation.d.ts#398bd742115e2b071ab3edf8b543b6df6fa62dc2",

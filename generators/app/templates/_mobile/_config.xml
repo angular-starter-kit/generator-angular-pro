@@ -15,7 +15,7 @@
   <!-- iOS specific -->
   <platform name="ios">
     <!-- Ionic supports iOS 7+ -->
-    <preference name="deployment-target" value="8.0"/>
+    <preference name="deployment-target" value="9.0"/>
     <preference name="UIWebViewBounce" value="false"/>
 <% if (props.ui === 'bootstrap') { -%>
     <preference name="StatusBarOverlaysWebView" value="false" />
@@ -58,7 +58,7 @@
   <!-- Android specific -->
   <platform name="android">
     <!-- Ionic supports Android 4+ -->
-    <preference name="android-minSdkVersion" value="16"/>
+    <preference name="android-minSdkVersion" value="23"/>
     <preference name="android-manifest/application/activity/@android:theme" value="@android:style/Theme.DeviceDefault" />
 
     <icon src=".tmp/resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
@@ -92,24 +92,24 @@
   <preference name="loadUrlTimeoutValue" value="60000" />
 
   <!-- Cordova platforms -->
-  <engine name="ios" spec="~4.3.0" />
-  <engine name="android" spec="~6.0.0" />
+  <engine name="ios" spec="^4.4.0" />
+  <engine name="android" spec="^6.2.0" />
 
   <!-- Cordova plugin dependencies -->
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-  <plugin name="cordova-plugin-statusbar" spec="~2.2.0" />
-  <plugin name="cordova-plugin-device" spec="~1.1.3" />
+  <plugin name="cordova-plugin-statusbar" spec="~2.2.3" />
+  <plugin name="cordova-plugin-device" spec="~1.1.6" />
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.0" />
-  <plugin name="cordova-plugin-globalization" spec="~1.0.4" />
+  <plugin name="cordova-plugin-globalization" spec="~1.0.7" />
   <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0">
-    <variable name="XWALK_VERSION" value="22+" />
+    <variable name="XWALK_VERSION" value="23+" />
     <variable name="XWALK_LITEVERSION" value="xwalk_core_library_canary:17+" />
     <variable name="XWALK_COMMANDLINE" value="--disable-pull-to-refresh-effect" />
     <variable name="XWALK_MODE" value="embedded" />
     <variable name="XWALK_MULTIPLEAPK" value="true" />
   </plugin>
   <plugin name="cordova-plugin-whitelist" spec="~1.3.0" />
-  <plugin name="cordova-plugin-wkwebview-engine" spec="~1.1.0" />
-  <plugin name="cordova-custom-config" spec="~3.1.2" />
+  <plugin name="cordova-plugin-wkwebview-engine" spec="https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
+  <plugin name="cordova-custom-config" spec="~4.0.2" />
 
 </widget>

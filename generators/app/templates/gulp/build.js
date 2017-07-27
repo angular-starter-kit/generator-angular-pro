@@ -67,7 +67,10 @@ gulp.task('build:sources', ['inject'], function() {
 
   if (!options.debug) {
     task = task.pipe(jsFilter)
-      .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
+      .pipe($.uglify({
+        output: { comments: $.uglifySaveLicense }
+      }))
+      .on('error', conf.errorHandler('Uglify'))
       .pipe($.rev())
       .pipe(jsFilter.restore)
       .pipe(cssFilter)
